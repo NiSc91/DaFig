@@ -1,0 +1,16 @@
+T1	MTP 55 58	ser
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 82 84	ud
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+R1	MultiWordExpression Arg1:T1 Arg2:T2	
+T3	MTP 1284 1291	stå bag
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 1322 1328	blankt
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 1751 1755	side
+A9	Directness T5 IND
+A10	Conventionality T5 CNV

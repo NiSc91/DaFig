@@ -1,0 +1,44 @@
+T1	MTP 25 30	koste
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 2339 2343	ramt
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 2350 2358	stigende
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	HPB 310 323	himmelfarende
+A7	Dimension T4 QNT
+A8	Degree T4 2
+T5	MTP 310 323	himmelfarende
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+#1	AnnotatorNotes T5	**Ny brug af "himmelfart"
+T7	MTP 1910 1916	steget
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 568 575	grænsen
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 670 676	fulgte
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+#2	AnnotatorNotes T9	**Men framer regeringen som noget, man kan følge, eks. en guide
+T10	MTP 719 729	indefrosne
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 1723 1729	trække
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 1247 1260	lægges sammen
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 1397 1399	se
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T6	MTP 1717 1719	nå
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T14	MTP 1293 1299	gå til
+A27	Directness T14 IND
+A28	Conventionality T14 CNV

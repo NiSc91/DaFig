@@ -1,0 +1,38 @@
+digraph G {
+	subgraph cluster_0 {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		A [label="Read the entire text"]
+		B [label="For each lexical unit:"]
+		label="Reading Process"
+	}
+	subgraph cluster_1 {
+		node [color=white style=filled]
+		color=lightyellow style=filled
+		C [label="Is it (A) ironic, (B) metaphorical?"]
+		D [label="If any, annotate and guess/look up intended meaning"]
+		E [label="If none, assume basic meaning"]
+		C -> D
+		C -> E
+		label="Auxiliary figures of speech"
+	}
+	subgraph cluster_2 {
+		node [color=white style=filled]
+		color=lightblue style=filled
+		F [label="Does the unit construct a qualitative or quantitative scale?"]
+		G [label="Determine the ontological referent"]
+		H [label="Is the unit more extreme than justified given referent?"]
+		I [label="If yes, it is hyperbolic"]
+		J [label="If no, move to next lexical unit"]
+		F -> G
+		G -> H
+		H -> I
+		H -> J
+		label="Hyperbole Determination"
+	}
+	A -> B
+	B -> C
+	B -> F
+	E -> J
+	I -> J
+}

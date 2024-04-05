@@ -1,0 +1,38 @@
+T1	MTP 58 67	selskabet
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 179 183	klar
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 254 261	skriver
+A5	Directness T3 IND
+A6	Conventionality T3 NOV
+T4	MTP 324 331	selskab
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 388 393	givet
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 507 511	give
+A11	Directness T6 IND
+T7	MTP 579 588	selskabet
+A12	Directness T7 IND
+A13	Conventionality T7 CNV
+T8	MTP 653 657	klar
+A14	Directness T8 IND
+A15	Conventionality T8 CNV
+T9	MTP 707 715	vurderer
+A16	Directness T9 IND
+A17	Conventionality T9 CNV
+T10	MTP 733 741	arbejdet
+A18	Directness T10 IND
+A19	Conventionality T10 CNV
+T12	MTP 1231 1241	selskabets
+A22	Directness T12 IND
+T13	MTP 1276 1279	tid
+A23	Directness T13 IND
+T14	MTP 1393 1397	klar
+A24	Directness T14 IND
+A25	Conventionality T14 CNV
+T15	MTP 1757 1763	oplyst
+A26	Directness T15 IND

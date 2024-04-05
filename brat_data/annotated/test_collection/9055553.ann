@@ -1,0 +1,47 @@
+T1	MTP 0 3	Små
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 166 174	slog til
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	HPB 179 188	lynhurtig
+A5	Degree T3 1
+A6	Dimension T3 QNT
+T4	MTP 245 252	så småt
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 506 525	gået som varmt brød
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 557 561	lave
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 809 811	lå
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 1157 1168	eksploderet
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	HPB 1157 1168	eksploderet
+A17	Dimension T9 QLT
+A18	Degree T9 1
+T10	MTP 1212 1217	solid
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 1291 1294	nær
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 1873 1880	monster
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 1941 1951	gigantiske
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 1957 1969	under bæltet
+A27	Directness T14 IND
+A28	Conventionality T14 NOV
+#1	AnnotatorNotes T14	indlånt fra engelsk
+T15	MTP 901 906	stået
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+#2	AnnotatorNotes T15	tvivlstilfælde: "stået for" er en fast vending, men indenfor denne vending er "stået" metaforisk
