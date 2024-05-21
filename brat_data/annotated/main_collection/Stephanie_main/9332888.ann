@@ -1,0 +1,102 @@
+T1	HPB 0 4	Kaos
+A1	Dimension T1 QLT
+A2	Degree T1 2
+T2	HPB 32 37	total
+A3	Dimension T2 QLT
+A4	Degree T2 2
+T3	MTP 45 49	stor
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 159 168	strandede
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	HPB 219 226	Kaosset
+A9	Dimension T5 QLT
+A10	Degree T5 2
+T6	MTP 297 303	berørt
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 381 384	lød
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 424 433	strandede
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 494 499	store
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 482 485	sad
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 753 756	stå
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 757 758	i
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 759 764	vejen
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+R1	MultiWordExpression Arg1:T11 Arg2:T12	
+R2	MultiWordExpression Arg1:T12 Arg2:T13	
+T14	MTP 1159 1164	lyder
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	HPB 1328 1332	alle
+A29	Dimension T15 QLT
+A30	Degree T15 3
+T16	HPB 1333 1338	vegne
+A31	Dimension T16 QLT
+A32	Degree T16 3
+R3	MultiWordExpression Arg1:T15 Arg2:T16	
+T17	HPB 1473 1478	flyve
+A33	Dimension T17 QLT
+A34	Degree T17 2
+T19	HPB 1487 1492	ville
+A37	Dimension T19 QLT
+A38	Degree T19 2
+T20	HPB 1842 1846	hele
+A39	Dimension T20 QNT
+A40	Degree T20 2
+T21	HPB 1847 1852	dagen
+A41	Dimension T21 QNT
+A42	Degree T21 2
+R6	CHUNK Arg1:T20 Arg2:T21	
+T22	MTP 2136 2146	indstillet
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	MTP 2244 2253	strandede
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+T24	MTP 2433 2442	strandede
+A47	Directness T24 IND
+A48	Conventionality T24 CNV
+T25	MTP 2721 2727	kastet
+A49	Directness T25 IND
+A50	Conventionality T25 CNV
+T26	MTP 2734 2738	sten
+A51	Directness T26 IND
+A52	Conventionality T26 NOV
+R7	CHUNK Arg1:T25 Arg2:T26	
+#1	AnnotatorNotes T26	måske variant af "kaste den første sten"
+T27	MTP 2760 2767	oplyser
+A53	Directness T27 IND
+A54	Conventionality T27 CNV
+T28	MTP 2808 2817	udlægning
+A55	Directness T28 IND
+A56	Conventionality T28 CNV
+T29	MTP 2879 2883	løse
+A57	Directness T29 IND
+A58	Conventionality T29 CNV
+T30	HPB 1377 1381	ikke
+A59	Dimension T30 QNT
+A60	Degree T30 1
+T31	HPB 1388 1390	en
+A61	Dimension T31 QNT
+A62	Degree T31 1
+T32	HPB 1391 1395	skid
+A63	Dimension T32 QNT
+A64	Degree T32 1
+R8	CHUNK Arg1:T30 Arg2:T31	
+R9	CHUNK Arg1:T31 Arg2:T32	
+R4	CHUNK Arg1:T17 Arg2:T19	

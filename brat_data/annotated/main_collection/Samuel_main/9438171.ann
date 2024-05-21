@@ -1,0 +1,128 @@
+T1	MTP 2616 2628	understreger
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 7 12	bombe
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 0 6	Smider
+A5	Directness T3 IND
+A6	Conventionality T3 NOV
+T4	HPB 7 12	bombe
+A7	Dimension T4 QLT
+A8	Degree T4 2
+T5	MTP 811 816	kaste
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 817 827	håndklædet
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 828 829	i
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 830 836	ringen
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+R2	MultiWordExpression Arg1:T5 Arg2:T6	
+R3	MultiWordExpression Arg1:T7 Arg2:T8	
+R4	MultiWordExpression Arg1:T6 Arg2:T7	
+T9	HPB 41 45	chok
+A17	Dimension T9 QLT
+A18	Degree T9 2
+T10	MTP 69 76	kastede
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 77 87	håndklædet
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 88 89	i
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 90 96	ringen
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+R5	MultiWordExpression Arg1:T10 Arg2:T11	
+R6	MultiWordExpression Arg1:T11 Arg2:T12	
+R7	MultiWordExpression Arg1:T12 Arg2:T13	
+T14	MTP 308 314	smedet
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 315 321	sammen
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+T16	HPB 251 263	modsætninger
+A31	Dimension T16 QLT
+A32	Degree T16 1
+T17	MTP 403 409	smider
+A33	Directness T17 IND
+A34	Conventionality T17 NOV
+T18	MTP 426 431	bombe
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+T19	HPB 426 431	bombe
+A37	Dimension T19 QLT
+A38	Degree T19 2
+T20	MTP 674 680	berørt
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+T21	MTP 769 776	uddyber
+A41	Directness T21 IND
+A42	Conventionality T21 CNV
+T22	MTP 895 902	presset
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	MTP 977 984	presset
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+T24	MTP 948 956	overskue
+A47	Directness T24 IND
+A48	Conventionality T24 CNV
+T25	MTP 1174 1180	tilløb
+A49	Directness T25 IND
+A50	Conventionality T25 CNV
+T26	MTP 1511 1513	så
+A51	Directness T26 IND
+A52	Conventionality T26 CNV
+T27	MTP 1621 1627	pegede
+A53	Directness T27 IND
+A54	Conventionality T27 CNV
+T28	MTP 1638 1641	vej
+A55	Directness T28 IND
+A56	Conventionality T28 CNV
+T29	MTP 1796 1800	tabt
+A57	Directness T29 IND
+A58	Conventionality T29 CNV
+T30	MTP 1879 1881	så
+A59	Directness T30 IND
+A60	Conventionality T30 CNV
+T31	MTP 2013 2016	slå
+A61	Directness T31 IND
+A62	Conventionality T31 CNV
+T32	MTP 2017 2024	gnister
+A63	Directness T32 IND
+A64	Conventionality T32 CNV
+R1	MultiWordExpression Arg1:T31 Arg2:T32	
+T33	MTP 2076 2081	passe
+A65	Directness T33 IND
+A66	Conventionality T33 CNV
+T34	MTP 2110 2116	trække
+A67	Directness T34 IND
+A68	Conventionality T34 NOV
+T35	MTP 2117 2124	stikket
+A69	Directness T35 IND
+A70	Conventionality T35 NOV
+R8	MultiWordExpression Arg1:T34 Arg2:T35	
+#1	AnnotatorNotes R8	anglicisme: 'to pull the plug'
+T36	MTP 2279 2284	udvej
+A71	Directness T36 IND
+A72	Conventionality T36 CNV
+T37	MTP 2309 2315	stoppe
+A73	Conventionality T37 CNV
+T38	HPB 2597 2601	chok
+A74	Dimension T38 QLT
+A75	Degree T38 2
+T39	MTP 2679 2682	går
+A76	Directness T39 IND
+A77	Conventionality T39 CNV
+T40	MTP 2367 2374	presset
+A78	Directness T40 IND
+A79	Conventionality T40 CNV

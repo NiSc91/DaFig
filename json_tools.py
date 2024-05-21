@@ -164,17 +164,19 @@ def create_sample_files(data, sample_name, target_words, sample_size, seed, outp
 #convert_to_brat_format('agr_sample.json', 'brat_data/unannotated/agr_collection')
 
 # Function call to create sample Samuel_main, target_words=20000, seed=2, sample_size=10000, output_dear="brat_data"
-create_sample_files(data, 'Samuel_main', 20000, 10000, 2, data_dir)
+#create_sample_files(data, 'Samuel_main', 20000, 10000, 2, data_dir)
 # Create Stephanie_main
-create_sample_files(data, "Stephanie_main", 20000, 10000, 3, data_dir)
+#create_sample_files(data, "Stephanie_main", 20000, 10000, 3, data_dir)
+
+# Create end agreement sample
+create_sample_files(data, 'end_agr_collection', 2100, 10000, 7, data_dir)
 
 # Check duplicates between Samuel_main and Stephanie_main
-check_duplicates(os.path.join(data_dir, 'unannotated/Samuel_main'), os.path.join(data_dir, 'unannotated/Stephanie_main'))
+#check_duplicates(os.path.join(data_dir, 'unannotated/Samuel_main'), os.path.join(data_dir, 'unannotated/Stephanie_main'))
 # Check duplicates between the two new samples and test_collection2, test_collection2, and agr_collection, respectively
-check_duplicates(os.path.join(data_dir, 'unannotated/Samuel_main'), os.path.join(data_dir, 'unannotated/test_collection1'))
-check_duplicates(os.path.join(data_dir, 'unannotated/Samuel_main'), os.path.join(data_dir, 'unannotated/test_collection2'))
-check_duplicates(os.path.join(data_dir, 'unannotated/Samuel_main'), os.path.join(data_dir, 'unannotated/agr_collection'))
-check_duplicates(os.path.join(data_dir, 'unannotated/Stephanie_main'), os.path.join(data_dir, 'unannotated/test_collection1'))
-check_duplicates(os.path.join(data_dir, 'unannotated/Stephanie_main'), os.path.join(data_dir, 'unannotated/test_collection2'))
-check_duplicates(os.path.join(data_dir, 'unannotated/Stephanie_main'), os.path.join(data_dir, 'unannotated/agr_collection'))
-
+#check_duplicates(os.path.join(data_dir, 'unannotated/Samuel_main'), os.path.join(data_dir, 'unannotated/test_collection1'))
+#check_duplicates(os.path.join(data_dir, 'unannotated/Samuel_main'), os.path.join(data_dir, 'unannotated/test_collection2'))
+#check_duplicates(os.path.join(data_dir, 'unannotated/Samuel_main'), os.path.join(data_dir, 'unannotated/agr_collection'))
+#check_duplicates(os.path.join(data_dir, 'unannotated/Stephanie_main'), os.path.join(data_dir, 'unannotated/test_collection1'))
+#check_duplicates(os.path.join(data_dir, 'unannotated/Stephanie_main'), os.path.join(data_dir, 'unannotated/test_collection2'))
+#check_duplicates(os.path.join(data_dir, 'unannotated/Stephanie_main'), os.path.join(data_dir, 'unannotated/agr_collection'))

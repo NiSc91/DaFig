@@ -1,0 +1,52 @@
+T1	HPB 21 25	kaos
+A1	Dimension T1 QLT
+A2	Degree T1 1
+T2	MTP 230 234	lagt
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 506 515	indbygget
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 541 550	deponeret
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 610 612	se
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 1393 1400	oplyste
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 717 719	op
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 729 732	ned
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 747 752	komme
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 753 756	med
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+R1	MultiWordExpression Arg1:T9 Arg2:T10	
+T11	MTP 946 950	frem
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 1291 1296	komme
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T14	MTP 1562 1570	overført
+A25	Directness T14 IND
+A26	Conventionality T14 CNV
+T15	MTP 1614 1618	stor
+A27	Directness T15 IND
+A28	Conventionality T15 CNV
+T16	MTP 1659 1667	overleve
+A29	Directness T16 IND
+A30	Conventionality T16 CNV
+T17	MTP 1772 1774	op
+A31	Directness T17 IND
+A32	Conventionality T17 CNV
+T18	MTP 1802 1806	side
+A33	Directness T18 IND
+A34	Conventionality T18 CNV

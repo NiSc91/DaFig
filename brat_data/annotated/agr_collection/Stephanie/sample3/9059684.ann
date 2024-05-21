@@ -1,0 +1,107 @@
+T3	MTP 596 599	ser
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 694 700	Skaber
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 779 784	skabe
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 918 926	undviger
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 964 968	høje
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 1005 1010	lyder
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 1115 1119	bide
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 1120 1125	mærke
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 1126 1127	i
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+R1	MultiWordExpression Arg1:T9 Arg2:T10	
+R2	MultiWordExpression Arg1:T10 Arg2:T11	
+T12	MTP 1184 1187	slå
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 1188 1192	fast
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+R3	MultiWordExpression Arg1:T12 Arg2:T13	
+T15	MTP 1387 1396	isolerede
+A27	Directness T15 IND
+A28	Conventionality T15 CNV
+T16	MTP 1474 1486	understreger
+A29	Directness T16 IND
+A30	Conventionality T16 CNV
+T17	MTP 1559 1562	Set
+A31	Directness T17 IND
+A32	Conventionality T17 CNV
+T18	MTP 1563 1564	i
+A33	Directness T18 IND
+A34	Conventionality T18 CNV
+T19	MTP 1565 1570	dette
+A35	Directness T19 IND
+A36	Conventionality T19 CNV
+T20	MTP 1571 1574	lys
+A37	Directness T20 IND
+A38	Conventionality T20 CNV
+R4	MultiWordExpression Arg1:T18 Arg2:T19	
+R5	MultiWordExpression Arg1:T19 Arg2:T20	
+T21	MTP 1682 1694	understreger
+A39	Directness T21 IND
+A40	Conventionality T21 CNV
+T14	MTP 1823 1827	kort
+A41	Directness T14 IND
+A42	Conventionality T14 CNV
+T22	MTP 1985 1993	baggrund
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	MTP 2139 2144	lyder
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+T24	MTP 2239 2245	stiger
+A47	Directness T24 IND
+A48	Conventionality T24 CNV
+T25	HPB 2330 2334	hele
+A49	Dimension T25 QNT
+A50	Degree T25 1
+T26	MTP 2400 2403	høj
+A51	Directness T26 IND
+A52	Conventionality T26 CNV
+T27	MTP 2436 2441	giver
+A53	Directness T27 IND
+A54	Conventionality T27 CNV
+T28	MTP 2550 2555	viser
+A55	Directness T28 IND
+A56	Conventionality T28 CNV
+T29	MTP 2597 2603	ligger
+A57	Directness T29 IND
+A58	Conventionality T29 CNV
+T30	MTP 2734 2737	ser
+A59	Directness T30 IND
+A60	Conventionality T30 CNV
+T31	MTP 2758 2764	lavere
+A61	Directness T31 IND
+A62	Conventionality T31 CNV
+T32	MTP 2768 2774	falder
+A63	Directness T32 IND
+A64	Conventionality T32 CNV
+T33	MTP 3231 3238	billede
+A65	Directness T33 IND
+A66	Conventionality T33 CNV
+T34	MTP 3210 3213	har
+A67	Directness T34 IND
+A68	Conventionality T34 CNV
+T35	MTP 3250 3253	høj
+A69	Directness T35 IND
+A70	Conventionality T35 CNV
+T1	MTP 2542 2549	konkret
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
