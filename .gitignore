@@ -160,4 +160,5 @@ cython_debug/
 #.idea/
 
 # Other extensions (not related to python)
+deps/
 articles_with_front_headlines.json
