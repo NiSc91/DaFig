@@ -1,0 +1,70 @@
+T1	MTP 309 317	uddybede
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 586 588	gå
+T3	MTP 819 824	dække
+T4	HPB 938 942	ikke
+A3	Dimension T4 QNT
+A4	Degree T4 2
+T5	HPB 943 948	noget
+A5	Dimension T5 QNT
+A6	Degree T5 2
+R1	CHUNK Arg1:T4 Arg2:T5	
+T6	MTP 1123 1127	kort
+A7	Directness T6 IND
+A8	Conventionality T6 CNV
+T7	MTP 1386 1393	redning
+A9	Directness T7 IND
+A10	Conventionality T7 NOV
+T8	MTP 1638 1643	målet
+A11	Directness T8 IND
+A12	Conventionality T8 CNV
+T9	MTP 1952 1956	gået
+T10	MTP 2006 2012	satser
+A13	Directness T10 IND
+A14	Conventionality T10 CNV
+T11	MTP 2042 2047	lyder
+A15	Directness T11 IND
+A16	Conventionality T11 CNV
+T12	MTP 2585 2589	køre
+A17	Directness T12 IND
+A18	Conventionality T12 CNV
+T13	MTP 2595 2599	kort
+A19	Directness T13 IND
+A20	Conventionality T13 CNV
+T14	MTP 2724 2729	kørte
+A21	Directness T14 IND
+A22	Conventionality T14 CNV
+T15	MTP 2738 2743	ramte
+A23	Directness T15 IND
+A24	Conventionality T15 CNV
+T16	MTP 2842 2850	stjerner
+A25	Directness T16 IND
+A26	Conventionality T16 CNV
+T17	MTP 2836 2841	store
+A27	Directness T17 IND
+A28	Conventionality T17 CNV
+R2	CHUNK Arg1:T17 Arg2:T16	
+T18	HPB 2871 2884	hemmeligheden
+A29	Dimension T18 QLT
+A30	Degree T18 1
+A31	Directness T2 IND
+A32	Conventionality T2 CNV
+A33	Directness T9 IND
+A34	Conventionality T9 CNV
+T19	MTP 743 746	gik
+A35	Directness T19 IND
+A36	Conventionality T19 CNV
+A37	Directness T3 IND
+A38	Conventionality T3 CNV
+T20	MTP 825 828	ind
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+R3	CHUNK Arg1:T3 Arg2:T20	
+T21	MTP 2322 2326	stor
+A41	Directness T21 IND
+A42	Conventionality T21 CNV
+T22	MTP 2327 2331	ting
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+R4	CHUNK Arg1:T21 Arg2:T22	

@@ -1,0 +1,53 @@
+T1	HPB 84 87	alt
+A1	Dimension T1 QNT
+A2	Degree T1 2
+T2	MTP 520 524	Vild
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	HPB 689 692	alt
+A5	Dimension T3 QNT
+A6	Degree T3 2
+T4	MTP 880 891	bekæmpelsen
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 931 937	bredte
+A9	Directness T5 IND
+A10	Conventionality T5 NOV
+T6	MTP 938 941	sig
+A11	Directness T6 IND
+A12	Conventionality T6 NOV
+R1	MultiWordExpression Arg1:T5 Arg2:T6	
+T7	MTP 1018 1025	hersker
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 1169 1173	nede
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 1147 1152	holde
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 1500 1507	kostede
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 1673 1679	holder
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 1709 1713	fast
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+R2	MultiWordExpression Arg1:T11 Arg2:T12	
+T13	MTP 1695 1700	store
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 1898 1901	rum
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	HPB 1894 1897	alt
+A29	Dimension T15 QNT
+A30	Degree T15 2
+T16	MTP 2144 2148	vise
+A31	Directness T16 IND
+A32	Conventionality T16 CNV
+T17	MTP 2164 2175	forbindelse
+A33	Directness T17 IND
+A34	Conventionality T17 CNV

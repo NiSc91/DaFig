@@ -1,0 +1,42 @@
+T1	MTP 13 18	store
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 141 145	fået
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 354 359	viste
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 386 392	regnet
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 397 402	klare
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 487 490	lød
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 543 546	øge
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 547 556	afstanden
+A15	Directness T8 IND
+A16	Conventionality T8 NOV
+T9	MTP 585 592	opgøret
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 870 878	snuppede
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 882 888	snæver
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 950 959	avancerer
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 1157 1161	målt
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 1242 1251	stærkeste
+A27	Directness T14 IND
+A28	Conventionality T14 CNV

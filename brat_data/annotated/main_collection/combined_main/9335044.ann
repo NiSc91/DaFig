@@ -1,0 +1,79 @@
+T1	HPB 0 3	Ond
+A1	Dimension T1 QLT
+A2	Degree T1 1
+T2	MTP 52 57	faldt
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 58 61	som
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 62 67	fluer
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+R1	MultiWordExpression Arg1:T2 Arg2:T3	
+R2	MultiWordExpression Arg1:T3 Arg2:T4	
+T5	MTP 142 146	leve
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 147 149	op
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 150 153	til
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+R3	MultiWordExpression Arg1:T5 Arg2:T6	
+R4	MultiWordExpression Arg1:T6 Arg2:T7	
+T8	MTP 335 342	skrabet
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 356 360	hjem
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+R5	MultiWordExpression Arg1:T8 Arg2:T9	
+T10	MTP 436 445	Korthuset
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 458 463	vakle
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 780 785	ramte
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 773 779	skæbne
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 844 850	trække
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 851 854	sig
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+R6	MultiWordExpression Arg1:T14 Arg2:T15	
+T16	MTP 868 872	kort
+A31	Directness T16 IND
+A32	Conventionality T16 CNV
+T17	MTP 1164 1169	flade
+A33	Directness T17 IND
+A34	Conventionality T17 CNV
+T18	MTP 1398 1401	løs
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+T19	MTP 1473 1477	vise
+A37	Directness T19 IND
+A38	Conventionality T19 CNV
+T20	MTP 1478 1481	sig
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+R7	MultiWordExpression Arg1:T19 Arg2:T20	
+T21	MTP 1504 1508	slag
+A41	Directness T21 IND
+A42	Conventionality T21 CNV
+T22	MTP 1578 1583	kampe
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	MTP 1720 1725	kampe
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+T24	MTP 2008 2012	tage
+A47	Directness T24 IND
+A48	Conventionality T24 CNV
