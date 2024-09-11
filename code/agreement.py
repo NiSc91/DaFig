@@ -1,28 +1,6 @@
-import pdb
 import os
-import tarfile
-import sys
+import config
 import subprocess
-
-# Define base directories
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PARENT_DIR = os.path.abspath(os.path.join(BASE_DIR, '..'))
-DATA_DIR = os.path.join(BASE_DIR, 'brat_data')
-
-# Add necessary directories to sys.path
-sys.path.extend([
-    PARENT_DIR,
-    os.path.join(PARENT_DIR, "brat_peek")
-])
-
-# Define other important directories
-BRATEVAL_DIR = os.path.join(PARENT_DIR, 'brateval')
-JAR_PATH = os.path.join(BRATEVAL_DIR, 'target/brateval.jar')
-TEMP_DIR = os.path.join(BASE_DIR, 'temp')
-ANNOTATED_DIR = os.path.join(DATA_DIR, 'annotated') # Also where to find annotation.conf file
-
-# Create temp directory if it doesn't exist
-os.makedirs(TEMP_DIR, exist_ok=True)
 
 # Get agreement collection
 CORPUS_PATHS = {
@@ -53,7 +31,7 @@ def rename_files(directory):
     return mappings
 
 ##Define annotators and create brat_peek corpus objects
-from brat_peek import peek
+import peek
 
 ANNOTATOR_1 = "Samuel"
 ANNOTATOR_2 = "Stephanie"

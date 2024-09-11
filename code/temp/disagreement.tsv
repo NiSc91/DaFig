@@ -24,10 +24,13 @@ Samuel	9160659	MTP	korridoren	1683 1693
 Samuel	9160659	MTP	slippe	1719 1725	
 	9160659	MTP	viser	192 197	Stephanie
 	9160659	MTP	sig	198 201	Stephanie
+Samuel	9160659	WIDLII	udspillede	347 357	
+Samuel	9160659	WIDLII	sig	381 384	
 Samuel	9213363	MTP	profiler	1025 1033	
 Samuel	9213363	MTP	profiler	1146 1154	
 	9213363	MTP	langt	1214 1219	Stephanie
 	9213363	MTP	urolig	1352 1358	Stephanie
+Samuel	9213363	WIDLII	opslaget	1433 1441	
 Samuel	9213363	MTP	profiler	1474 1482	
 Samuel	9213363	MTP	følgere	1548 1555	
 Samuel	9213363	MTP	profilen	1560 1568	
@@ -64,10 +67,12 @@ Samuel	9299101	HPB	samtidig	1079 1087
 	9299101	MTP	køre	1131 1135	Stephanie
 Samuel	9299101	MTP	fået	1246 1250	
 Samuel	9299101	MTP	måtte	1411 1416	
+	9299101	WIDLII	udtalte	1645 1652	Stephanie
 	9299101	MTP	blev	1747 1751	Stephanie
 	9299101	MTP	lidt	185 189	Stephanie
 Samuel	9299101	MTP	ryttere	1877 1884	
 Samuel	9299101	MTP	rytter	430 436	
+	9299101	WIDLII	rytter	430 436	Stephanie
 	9299101	MTP	brøl	567 571	Stephanie
 Samuel	9299101	MTP	brølstærke	567 577	
 Samuel	9299101	MTP	rytter	589 595	
@@ -99,14 +104,20 @@ Samuel	9417278	MTP	lige	1103 1107
 	9417278	MTP	kamp	1123 1127	Stephanie
 Samuel	9417278	HPB	altid	1155 1160	
 Samuel	9417278	MTP	rette	1210 1215	
+Samuel	9417278	WIDLII	position	1216 1224	
 	9417278	MTP	position	1216 1224	Stephanie
 Samuel	9417278	MTP	banen	1321 1326	
+	9417278	WIDLII	banen	1321 1326	Stephanie
 Samuel	9417278	MTP	slog	1490 1494	
 Samuel	9417278	MTP	angriber	1590 1598	
 Samuel	9417278	MTP	total	1778 1783	
 Samuel	9417278	MTP	fuldstændig	1811 1822	
 	9417278	MTP	spektakulær	1823 1834	Stephanie
+	9417278	WIDLII	spektakulær	28 39	Stephanie
 Samuel	9417278	MTP	hjemme	299 305	
+	9417278	WIDLII	hjemme	299 305	Stephanie
+Samuel	9417278	WIDLII	helt	472 476	
+Samuel	9417278	WIDLII	har	871 874	
 Samuel	9453941	MTP	til	1003 1006	
 	9453941	MTP	fungere	1061 1068	Stephanie
 	9453941	MTP	energi	1095 1101	Stephanie
@@ -114,9 +125,13 @@ Samuel	9453941	MTP	til	1003 1006
 	9453941	MTP	opmærksomhed	1119 1131	Stephanie
 	9453941	MTP	planer	1144 1150	Stephanie
 Samuel	9453941	MTP	bedrive	1224 1231	
+	9453941	WIDLII	bedrive	1224 1231	Stephanie
+Samuel	9453941	WIDLII	foregå	202 208	
+Samuel	9453941	WIDLII	opførelse	256 265	
 	9453941	MTP	møde	412 416	Stephanie
 	9453941	MTP	gang	449 453	Stephanie
 Samuel	9453941	MTP	legene	469 475	
+	9453941	WIDLII	legene	469 475	Stephanie
 	9453941	MTP	begivenhed	5 15	Stephanie
 	9453941	MTP	kaldes	731 737	Stephanie
 	9453941	MTP	planen	871 877	Stephanie
