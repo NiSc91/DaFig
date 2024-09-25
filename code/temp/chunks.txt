@@ -1,0 +1,158 @@
+Document ID: 9039670
+Chunks:
+Entity(mention='stort', type='MTP', spans=[Span(start=1207, end=1212)], references=[], id='T24') - Entity(mention='pres', type='MTP', spans=[Span(start=1213, end=1217)], references=[], id='T23')
+
+Document ID: 9052298
+Chunks:
+Entity(mention='store', type='MTP', spans=[Span(start=169, end=174)], references=[], id='T6') - Entity(mention='hammer', type='MTP', spans=[Span(start=175, end=181)], references=[], id='T4')
+
+Document ID: 9083738
+Chunks:
+Entity(mention='direkte', type='MTP', spans=[Span(start=1749, end=1756)], references=[], id='T28') - Entity(mention='kurs', type='MTP', spans=[Span(start=1757, end=1761)], references=[], id='T27')
+
+Document ID: 9086724
+Chunks:
+Entity(mention='flade', type='MTP', spans=[Span(start=1593, end=1598)], references=[], id='T33') - Entity(mention='indlæg', type='MTP', spans=[Span(start=1599, end=1605)], references=[], id='T34')
+
+Document ID: 9109649
+Chunks:
+Entity(mention='klare', type='MTP', spans=[Span(start=2552, end=2557)], references=[], id='T27') - Entity(mention='lys', type='MTP', spans=[Span(start=2558, end=2561)], references=[], id='T26')
+
+Document ID: 9126957
+Chunks:
+Entity(mention='stod', type='MTP', spans=[Span(start=967, end=971)], references=[], id='T17') - Entity(mention='skyggen', type='MTP', spans=[Span(start=974, end=981)], references=[], id='T16')
+
+Document ID: 9128946
+Chunks:
+Entity(mention='vejer', type='MTP', spans=[Span(start=926, end=931)], references=[], id='T4') - Entity(mention='højere', type='MTP', spans=[Span(start=932, end=938)], references=[], id='T5')
+
+Document ID: 9135754
+Chunks:
+Entity(mention='Hård', type='MTP', spans=[Span(start=1003, end=1007)], references=[], id='T9') - Entity(mention='modvind', type='MTP', spans=[Span(start=1008, end=1015)], references=[], id='T8')
+Entity(mention='hård', type='MTP', spans=[Span(start=1252, end=1256)], references=[], id='T12') - Entity(mention='modvind', type='MTP', spans=[Span(start=1257, end=1264)], references=[], id='T13')
+
+Document ID: 9165073
+Chunks:
+Entity(mention='gamle', type='MTP', spans=[Span(start=1613, end=1618)], references=[], id='T29') - Entity(mention='mønstre', type='MTP', spans=[Span(start=1619, end=1626)], references=[], id='T28')
+Entity(mention='trække', type='MTP', spans=[Span(start=1734, end=1740)], references=[], id='T30') - Entity(mention='vejret', type='MTP', spans=[Span(start=1741, end=1747)], references=[], id='T31')
+
+Document ID: 9166397
+Chunks:
+Entity(mention='hele', type='MTP', spans=[Span(start=932, end=936)], references=[], id='T15') - Entity(mention='vejen', type='MTP', spans=[Span(start=937, end=942)], references=[], id='T14')
+
+Document ID: 9167245
+Chunks:
+Entity(mention='slap', type='MTP', spans=[Span(start=96, end=100)], references=[], id='T1') - Entity(mention='løs', type='MTP', spans=[Span(start=101, end=104)], references=[], id='T2')
+
+Document ID: 9183086
+Chunks:
+Entity(mention='alt', type='HPB', spans=[Span(start=2258, end=2261)], references=[], id='T16') - Entity(mention='alle', type='HPB', spans=[Span(start=2265, end=2269)], references=[], id='T18')
+
+Document ID: 9183119
+Chunks:
+Entity(mention='spiller', type='MTP', spans=[Span(start=2287, end=2294)], references=[], id='T16') - Entity(mention='kort', type='MTP', spans=[Span(start=2299, end=2303)], references=[], id='T17')
+
+Document ID: 9189461
+Chunks:
+Entity(mention='slatten', type='MTP', spans=[Span(start=390, end=397)], references=[], id='T7') - Entity(mention='boksebold', type='MTP', spans=[Span(start=398, end=407)], references=[], id='T8')
+Entity(mention='mest', type='HPB', spans=[Span(start=625, end=629)], references=[], id='T12') - Entity(mention='tarvelige', type='HPB', spans=[Span(start=630, end=639)], references=[], id='T13')
+Entity(mention='mest', type='HPB', spans=[Span(start=1108, end=1112)], references=[], id='T18') - Entity(mention='uhyggelige', type='HPB', spans=[Span(start=1113, end=1123)], references=[], id='T19')
+Entity(mention='mere', type='HPB', spans=[Span(start=2100, end=2104)], references=[], id='T26') - Entity(mention='glædeligt', type='HPB', spans=[Span(start=2105, end=2114)], references=[], id='T27')
+Entity(mention='sådan', type='HPB', spans=[Span(start=495, end=500)], references=[], id='T42') - Entity(mention='kraft', type='HPB', spans=[Span(start=501, end=506)], references=[], id='T43')
+Entity(mention='kraft', type='HPB', spans=[Span(start=501, end=506)], references=[], id='T43') - Entity(mention='ærgerrighed', type='HPB', spans=[Span(start=510, end=521)], references=[], id='T44')
+
+Document ID: 9193502
+Chunks:
+Entity(mention='lang', type='MTP', spans=[Span(start=740, end=744)], references=[], id='T20') - Entity(mention='række', type='MTP', spans=[Span(start=745, end=750)], references=[], id='T7')
+
+Document ID: 9201698
+Chunks:
+Entity(mention='lang', type='MTP', spans=[Span(start=522, end=526)], references=[], id='T7') - Entity(mention='række', type='MTP', spans=[Span(start=527, end=532)], references=[], id='T6')
+
+Document ID: 9214940
+Chunks:
+Entity(mention='umenneskelig', type='HPB', spans=[Span(start=1455, end=1467)], references=[], id='T18') - Entity(mention='meget', type='HPB', spans=[Span(start=1468, end=1473)], references=[], id='T19')
+
+Document ID: 9227539
+Chunks:
+Entity(mention='ikke', type='HPB', spans=[Span(start=2955, end=2959)], references=[], id='T12') - Entity(mention='sket', type='HPB', spans=[Span(start=2971, end=2975)], references=[], id='T21')
+
+Document ID: 9249028
+Chunks:
+Entity(mention='strammet', type='MTP', spans=[Span(start=1491, end=1499)], references=[], id='T11') - Entity(mention='grebet', type='MTP', spans=[Span(start=1500, end=1506)], references=[], id='T10')
+Entity(mention='sendt', type='MTP', spans=[Span(start=1562, end=1567)], references=[], id='T14') - Entity(mention='vejret', type='MTP', spans=[Span(start=1603, end=1609)], references=[], id='T13')
+
+Document ID: 9257030
+Chunks:
+Entity(mention='så', type='HPB', spans=[Span(start=2399, end=2401)], references=[], id='T20') - Entity(mention='sammen', type='HPB', spans=[Span(start=2463, end=2469)], references=[], id='T21')
+
+Document ID: 9264442
+Chunks:
+Entity(mention='langt', type='MTP', spans=[Span(start=1746, end=1751)], references=[], id='T33') - Entity(mention='fremme', type='MTP', spans=[Span(start=1752, end=1758)], references=[], id='T34')
+Entity(mention='varmt', type='MTP', spans=[Span(start=2647, end=2652)], references=[], id='T44') - Entity(mention='blik', type='MTP', spans=[Span(start=2653, end=2657)], references=[], id='T45')
+
+Document ID: 9265976
+Chunks:
+Entity(mention='lå', type='MTP', spans=[Span(start=756, end=758)], references=[], id='T13') - Entity(mention='ventede', type='MTP', spans=[Span(start=762, end=769)], references=[], id='T14')
+
+Document ID: 9280497
+Chunks:
+Entity(mention='stormer', type='MTP', spans=[Span(start=24, end=31)], references=[], id='T1') - Entity(mention='frem', type='MTP', spans=[Span(start=32, end=36)], references=[], id='T2')
+Entity(mention='gået', type='MTP', spans=[Span(start=517, end=521)], references=[], id='T11') - Entity(mention='offensiven', type='MTP', spans=[Span(start=524, end=534)], references=[], id='T10')
+Entity(mention='gå', type='MTP', spans=[Span(start=666, end=668)], references=[], id='T12') - Entity(mention='offensiven', type='MTP', spans=[Span(start=671, end=681)], references=[], id='T13')
+Entity(mention='står', type='MTP', spans=[Span(start=1840, end=1844)], references=[], id='T26') - Entity(mention='spidsen', type='MTP', spans=[Span(start=1847, end=1854)], references=[], id='T24')
+Entity(mention='gå', type='MTP', spans=[Span(start=666, end=668)], references=[], id='T12') - Entity(mention='defensiven', type='MTP', spans=[Span(start=688, end=698)], references=[], id='T14')
+
+Document ID: 9296130
+Chunks:
+Entity(mention='ikke', type='HPB', spans=[Span(start=865, end=869)], references=[], id='T5') - Entity(mention='nogen', type='HPB', spans=[Span(start=870, end=875)], references=[], id='T6')
+
+Document ID: 9310134
+Chunks:
+Entity(mention='ikke', type='HPB', spans=[Span(start=938, end=942)], references=[], id='T4') - Entity(mention='noget', type='HPB', spans=[Span(start=943, end=948)], references=[], id='T5')
+Entity(mention='store', type='MTP', spans=[Span(start=2836, end=2841)], references=[], id='T17') - Entity(mention='stjerner', type='MTP', spans=[Span(start=2842, end=2850)], references=[], id='T16')
+Entity(mention='dække', type='MTP', spans=[Span(start=819, end=824)], references=[], id='T3') - Entity(mention='ind', type='MTP', spans=[Span(start=825, end=828)], references=[], id='T20')
+Entity(mention='stor', type='MTP', spans=[Span(start=2322, end=2326)], references=[], id='T21') - Entity(mention='ting', type='MTP', spans=[Span(start=2327, end=2331)], references=[], id='T22')
+
+Document ID: 9316321
+Chunks:
+Entity(mention='ligger', type='MTP', spans=[Span(start=999, end=1005)], references=[], id='T2') - Entity(mention='søvnløs', type='MTP', spans=[Span(start=1028, end=1035)], references=[], id='T16')
+
+Document ID: 9332888
+Chunks:
+Entity(mention='hele', type='HPB', spans=[Span(start=1842, end=1846)], references=[], id='T20') - Entity(mention='dagen', type='HPB', spans=[Span(start=1847, end=1852)], references=[], id='T21')
+Entity(mention='kastet', type='MTP', spans=[Span(start=2721, end=2727)], references=[], id='T25') - Entity(mention='sten', type='MTP', spans=[Span(start=2734, end=2738)], references=[], id='T26')
+Entity(mention='ikke', type='HPB', spans=[Span(start=1377, end=1381)], references=[], id='T30') - Entity(mention='en', type='HPB', spans=[Span(start=1388, end=1390)], references=[], id='T31')
+Entity(mention='en', type='HPB', spans=[Span(start=1388, end=1390)], references=[], id='T31') - Entity(mention='skid', type='HPB', spans=[Span(start=1391, end=1395)], references=[], id='T32')
+Entity(mention='flyve', type='HPB', spans=[Span(start=1473, end=1478)], references=[], id='T17') - Entity(mention='ville', type='HPB', spans=[Span(start=1487, end=1492)], references=[], id='T19')
+
+Document ID: 9344447
+Chunks:
+Entity(mention='alt', type='HPB', spans=[Span(start=3345, end=3348)], references=[], id='T60') - Entity(mention='har', type='HPB', spans=[Span(start=3359, end=3362)], references=[], id='T71')
+
+Document ID: 9348201
+Chunks:
+Entity(mention='store', type='MTP', spans=[Span(start=1881, end=1886)], references=[], id='T19') - Entity(mention='kanoner', type='MTP', spans=[Span(start=1887, end=1894)], references=[], id='T20')
+
+Document ID: 9405240
+Chunks:
+Entity(mention='tørt', type='MTP', spans=[Span(start=1538, end=1542)], references=[], id='T19') - Entity(mention='krudt', type='MTP', spans=[Span(start=1543, end=1548)], references=[], id='T20')
+Entity(mention='hånd', type='MTP', spans=[Span(start=992, end=996)], references=[], id='T23') - Entity(mention='rattet', type='MTP', spans=[Span(start=1000, end=1006)], references=[], id='T10')
+
+Document ID: 9427193
+Chunks:
+Entity(mention='Totalt', type='HPB', spans=[Span(start=0, end=6)], references=[], id='T1') - Entity(mention='kaos', type='HPB', spans=[Span(start=7, end=11)], references=[], id='T2')
+Entity(mention='totalt', type='HPB', spans=[Span(start=253, end=259)], references=[], id='T7') - Entity(mention='kaos', type='HPB', spans=[Span(start=260, end=264)], references=[], id='T8')
+
+Document ID: 9511812
+Chunks:
+Entity(mention='fuld', type='HPB', spans=[Span(start=543, end=547)], references=[], id='T7') - Entity(mention='kontrol', type='HPB', spans=[Span(start=548, end=555)], references=[], id='T8')
+
+Document ID: 9523030
+Chunks:
+Entity(mention='ikke', type='HPB', spans=[Span(start=593, end=597)], references=[], id='T3') - Entity(mention='nogen', type='HPB', spans=[Span(start=610, end=615)], references=[], id='T4')
+
+Document ID: 9536130
+Chunks:
+Entity(mention='helt', type='HPB', spans=[Span(start=1530, end=1534)], references=[], id='T18') - Entity(mention='andet', type='HPB', spans=[Span(start=1535, end=1540)], references=[], id='T19')
+

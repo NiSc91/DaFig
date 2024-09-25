@@ -1,5 +1,5 @@
 import os
-import config
+from config import *
 import subprocess
 
 # Get agreement collection

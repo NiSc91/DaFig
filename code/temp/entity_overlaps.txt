@@ -1,0 +1,126 @@
+Document ID: 9128946
+Entities with different types but same spans:
+fint - MTP vs HPB
+Fint - MTP vs HPB
+Fint - HPB vs MTP
+fint - HPB vs MTP
+
+Document ID: 9166397
+Entities with different types but same spans:
+indtaget - HPB vs MTP
+indtaget - MTP vs HPB
+
+Document ID: 9232585
+Entities with different types but same spans:
+mareridt - HPB vs MTP
+mareridt - MTP vs HPB
+
+Document ID: 9247001
+Entities with different types but same spans:
+Ikon - HPB vs MTP
+Ikon - MTP vs HPB
+
+Document ID: 9264442
+Entities with different types but same spans:
+vild - HPB vs MTP
+bomber - MTP vs HPB
+vild - MTP vs HPB
+voldsomt - HPB vs MTP
+mysterium - MTP vs HPB
+mysterium - HPB vs MTP
+bomberen - MTP vs HPB
+voldsomt - MTP vs HPB
+bomberen - HPB vs MTP
+bomber - HPB vs MTP
+
+Document ID: 9264531
+Entities with different types but same spans:
+ikonet - HPB vs MTP
+skræk - HPB vs MTP
+ikonet - MTP vs HPB
+skræk - MTP vs HPB
+
+Document ID: 9265976
+Entities with different types but same spans:
+stjernen - MTP vs HPB
+Stjernens - HPB vs MTP
+Stjernens - MTP vs HPB
+stjernen - HPB vs MTP
+
+Document ID: 9315367
+Entities with different types but same spans:
+ravage - MTP vs HPB
+ravage - HPB vs MTP
+
+Document ID: 9344447
+Entities with different types but same spans:
+gik - HPB vs MTP
+eksploderede - MTP vs HPB
+gik - MTP vs HPB
+amok - HPB vs MTP
+eksploderede - HPB vs MTP
+amok - MTP vs HPB
+
+Document ID: 9347340
+Entities with different types but same spans:
+eksploderet - HPB vs MTP
+eksploderet - MTP vs HPB
+
+Document ID: 9348201
+Entities with different types but same spans:
+knuste - MTP vs HPB
+knækkede - MTP vs HPB
+knækkede - HPB vs MTP
+knuste - HPB vs MTP
+
+Document ID: 9398525
+Entities with different types but same spans:
+bomber - HPB vs MTP
+bomber - MTP vs HPB
+
+Document ID: 9427193
+Entities with different types but same spans:
+Vanvids - HPB vs MTP
+Vanvids - MTP vs HPB
+
+Document ID: 9427810
+Entities with different types but same spans:
+Vild - MTP vs HPB
+Vild - HPB vs MTP
+
+Document ID: 9438171
+Entities with different types but same spans:
+bombe - HPB vs MTP
+bombe - MTP vs HPB
+
+Document ID: 9448683
+Entities with different types but same spans:
+stormen - MTP vs HPB
+Stormen - HPB vs MTP
+fulde - MTP vs HPB
+stormede - HPB vs MTP
+Stormen - MTP vs HPB
+fulde - HPB vs MTP
+stormede - MTP vs HPB
+stormen - HPB vs MTP
+
+Document ID: 9471224
+Entities with different types but same spans:
+gyser - MTP vs HPB
+gyser - HPB vs MTP
+
+Document ID: 9511812
+Entities with different types but same spans:
+fuld - HPB vs MTP
+fuld - MTP vs HPB
+
+Document ID: 9532265
+Entities with different types but same spans:
+mirakel - HPB vs MTP
+mirakel - MTP vs HPB
+
+Document ID: 9532671
+Entities with different types but same spans:
+små - VIR vs MTP
+små - MTP vs VIR
+

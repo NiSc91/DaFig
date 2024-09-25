@@ -1,17 +1,8 @@
 import os
 import sys
-import pandas as pd
-import json
 from config import *
 from pybrat.parser import BratParser, Entity, Event, Example, Relation, Span
-from nltk.corpus import stopwords
-from collections import Counter, defaultdict
-from dataclasses import dataclass
-
-# Define variables
-handler = CollectionHandler(ANNOTATED_DIR)
-MAIN_PATH = handler.get_collection_path(os.path.join(ANNOTATED_DIR, 'main_collection/main_final'))
-OUTPUT_DIR = "temp"
+from matplotlib import pyplot as plt
 
 ### Create extended classes for parsing the DaFig data ###
 
@@ -46,33 +37,50 @@ class LexicalUnit:
         self.ref_ids = ref_ids
 
 class MWEParser:
-    def group_mwe_relations(self, relations, entities):
+    def group_relations(self, relations, entities):
         mwe_groups = []
-        processed = set()
+        chunk_groups = []
 
         for relation in relations:
             if relation.type == 'MultiWordExpression':
-                arg1, arg2 = relation.arg1, relation.arg2
-                
-                # Check if either arg1 or arg2 is already in a group
-                existing_group = None
-                for group in mwe_groups:
-                    if arg1 in group or arg2 in group:
-                        existing_group = group
-                        break
+                self.add_to_group(mwe_groups, relation.arg1, relation.arg2)
+            elif relation.type == 'CHUNK':
+                self.add_to_group(chunk_groups, relation.arg1, relation.arg2)
 
-                if existing_group:
-                    if arg1 not in existing_group:
-                        existing_group.append(arg1)
-                    if arg2 not in existing_group:
-                        existing_group.append(arg2)
+        # Merge overlapping chunks
+        self.merge_overlapping_groups(chunk_groups)
+
+        return mwe_groups, chunk_groups
+
+    def add_to_group(self, groups, arg1, arg2):
+        existing_group = next((group for group in groups if arg1 in group or arg2 in group), None)
+        if existing_group:
+            if arg1 not in existing_group:
+                existing_group.append(arg1)
+            if arg2 not in existing_group:
+                existing_group.append(arg2)
+        else:
+            groups.append([arg1, arg2])
+
+    def merge_overlapping_groups(self, groups):
+        i = 0
+        while i < len(groups):
+            j = i + 1
+            while j < len(groups):
+                if self.groups_overlap(groups[i], groups[j]):
+                    groups[i].extend(groups[j])
+                    groups[i] = list(set(groups[i]))  # Remove duplicates
+                    groups.pop(j)
                 else:
-                    mwe_groups.append([arg1, arg2])
+                    j += 1
+            i += 1
 
-        #print(f"Debug: mwe_groups: {mwe_groups}")
-        return mwe_groups
+    def groups_overlap(self, group1, group2):
+        spans1 = set(span for entity in group1 for span in entity.spans)
+        spans2 = set(span for entity in group2 for span in entity.spans)
+        return bool(spans1.intersection(spans2))
 
-    def create_lexical_units(self, example, mwe_groups):
+    def create_lexical_units(self, example, mwe_groups, chunk_groups):
         lexical_units = []
 
         # Process MWEs
@@ -89,10 +97,33 @@ class MWEParser:
 
             lexical_units.append(LexicalUnit(text, type, spans, tag, ref_ids))
 
-        # Process single-word entities (not part of MWEs)
-        mwe_entity_ids = set(entity.id for group in mwe_groups for entity in group)
+        # Process CHUNKs
+        for group in chunk_groups:
+            spans = sorted([span for entity in group for span in entity.spans], key=lambda s: s.start)
+            
+            # Merge spans if there are gaps
+            merged_spans = []
+            current_span = spans[0]
+            for i in range(1, len(spans)):
+                if spans[i].start == current_span.end:
+                    current_span = Span(current_span.start, spans[i].end)
+                else:
+                    merged_spans.append(current_span)
+                    current_span = spans[i]
+            merged_spans.append(current_span)
+
+            # Create a single span from the first to the last
+            full_span = Span(merged_spans[0].start, merged_spans[-1].end)
+    
+            text = example.text[full_span.start:full_span.end]
+            tag = group[0].type  # Assuming all entities in CHUNK have the same tag
+            ref_ids = [entity.id for entity in group]
+            lexical_units.append(LexicalUnit(text, 'CHUNK', [full_span], tag, ref_ids))
+
+        # Process single-word entities (not part of MWEs or CHUNKs)
+        grouped_entity_ids = set(entity.id for groups in (mwe_groups, chunk_groups) for group in groups for entity in group)
         for entity in example.entities:
-            if entity.id not in mwe_entity_ids:
+            if entity.id not in grouped_entity_ids:
                 for span in entity.spans:
                     text = example.text[span.start:span.end]
                     lexical_units.append(LexicalUnit(text, 'single_word', [span], entity.type, [entity.id]))
@@ -102,50 +133,26 @@ class MWEParser:
 class ExtendedExample(Example):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        return lexical_units
+
+class ExtendedExample(Example):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.attributes = []
         self.lexical_units = []
-        self.chunks = []
         
     def process_mwe(self, mwe_parser):
-        mwe_groups = mwe_parser.group_mwe_relations(self.relations, self.entities)
-        self.lexical_units = mwe_parser.create_lexical_units(self, mwe_groups)
+        mwe_groups, chunk_groups = mwe_parser.group_relations(self.relations, self.entities)
+        self.lexical_units = mwe_parser.create_lexical_units(self, mwe_groups, chunk_groups)
 
-    # Filter relations such that only CHUNK relations are included
-    def filter_relations(self):
-        self.chunks = [relation for relation in self.relations if relation.type == 'CHUNK']
-     
-     # Filter attributes such that only the first attribute of a lexical unit is included if it's an MWE
-    def filter_attribute(self):
+    # Filter attributes such that only the first attribute of a lexical unit is included if it's an MWE or chunk
+    def filter_attributes(self):
         self.attributes = [
             attribute
             for attribute in self.attributes
             if attribute.ref_id in [lex_unit.ref_ids[0] for lex_unit in self.lexical_units]
         ]
-
-    def to_dict(self):
-        return {
-            'doc_id': self.id,
-            'text': self.text,
-            'annotations': self.lexical_units,
-            'relations': [
-                {
-                    'id': relation.id,
-                    'type': relation.type,
-                    'arg1': relation.arg1,
-                    'arg2': relation.arg2
-                }
-                for relation in self.relations if relation.type == 'CHUNK'
-            ],
-            'attributes': [
-                {
-                    'id': attribute.id,
-                    'type': attribute.type,
-                    'ref_id': attribute.ref_id,
-                    'value': attribute.value
-                }
-                for attribute in self.attributes
-            ]
-        }
 
 class ExtendedBratParser(BratParser):
     def __init__(self, input_dir, *args, **kwargs):
@@ -154,7 +161,7 @@ class ExtendedBratParser(BratParser):
         self.attribute_parser = AttributeParser(input_dir)
         self.mwe_parser = MWEParser()
 
-    def parse(self, *args, **kwargs):
+    def parse(self, *args, process_chunks=False, **kwargs):
         examples = super().parse(*args, **kwargs)
         for example in examples:
             extended_example = ExtendedExample(
@@ -166,35 +173,5 @@ class ExtendedBratParser(BratParser):
             )
             extended_example.attributes = self.attribute_parser.parse_attributes(example.id)
             extended_example.process_mwe(self.mwe_parser)
-            extended_example.filter_relations()
+            extended_example.filter_attributes()
             yield extended_example
-
-### Parse DaFig data ###
-
-brat = ExtendedBratParser(input_dir=MAIN_PATH, error="ignore")
-examples = brat.parse(MAIN_PATH)
-
-### Gather advanced stats ###
-
-# Get lexical units info:
-lexical_units = [lu for example in examples for lu in example.lexical_units]
-lu_counts = len(lexical_units)
-
-# Get tag info
-lu_tag_counts = Counter(lu.tag for lu in lexical_units)
-
-# Get MWE info:
-mwe_counts = sum(len(lu.spans) > 1 for lu in lexical_units)
-mwe_type_counts = Counter(lu.type for lu in lexical_units)
-
-# Get the 10 most common lexical units tagged with MTP (use counter to get the most common elements)
-mtp_lus = [lu for lu in lexical_units if lu.tag == 'MTP']
-mtp_lu_counts = Counter(lu.text for lu in mtp_lus)
-most_common_mtp_lus = mtp_lu_counts.most_common(10)
-
-### Output results ###
-
-print(f"Total lexical units: {lu_counts}")
-print(f"Tag counts: {lu_tag_counts}")
-print(f"MWE type counts: {mwe_type_counts}")
-print(f"10 most common MTP lexical units: {most_common_mtp_lus}")
