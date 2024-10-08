@@ -1,18 +1,20 @@
+import pdb
 import os
 import shutil
 from config import *
+#from nltk import RegexpTokenizer
+import re
 import peek
 import pandas as pd
 import numpy as np
 import json
 from config import *
-from parse_data import ExtendedExample, ExtendedBratParser, LexicalUnit, Span, Relation, Attribute
+from parse_data import ExtendedExample, ExtendedBratParser, LexicalUnit, Span, Entity, Relation, Attribute
 from nltk.corpus import stopwords
 from collections import Counter, defaultdict
 from itertools import chain
 from dataclasses import dataclass
 from matplotlib import pyplot as plt
-
 
 ## Declare variables
 handler = CollectionHandler(ANNOTATED_DIR)
@@ -79,17 +81,89 @@ def analyze_corpus(input_dir, output_dir):
 
     return corpus, filtered_text_freq
 
-
 ### Parse DaFig data ###
 
 brat = ExtendedBratParser(input_dir=MAIN_PATH, error="ignore")
 examples = list(brat.parse(MAIN_PATH))
+
+# Find misaligned spans, i.e. instances where an entity span/mention does not correspond to a token in the text
+
+def find_misaligned_spans(examples):
+    misaligned_spans = defaultdict(list)
+    for example in examples:
+        doc_id = example.id; text = example.text; entities = example.entities
+        for entity in entities:
+            is_misaligned = False
+            # Check if the character in the text before or after a span is alphanumeric
+            if entity.start > 0 and text[entity.start - 1].isalnum():
+                is_misaligned = True
+            elif entity.end < len(text) and text[entity.end].isalnum():
+                is_misaligned = True
+            
+            if is_misaligned:
+                misaligned_spans[doc_id].append((entity))
+
+    return misaligned_spans
+
+# Semi-automatic approach to suggest full word annotations
+def suggest_full_word_annotation(text, start, end):
+    # Find word boundaries
+    word_start = start
+    while word_start > 0 and text[word_start-1].isalnum():
+        word_start -= 1
+    
+    word_end = end
+    while word_end < len(text) and text[word_end].isalnum():
+        word_end += 1
+    
+    return word_start, word_end
+
+misaligned = find_misaligned_spans(examples)
+
+# Write misaligned spans to a file
+class EntityEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Entity):
+            return {
+                "mention": obj.mention,
+                "type": obj.type,
+                "spans": [{"start": span.start, "end": span.end} for span in obj.spans],
+                "references": obj.references,
+                "id": obj.id
+            }
+        elif isinstance(obj, Span):
+            return {"start": obj.start, "end": obj.end}
+        return super().default(obj)
+
+# Count the number of misaligned entities in the corpus
+print(f"Total misaligned entities: {sum(len(misaligned[doc_id]) for doc_id in misaligned)}")
+
+# Write the misaligned spans and the full word annotations to a json file
+with open(os.path.join(OUTPUT_DIR,'misaligned_spans.json'), 'w') as f:
+    for example in examples:
+        suggested_full_word_annotations = []
+        # if doc_id is in misaligned, get the suggested full word annotations
+        if example.id in misaligned:
+            for entity in misaligned[example.id]:
+                start, end = suggest_full_word_annotation(example.text, entity.start, entity.end)
+                suggested_mention = example.text[start:end]
+
+                # Write the ID, original mention and span, and suggested mention and span, to file (ensure proper JSON formatting and encoding of Danish characters)
+                f.write(json.dumps({
+                    "ID": example.id,
+                    "original_mention": entity.mention,
+                    "span": {"start": entity.spans[0].start, "end": entity.spans[0].end},
+                    "suggested_mention": suggested_mention,
+                    "suggested_span": {"start": start, "end": end}
+                }) + '\n', encoding='utf-8')
 
 ### Gather advanced stats ###
 
 # Get lexical units info:
 lexical_units = [lu for example in examples for lu in example.lexical_units]
 lu_counts = len(lexical_units)
+# Get the number of tokens for all lexical units
+token_counts = sum(len(lu.mention.split()) for lu in lexical_units)
 
 # Get tag info
 lu_tag_counts = Counter(lu.tag for lu in lexical_units)
@@ -105,7 +179,7 @@ lu_type_counts = Counter(lu.type for lu in lexical_units)
 
 # Get the 10 most common lexical units tagged with MTP (use counter to get the most common elements)
 mtp_lus = [lu for lu in lexical_units if lu.tag == 'MTP']
-mtp_lu_counts = Counter(lu.text for lu in mtp_lus)
+mtp_lu_counts = Counter(lu.mention for lu in mtp_lus)
 most_common_mtp_lus = mtp_lu_counts.most_common(10)
 
 ### Output results ###
@@ -123,9 +197,14 @@ print(f"Total tokens in the corpus: {tokens}")
 
 examples = list(brat.parse(MAIN_PATH))
 
+# Create a dictionary with doc_id as key, and the text as value.
+all_texts = {
+    example.id: example.text
+    for example in examples}
+
 ## Create an all_lexical_units dictionary with document_ID as key, and a list of lexical units as values.
 all_lus = {
-    example.id: [(lu.text, lu.spans, lu.type, lu.tag) for lu in example.lexical_units]
+    example.id: [(lu.mention, lu.spans, lu.type, lu.tag) for lu in example.lexical_units]
     for example in examples}
 
 # Based on the all_lus dictionary, create a new dictionary with document_ID as key, and a list of entities which have different tags but same or over-lapping spans, as values.
@@ -150,10 +229,6 @@ with open(os.path.join(OUTPUT_DIR, "lu_overlaps.txt"), "w") as f:
             f.write(f"Entity 1: {lu1} ({type1} - {tag1})\n")
             f.write(f"Entity 2: {lu2} ({type2} - {tag2})\n")
             f.write("\n")
-
-# Get lexical units for document with ID 9166397
-doc_id = str(9166397)
-doc_lus = all_lus[doc_id]
 
 ### Visualizations ###
 
@@ -228,30 +303,57 @@ for category, value in categorized_attributes:
 # Plot the distribution of attributes
 
 def plot_attribute_counts(attribute_counts):
-    categories = list(attribute_counts.keys())
-    attributes = set().union(*[set(counts.keys()) for counts in attribute_counts.values()])
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 12), sharex=True)
     
-    x = np.arange(len(attributes))
+    # Metaphor plot
+    metaphor_data = attribute_counts['Metaphor']
+    conv_data = [metaphor_data.get('CNV', 0), metaphor_data.get('NOV', 0)]
+    dir_data = [metaphor_data.get('DIR', 0), metaphor_data.get('IND', 0)]
+    
+    x = np.arange(2)
     width = 0.35
     
-    fig, ax = plt.subplots(figsize=(12, 6))
+    ax1.bar(x - width/2, conv_data, width, label='Conventionality')
+    ax1.bar(x + width/2, dir_data, width, label='Directness')
     
-    for i, category in enumerate(categories):
-        counts = [attribute_counts[category].get(attr, 0) for attr in attributes]
-        ax.bar(x + i*width, counts, width, label=category)
+    ax1.set_ylabel('Counts')
+    ax1.set_title('Metaphor Attributes')
+    ax1.set_xticks(x)
+    ax1.set_xticklabels(['Conventional/Direct', 'Novel/Indirect'])
+    ax1.legend()
     
-    ax.set_ylabel('Counts')
-    ax.set_title('Attribute Counts for Metaphor and Hyperbole')
-    ax.set_xticks(x + width / 2)
-    ax.set_xticklabels(attributes)
-    ax.legend()
+    for i, v in enumerate(conv_data):
+        ax1.text(i - width/2, v, str(v), ha='center', va='bottom')
+    for i, v in enumerate(dir_data):
+        ax1.text(i + width/2, v, str(v), ha='center', va='bottom')
+    
+    # Hyperbole plot
+    hyperbole_data = attribute_counts['Hyperbole']
+    dim_data = [hyperbole_data.get('QNT', 0), hyperbole_data.get('QLT', 0)]
+    deg_data = [hyperbole_data.get('1', 0), hyperbole_data.get('2', 0), hyperbole_data.get('3', 0)]
+    
+    x_dim = np.arange(2)
+    x_deg = np.arange(3)
+    
+    ax2.bar(x_dim - width/2, dim_data, width, label='Dimension')
+    ax2.bar(x_deg + width/2, deg_data, width, label='Degree')
+    
+    ax2.set_ylabel('Counts')
+    ax2.set_title('Hyperbole Attributes')
+    ax2.set_xticks(np.arange(3))
+    ax2.set_xticklabels(['Quantitative/Degree 1', 'Qualitative/Degree 2', 'Degree 3'])
+    ax2.legend()
+    
+    for i, v in enumerate(dim_data):
+        ax2.text(i - width/2, v, str(v), ha='center', va='bottom')
+    for i, v in enumerate(deg_data):
+        ax2.text(i + width/2, v, str(v), ha='center', va='bottom')
     
     plt.tight_layout()
     
-    # Save the figure instead of showing it
+    # Save the figure
     output_file = os.path.join(OUTPUT_DIR, 'attribute_analysis.png')
     plt.savefig(output_file, dpi=300, bbox_inches='tight')
     plt.close(fig)  # Close the figure to free up memory
 
-# Call the function with your data
 plot_attribute_counts(attribute_counts)

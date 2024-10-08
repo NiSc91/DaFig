@@ -29,8 +29,8 @@ class AttributeParser:
         return attributes
 
 class LexicalUnit:
-    def __init__(self, text, type, spans, tag, ref_ids):
-        self.text = text
+    def __init__(self, mention, type, spans, tag, ref_ids):
+        self.mention = mention
         self.type = type
         self.spans = spans
         self.tag = tag
@@ -86,7 +86,7 @@ class MWEParser:
         # Process MWEs
         for group in mwe_groups:
             spans = sorted([span for entity in group for span in entity.spans], key=lambda s: s.start)
-            text = ' '.join(example.text[span.start:span.end] for span in spans)
+            mention = ' '.join(example.text[span.start:span.end] for span in spans)
             tag = group[0].type  # Assuming all entities in MWE have the same tag
             ref_ids = [entity.id for entity in group]
 
@@ -95,7 +95,7 @@ class MWEParser:
             else:
                 type = 'ContiguousMWE'
 
-            lexical_units.append(LexicalUnit(text, type, spans, tag, ref_ids))
+            lexical_units.append(LexicalUnit(mention, type, spans, tag, ref_ids))
 
         # Process CHUNKs
         for group in chunk_groups:
@@ -115,24 +115,16 @@ class MWEParser:
             # Create a single span from the first to the last
             full_span = Span(merged_spans[0].start, merged_spans[-1].end)
     
-            text = example.text[full_span.start:full_span.end]
+            mention = example.text[full_span.start:full_span.end]
             tag = group[0].type  # Assuming all entities in CHUNK have the same tag
             ref_ids = [entity.id for entity in group]
-            lexical_units.append(LexicalUnit(text, 'CHUNK', [full_span], tag, ref_ids))
+            lexical_units.append(LexicalUnit(mention, 'CHUNK', [full_span], tag, ref_ids))
 
         # Process single-word entities (not part of MWEs or CHUNKs)
         grouped_entity_ids = set(entity.id for groups in (mwe_groups, chunk_groups) for group in groups for entity in group)
         for entity in example.entities:
             if entity.id not in grouped_entity_ids:
-                for span in entity.spans:
-                    text = example.text[span.start:span.end]
-                    lexical_units.append(LexicalUnit(text, 'single_word', [span], entity.type, [entity.id]))
-
-        return lexical_units
-
-class ExtendedExample(Example):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+                lexical_units.append(LexicalUnit(entity.mention, 'single_word', entity.spans, entity.type, [entity.id]))
 
         return lexical_units
 

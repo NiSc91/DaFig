@@ -6,12 +6,11 @@ import subprocess
 CORPUS_PATHS = {
     'samuel_combined': os.path.join(ANNOTATED_DIR, "agr_collection/combined_agr/Samuel"),
     'stephanie_combined': os.path.join(ANNOTATED_DIR, "agr_collection/combined_agr/Stephanie"),
-}
-
 # Uncomment and add other corpus paths as needed
-# 'samuel_sample1': os.path.join(ANNOTATED_DIR, 'agr_collection/Samuel/sample1'),
-# 'stephanie_sample1': os.path.join(ANNOTATED_DIR, 'agr_collection/Stephanie/sample1'),
+ 'samuel_sample3': os.path.join(ANNOTATED_DIR, 'agr_collection/Samuel/sample3'),
+ 'stephanie_sample3': os.path.join(ANNOTATED_DIR, 'agr_collection/Stephanie/sample3'),
 # ... and so on
+}
 
 ## Helper functions
 def extract_tar_gz_file(file_path, destination_path):
@@ -88,7 +87,8 @@ def run_brateval(evaluation_folder, groundtruth_folder, span_match='exact', type
 output = run_brateval(
     CORPUS_PATHS['samuel_combined'],
     CORPUS_PATHS['stephanie_combined'],
-    span_match='overlap',
+    span_match='approx',
+    threshold=0.8,
     type_match='exact',
     verbose=False,
     full_taxonomy=True,
