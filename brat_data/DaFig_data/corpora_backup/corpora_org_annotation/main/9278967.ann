@@ -1,0 +1,14 @@
+T1	MTP 714 717	går
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 732 733	i
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 734 738	møde
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+R1	MultiWordExpression Arg1:T1 Arg2:T2	
+R2	MultiWordExpression Arg1:T2 Arg2:T3	
+T4	MTP 792 797	langt
+A7	Directness T4 IND
+A8	Conventionality T4 CNV

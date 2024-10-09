@@ -1,0 +1,111 @@
+T1	MTP 34 44	belastning
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 156 166	belastning
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 196 207	tumultarisk
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 239 243	brød
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 335 336	i
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 337 346	kølvandet
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 347 349	på
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+R1	MultiWordExpression Arg1:T5 Arg2:T6	
+R2	MultiWordExpression Arg1:T6 Arg2:T7	
+T8	MTP 328 334	skjult
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 416 421	tænkt
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 422 425	sig
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+R3	MultiWordExpression Arg1:T9 Arg2:T10	
+T11	MTP 537 541	frem
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 603 608	skabe
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 686 693	stopper
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 716 719	gik
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 740 745	levet
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+T16	MTP 746 748	op
+A31	Directness T16 IND
+A32	Conventionality T16 CNV
+T17	MTP 749 752	til
+A33	Directness T17 IND
+A34	Conventionality T17 CNV
+R4	MultiWordExpression Arg1:T15 Arg2:T16	
+R5	MultiWordExpression Arg1:T16 Arg2:T17	
+T18	MTP 811 817	kilder
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+T19	MTP 931 936	skabt
+A37	Directness T19 IND
+A38	Conventionality T19 CNV
+T20	MTP 956 960	form
+A39	Directness T20 IND
+T21	MTP 1022 1032	belastning
+A40	Directness T21 IND
+A41	Conventionality T21 CNV
+T22	MTP 1054 1060	stykke
+A42	Directness T22 IND
+A43	Conventionality T22 CNV
+T23	MTP 1213 1217	pres
+A44	Directness T23 IND
+A45	Conventionality T23 CNV
+T24	MTP 1207 1212	stort
+A46	Directness T24 IND
+A47	Conventionality T24 CNV
+R6	CHUNK Arg1:T24 Arg2:T23	
+T26	MTP 1253 1258	store
+A48	Directness T26 IND
+A49	Conventionality T26 CNV
+T27	MTP 1308 1318	overfladen
+A50	Directness T27 IND
+A51	Conventionality T27 CNV
+T29	MTP 1333 1339	stille
+A54	Directness T29 IND
+A55	Conventionality T29 CNV
+T30	MTP 1340 1342	op
+A56	Directness T30 IND
+R7	MultiWordExpression Arg1:T29 Arg2:T30	
+A57	Conventionality T30 CNV
+T31	MTP 1463 1468	vendt
+A58	Directness T31 IND
+A59	Conventionality T31 CNV
+T32	MTP 1469 1476	tilbage
+A60	Directness T32 IND
+R8	MultiWordExpression Arg1:T31 Arg2:T32	
+A61	Conventionality T32 CNV
+T33	MTP 1540 1545	tonen
+A62	Directness T33 IND
+A63	Conventionality T33 CNV
+T34	MTP 1586 1605	grænseoverskridende
+A64	Directness T34 IND
+A65	Conventionality T34 CNV
+T28	MTP 318 323	holdt
+A52	Directness T28 IND
+A53	Conventionality T28 CNV
+T35	MTP 324 327	sig
+A66	Directness T35 IND
+A67	Conventionality T35 CNV
+R9	MultiWordExpression Arg1:T28 Arg2:T35	
+A68	Conventionality T20 CNV

@@ -16,39 +16,24 @@ from dataclasses import dataclass
 from matplotlib import pyplot as plt
 
 ## Declare variables
-handler = CollectionHandler(ANNOTATED_DIR)
+handler = CollectionHandler(CORPORA_DIR)
 
 all_corpora = handler.get_collections()
 print("All annotated corpora:", all_corpora)
-MAIN_PATH = handler.get_collection_path(os.path.join(ANNOTATED_DIR, 'main_collection/main_final'))
-agr_path = handler.get_collection_path("agr_collection")
-subcollections = handler.get_subcollections("agr_collection")
+MAIN_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'main'))
+AGR1_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr1'))
+AGR2_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr2'))
+AGR3_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr3'))
+AGR_FINAL_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr_final'))
+CONSENSUS_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'consensus_agr2'))
 OUTPUT_DIR = TEMP_DIR
 
-## Read in the corpus and perform some basic operations
+## Read in the main corpus and perform some basic operations
 main_corpus = peek.AnnCorpus(MAIN_PATH, txt=True)
 doc = main_corpus.get_random_doc()
 print("Random corpus document from the main collection:")
 print()
 print(doc.anns.items())
-
-## Get a list of empty (un-annotated) documents and move non-empty documents to a new subcollection
-#empty_docs = main_corpus.get_empty_files()
-#annotated_docs = [doc.path for doc in main_corpus.docs if doc.path not in empty_docs]
-
-## Create new subcollection called 'main_final'
-#new_subcollection_path = os.path.join(main_path, "main_final")
-#os.makedirs(new_subcollection_path, exist_ok=True)
-
-# Copy non-empty documents (meaning the ann-files in annotated_docs and corresponding txt-files) to the new subcollection
-#for ann_path in annotated_docs:
-    # Get the corresponding txt-file from the ann-file (all ann_paths ends with .ann)
-    #txt_path = ann_path[:-3] + 'txt'
-    # Copy the ann-file and txt-file to the new subcollection in case they don't already exist
-    #if not os.path.exists(os.path.join(new_subcollection_path, os.path.basename(ann_path))):
-        #shutil.copy(ann_path, new_subcollection_path)
-    #if not os.path.exists(os.path.join(new_subcollection_path, os.path.basename(txt_path))):
-        #shutil.copy(txt_path, new_subcollection_path)
 
 ### Rudimentary analysis using brat_peek library ###
 
@@ -117,44 +102,57 @@ def suggest_full_word_annotation(text, start, end):
     
     return word_start, word_end
 
-misaligned = find_misaligned_spans(examples)
 
-# Write misaligned spans to a file
-class EntityEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Entity):
-            return {
-                "mention": obj.mention,
-                "type": obj.type,
-                "spans": [{"start": span.start, "end": span.end} for span in obj.spans],
-                "references": obj.references,
-                "id": obj.id
-            }
-        elif isinstance(obj, Span):
-            return {"start": obj.start, "end": obj.end}
-        return super().default(obj)
+def write_misaligned_spans(corpus_path, output_dir):
+    # Extract the corpus name from the path
+    corpus_name = os.path.basename(corpus_path)
+    
+    # Initialize the ExtendedBratParser
+    brat = ExtendedBratParser(input_dir=corpus_path, error="ignore")
+    
+    # Parse the corpus
+    examples = list(brat.parse(corpus_path))
+    
+    # Find misaligned spans
+    misaligned = find_misaligned_spans(examples)
+    
+    # Count the number of misaligned entities in the corpus
+    total_misaligned = sum(len(misaligned[doc_id]) for doc_id in misaligned)
+    print(f"Total misaligned entities: {total_misaligned}")
+    
+    # Construct the output filename
+    output_filename = f"misaligned_spans_{corpus_name}.json"
+    output_path = os.path.join(output_dir, output_filename)
+    
+    # Write the misaligned spans and the full word annotations to a json file
+    with open(output_path, 'w', encoding='utf-8') as f:
+        for example in examples:
+            if example.id in misaligned:
+                for entity in misaligned[example.id]:
+                    start, end = suggest_full_word_annotation(example.text, entity.start, entity.end)
+                    suggested_mention = example.text[start:end]
+                    
+                    data = {
+                        "doc_ID": example.id,
+                        'entity_ID': entity.id,
+                        "original_mention": entity.mention,
+                        "original_span": {"start": entity.spans[0].start, "end": entity.spans[0].end},
+                        "suggested_mention": suggested_mention,
+                        "suggested_span": {"start": start, "end": end}
+                    }
+                    
+                    json.dump(data, f, ensure_ascii=False)
+                    f.write('\n')
+    
+    print(f"Results written to: {output_path}")
 
-# Count the number of misaligned entities in the corpus
-print(f"Total misaligned entities: {sum(len(misaligned[doc_id]) for doc_id in misaligned)}")
-
-# Write the misaligned spans and the full word annotations to a json file
-with open(os.path.join(OUTPUT_DIR,'misaligned_spans.json'), 'w') as f:
-    for example in examples:
-        suggested_full_word_annotations = []
-        # if doc_id is in misaligned, get the suggested full word annotations
-        if example.id in misaligned:
-            for entity in misaligned[example.id]:
-                start, end = suggest_full_word_annotation(example.text, entity.start, entity.end)
-                suggested_mention = example.text[start:end]
-
-                # Write the ID, original mention and span, and suggested mention and span, to file (ensure proper JSON formatting and encoding of Danish characters)
-                f.write(json.dumps({
-                    "ID": example.id,
-                    "original_mention": entity.mention,
-                    "span": {"start": entity.spans[0].start, "end": entity.spans[0].end},
-                    "suggested_mention": suggested_mention,
-                    "suggested_span": {"start": start, "end": end}
-                }) + '\n', encoding='utf-8')
+# Do this for all corpora
+misaligned_main = write_misaligned_spans(MAIN_PATH, OUTPUT_DIR)
+misaligned_agr1 = write_misaligned_spans(AGR1_PATH, OUTPUT_DIR)
+misaligned_agr2 = write_misaligned_spans(AGR2_PATH, OUTPUT_DIR)
+misaligned_agr3 = write_misaligned_spans(AGR3_PATH, OUTPUT_DIR)
+misaligned_agr_final = write_misaligned_spans(AGR_FINAL_PATH, OUTPUT_DIR)
+misaligned_consensus_agr2 = write_misaligned_spans(CONSENSUS_PATH, OUTPUT_DIR)
 
 ### Gather advanced stats ###
 

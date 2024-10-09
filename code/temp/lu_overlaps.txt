@@ -1,16 +1,16 @@
 Document ID: 9128946
 Annotations with different tags but same spans:
-Entity 1: fint (single_word - MTP)
-Entity 2: fint (single_word - HPB)
-
 Entity 1: Fint (single_word - HPB)
 Entity 2: Fint (single_word - MTP)
 
-Entity 1: fint (single_word - HPB)
-Entity 2: fint (single_word - MTP)
+Entity 1: fint (single_word - MTP)
+Entity 2: fint (single_word - HPB)
 
 Entity 1: Fint (single_word - MTP)
 Entity 2: Fint (single_word - HPB)
+
+Entity 1: fint (single_word - HPB)
+Entity 2: fint (single_word - MTP)
 
 Document ID: 9166397
 Annotations with different tags but same spans:
@@ -22,59 +22,59 @@ Entity 2: indtaget (single_word - MTP)
 
 Document ID: 9232585
 Annotations with different tags but same spans:
-Entity 1: mareridt (single_word - MTP)
-Entity 2: mareridt (single_word - HPB)
-
 Entity 1: mareridt (single_word - HPB)
 Entity 2: mareridt (single_word - MTP)
 
+Entity 1: mareridt (single_word - MTP)
+Entity 2: mareridt (single_word - HPB)
+
 Document ID: 9247001
 Annotations with different tags but same spans:
-Entity 1: Ikon (single_word - MTP)
-Entity 2: Ikon (single_word - HPB)
-
 Entity 1: Ikon (single_word - HPB)
 Entity 2: Ikon (single_word - MTP)
 
+Entity 1: Ikon (single_word - MTP)
+Entity 2: Ikon (single_word - HPB)
+
 Document ID: 9264442
 Annotations with different tags but same spans:
-Entity 1: vild (single_word - HPB)
-Entity 2: vild (single_word - MTP)
-
 Entity 1: voldsomt (single_word - MTP)
 Entity 2: voldsomt (single_word - HPB)
-
-Entity 1: bomber (single_word - MTP)
-Entity 2: bomber (single_word - HPB)
-
-Entity 1: mysterium (single_word - MTP)
-Entity 2: mysterium (single_word - HPB)
-
-Entity 1: bomber (single_word - HPB)
-Entity 2: bomber (single_word - MTP)
-
-Entity 1: vild (single_word - MTP)
-Entity 2: vild (single_word - HPB)
 
 Entity 1: mysterium (single_word - HPB)
 Entity 2: mysterium (single_word - MTP)
 
-Entity 1: bomberen (single_word - HPB)
-Entity 2: bomberen (single_word - MTP)
+Entity 1: mysterium (single_word - MTP)
+Entity 2: mysterium (single_word - HPB)
+
+Entity 1: bomber (single_word - MTP)
+Entity 2: bomber (single_word - HPB)
+
+Entity 1: vild (single_word - HPB)
+Entity 2: vild (single_word - MTP)
 
 Entity 1: bomberen (single_word - MTP)
 Entity 2: bomberen (single_word - HPB)
+
+Entity 1: vild (single_word - MTP)
+Entity 2: vild (single_word - HPB)
+
+Entity 1: bomberen (single_word - HPB)
+Entity 2: bomberen (single_word - MTP)
+
+Entity 1: bomber (single_word - HPB)
+Entity 2: bomber (single_word - MTP)
 
 Entity 1: voldsomt (single_word - HPB)
 Entity 2: voldsomt (single_word - MTP)
 
 Document ID: 9264531
 Annotations with different tags but same spans:
-Entity 1: skræk (single_word - MTP)
-Entity 2: skræk (single_word - HPB)
-
 Entity 1: ikonet (single_word - HPB)
 Entity 2: ikonet (single_word - MTP)
+
+Entity 1: skræk (single_word - MTP)
+Entity 2: skræk (single_word - HPB)
 
 Entity 1: ikonet (single_word - MTP)
 Entity 2: ikonet (single_word - HPB)
@@ -87,36 +87,36 @@ Annotations with different tags but same spans:
 Entity 1: stjernen (single_word - MTP)
 Entity 2: stjernen (single_word - HPB)
 
+Entity 1: stjernen (single_word - HPB)
+Entity 2: stjernen (single_word - MTP)
+
 Entity 1: Stjernens (single_word - HPB)
 Entity 2: Stjernens (single_word - MTP)
 
 Entity 1: Stjernens (single_word - MTP)
 Entity 2: Stjernens (single_word - HPB)
 
-Entity 1: stjernen (single_word - HPB)
-Entity 2: stjernen (single_word - MTP)
-
 Document ID: 9315367
 Annotations with different tags but same spans:
-Entity 1: ravage (single_word - MTP)
-Entity 2: ravage (single_word - HPB)
-
 Entity 1: ravage (single_word - HPB)
 Entity 2: ravage (single_word - MTP)
 
+Entity 1: ravage (single_word - MTP)
+Entity 2: ravage (single_word - HPB)
+
 Document ID: 9344447
 Annotations with different tags but same spans:
+Entity 1: gik amok (NonContiguousMWE - HPB)
+Entity 2: gik amok (NonContiguousMWE - MTP)
+
+Entity 1: gik amok (NonContiguousMWE - MTP)
+Entity 2: gik amok (NonContiguousMWE - HPB)
+
 Entity 1: eksploderede (single_word - MTP)
 Entity 2: eksploderede (single_word - HPB)
 
 Entity 1: eksploderede (single_word - HPB)
 Entity 2: eksploderede (single_word - MTP)
-
-Entity 1: gik amok (NonContiguousMWE - MTP)
-Entity 2: gik amok (NonContiguousMWE - HPB)
-
-Entity 1: gik amok (NonContiguousMWE - HPB)
-Entity 2: gik amok (NonContiguousMWE - MTP)
 
 Document ID: 9347340
 Annotations with different tags but same spans:
@@ -142,11 +142,11 @@ Entity 2: knækkede (single_word - MTP)
 
 Document ID: 9398525
 Annotations with different tags but same spans:
-Entity 1: bomber (single_word - MTP)
-Entity 2: bomber (single_word - HPB)
-
 Entity 1: bomber (single_word - HPB)
 Entity 2: bomber (single_word - MTP)
+
+Entity 1: bomber (single_word - MTP)
+Entity 2: bomber (single_word - HPB)
 
 Document ID: 9427193
 Annotations with different tags but same spans:
@@ -174,29 +174,29 @@ Entity 2: bombe (single_word - HPB)
 
 Document ID: 9448683
 Annotations with different tags but same spans:
-Entity 1: stormede (single_word - MTP)
-Entity 2: stormede (single_word - HPB)
-
-Entity 1: Stormen (single_word - HPB)
-Entity 2: Stormen (single_word - MTP)
-
 Entity 1: stormen (single_word - MTP)
 Entity 2: stormen (single_word - HPB)
-
-Entity 1: fulde (single_word - MTP)
-Entity 2: fulde (single_word - HPB)
-
-Entity 1: stormede (single_word - HPB)
-Entity 2: stormede (single_word - MTP)
-
-Entity 1: Stormen (single_word - MTP)
-Entity 2: Stormen (single_word - HPB)
 
 Entity 1: fulde (single_word - HPB)
 Entity 2: fulde (single_word - MTP)
 
+Entity 1: stormede (single_word - MTP)
+Entity 2: stormede (single_word - HPB)
+
 Entity 1: stormen (single_word - HPB)
 Entity 2: stormen (single_word - MTP)
+
+Entity 1: Stormen (single_word - HPB)
+Entity 2: Stormen (single_word - MTP)
+
+Entity 1: fulde (single_word - MTP)
+Entity 2: fulde (single_word - HPB)
+
+Entity 1: Stormen (single_word - MTP)
+Entity 2: Stormen (single_word - HPB)
+
+Entity 1: stormede (single_word - HPB)
+Entity 2: stormede (single_word - MTP)
 
 Document ID: 9471224
 Annotations with different tags but same spans:
@@ -208,17 +208,17 @@ Entity 2: gyser (single_word - MTP)
 
 Document ID: 9532265
 Annotations with different tags but same spans:
-Entity 1: mirakel (single_word - MTP)
-Entity 2: mirakel (single_word - HPB)
-
 Entity 1: mirakel (single_word - HPB)
 Entity 2: mirakel (single_word - MTP)
 
+Entity 1: mirakel (single_word - MTP)
+Entity 2: mirakel (single_word - HPB)
+
 Document ID: 9532671
 Annotations with different tags but same spans:
-Entity 1: små (single_word - VIR)
-Entity 2: små (single_word - MTP)
-
 Entity 1: små (single_word - MTP)
 Entity 2: små (single_word - VIR)
+
+Entity 1: små (single_word - VIR)
+Entity 2: små (single_word - MTP)
 

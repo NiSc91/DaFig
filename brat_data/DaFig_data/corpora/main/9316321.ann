@@ -1,0 +1,56 @@
+T1	MTP 1058 1063	magre
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T3	MTP 57 63	scorer
+A3	Directness T3 IND
+A4	Conventionality T3 CNV
+T4	MTP 64 68	stor
+A5	Directness T4 IND
+A6	Conventionality T4 CNV
+T5	MTP 192 196	steg
+A7	Directness T5 IND
+A8	Conventionality T5 CNV
+T6	MTP 245 251	svarer
+A9	Directness T6 IND
+A10	Conventionality T6 CNV
+T7	MTP 252 255	til
+A11	Directness T7 IND
+A12	Conventionality T7 CNV
+R1	MultiWordExpression Arg1:T6 Arg2:T7	
+T8	MTP 314 318	gået
+A13	Directness T8 IND
+A14	Conventionality T8 CNV
+T10	MTP 427 433	kommer
+A15	Directness T10 IND
+A16	Conventionality T10 CNV
+T11	MTP 481 487	stiger
+A17	Directness T11 IND
+A18	Conventionality T11 CNV
+T12	MTP 567 573	dækker
+A19	Directness T12 IND
+A20	Conventionality T12 CNV
+T13	MTP 581 589	langtfra
+A21	Directness T13 IND
+A22	Conventionality T13 CNV
+T14	MTP 743 749	mindre
+A23	Directness T14 IND
+A24	Conventionality T14 CNV
+T16	MTP 1028 1035	søvnløs
+T17	HPB 1245 1253	livsværk
+T18	MTP 1606 1614	stjerner
+A25	Directness T18 IND
+A26	Conventionality T18 CNV
+T19	MTP 1724 1732	stjerner
+A27	Directness T19 IND
+A28	Conventionality T19 CNV
+T20	MTP 1685 1688	ses
+A29	Directness T20 IND
+A30	Conventionality T20 CNV
+A31	Dimension T17 QLT
+A32	Degree T17 1
+T2	MTP 999 1005	ligger
+A33	Directness T2 IND
+A34	Conventionality T2 NOV
+A35	Directness T16 IND
+A36	Conventionality T16 NOV
+R2	CHUNK Arg1:T2 Arg2:T16	

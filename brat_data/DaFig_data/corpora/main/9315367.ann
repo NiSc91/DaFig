@@ -1,0 +1,83 @@
+T1	MTP 9 15	ravage
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	HPB 9 15	ravage
+A3	Dimension T2 QLT
+A4	Degree T2 2
+T3	MTP 82 87	store
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 88 91	mål
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 130 135	gange
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 147 154	største
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 229 235	ravage
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	HPB 229 235	ravage
+A15	Dimension T8 QLT
+A16	Degree T8 2
+T9	MTP 273 283	tiltrækker
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 288 292	stor
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 406 411	store
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 676 681	store
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 682 685	mål
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 718 720	se
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 850 856	trække
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+T16	MTP 857 860	sig
+A31	Directness T16 IND
+A32	Conventionality T16 CNV
+R1	MultiWordExpression Arg1:T15 Arg2:T16	
+T17	MTP 971 976	hårdt
+A33	Directness T17 IND
+A34	Conventionality T17 CNV
+T18	MTP 1351 1354	stå
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+T19	MTP 1355 1359	over
+A37	Directness T19 IND
+A38	Conventionality T19 CNV
+T20	MTP 1360 1363	for
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+R2	MultiWordExpression Arg1:T18 Arg2:T19	
+R3	MultiWordExpression Arg1:T19 Arg2:T20	
+T21	MTP 1481 1484	gik
+A41	Directness T21 IND
+A42	Conventionality T21 CNV
+T22	MTP 1485 1489	hele
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	MTP 1490 1495	vejen
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+R4	MultiWordExpression Arg1:T21 Arg2:T22	
+R5	MultiWordExpression Arg1:T22 Arg2:T23	
+T24	MTP 1543 1548	givet
+A47	Directness T24 IND
+A48	Conventionality T24 CNV
+T25	MTP 1698 1706	systemet
+A49	Directness T25 IND
+A50	Conventionality T25 CNV
+T26	MTP 1764 1768	gang
+A51	Directness T26 IND
+A52	Conventionality T26 CNV

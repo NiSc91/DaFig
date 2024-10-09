@@ -1,0 +1,70 @@
+T1	MTP 104 110	rustet
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 118 126	håndtere
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 417 423	kommer
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 439 442	til
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+R1	MultiWordExpression Arg1:T3 Arg2:T4	
+T5	MTP 717 725	opfylder
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 783 790	stiller
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 946 952	kampen
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 1107 1110	går
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 1135 1140	lille
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 1262 1267	kampe
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 1391 1397	kampen
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T13	MTP 1552 1554	gå
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 1924 1929	kampe
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 2036 2043	oplyser
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+T16	MTP 2091 2096	groft
+A31	Directness T16 IND
+A32	Conventionality T16 CNV
+T18	MTP 2331 2337	grunde
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+T20	MTP 2614 2619	kampe
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+T21	MTP 2650 2653	går
+A41	Directness T21 IND
+A42	Conventionality T21 CNV
+T22	MTP 2787 2791	gang
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	MTP 2818 2823	kampe
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+T26	MTP 3016 3021	gange
+A51	Directness T26 IND
+A52	Conventionality T26 CNV
+T27	MTP 3099 3103	kamp
+A53	Directness T27 IND
+A54	Conventionality T27 CNV
+T28	MTP 3142 3148	kampen
+A55	Directness T28 IND
+A56	Conventionality T28 CNV

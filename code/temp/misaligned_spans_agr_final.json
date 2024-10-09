@@ -1,0 +1,8 @@
+{"doc_ID": "ann1/9071496", "entity_ID": "T6", "original_mention": "lejren", "original_span": {"start": 286, "end": 292}, "suggested_mention": "landsholdslejren", "suggested_span": {"start": 276, "end": 292}}
+{"doc_ID": "ann1/9394252", "entity_ID": "T20", "original_mention": "gennembrud", "original_span": {"start": 1513, "end": 1523}, "suggested_mention": "gennembrudsstærke", "suggested_span": {"start": 1513, "end": 1530}}
+{"doc_ID": "ann1/9417278", "entity_ID": "T1", "original_mention": "stjerne", "original_span": {"start": 149, "end": 156}, "suggested_mention": "angrebsstjerne", "suggested_span": {"start": 142, "end": 156}}
+{"doc_ID": "ann2/9071496", "entity_ID": "T2", "original_mention": "lejren", "original_span": {"start": 286, "end": 292}, "suggested_mention": "landsholdslejren", "suggested_span": {"start": 276, "end": 292}}
+{"doc_ID": "ann2/9267285", "entity_ID": "T2", "original_mention": "området", "original_span": {"start": 349, "end": 356}, "suggested_mention": "handicapområdet", "suggested_span": {"start": 341, "end": 356}}
+{"doc_ID": "ann2/9299101", "entity_ID": "T17", "original_mention": "brøl", "original_span": {"start": 567, "end": 571}, "suggested_mention": "brølstærke", "suggested_span": {"start": 567, "end": 577}}
+{"doc_ID": "ann2/9394252", "entity_ID": "T33", "original_mention": "gennembruds", "original_span": {"start": 1513, "end": 1524}, "suggested_mention": "gennembrudsstærke", "suggested_span": {"start": 1513, "end": 1530}}
+{"doc_ID": "ann2/9417278", "entity_ID": "T3", "original_mention": "stjerne", "original_span": {"start": 149, "end": 156}, "suggested_mention": "angrebsstjerne", "suggested_span": {"start": 142, "end": 156}}

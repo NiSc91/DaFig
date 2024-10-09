@@ -18,7 +18,7 @@ sys.path.extend([
 BRATEVAL_DIR = os.path.join(DEPS_DIR, 'brateval')
 JAR_PATH = os.path.join(BRATEVAL_DIR, 'target/brateval.jar')
 TEMP_DIR = os.path.join(BASE_DIR, 'temp')
-ANNOTATED_DIR = os.path.join(DATA_DIR, 'annotated') # Also where to find annotation.conf file
+CORPORA_DIR = os.path.join(DATA_DIR, 'DaFig_data/corpora') # Also where to find backup and annotation.conf file
 
 # Create temp directory if it doesn't exist
 os.makedirs(TEMP_DIR, exist_ok=True)

@@ -1,0 +1,45 @@
+T1	MTP 101 105	gået
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 236 239	går
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 240 244	hver
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 245 248	til
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 249 252	sit
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+R1	MultiWordExpression Arg1:T2 Arg2:T3	
+R2	MultiWordExpression Arg1:T3 Arg2:T4	
+R3	MultiWordExpression Arg1:T4 Arg2:T5	
+T6	MTP 316 322	kommer
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 342 350	baggrund
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 362 368	kilder
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 369 372	tæt
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 405 413	kilderne
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 471 478	længere
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 548 554	skridt
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 632 635	gik
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 1022 1025	går
+A27	Directness T14 IND
+A28	Conventionality T14 CNV

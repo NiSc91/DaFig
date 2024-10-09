@@ -1,0 +1,4 @@
+{"doc_ID": "ann1/t10_9417278", "entity_ID": "T1", "original_mention": "stjerne", "original_span": {"start": 149, "end": 156}, "suggested_mention": "angrebsstjerne", "suggested_span": {"start": 142, "end": 156}}
+{"doc_ID": "ann1/t9_9299101", "entity_ID": "T16", "original_mention": "brøl", "original_span": {"start": 567, "end": 571}, "suggested_mention": "brølstærke", "suggested_span": {"start": 567, "end": 577}}
+{"doc_ID": "ann2/t10_9417278", "entity_ID": "T3", "original_mention": "stjerne", "original_span": {"start": 149, "end": 156}, "suggested_mention": "angrebsstjerne", "suggested_span": {"start": 142, "end": 156}}
+{"doc_ID": "ann2/t9_9299101", "entity_ID": "T17", "original_mention": "brøl", "original_span": {"start": 567, "end": 571}, "suggested_mention": "brølstærke", "suggested_span": {"start": 567, "end": 577}}

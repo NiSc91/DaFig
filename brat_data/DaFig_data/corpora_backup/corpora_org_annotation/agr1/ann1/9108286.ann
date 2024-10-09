@@ -1,0 +1,26 @@
+T1	MTP 83 91	stod bag
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	HPB 2603 2608	altid
+A3	Dimension T2 QNT
+A4	Degree T2 1
+T3	MTP 2691 2695	gået
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 1966 1971	række
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 707 713	åndede
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 718 720	ud
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+R1	MultiWordExpression Arg1:T5 Arg2:T6	
+T7	MTP 2280 2290	forbandede
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 2633 2642	betragter
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+#1	AnnotatorNotes T7	Dette kunne også samtidigt tolkes som en hyperbole, men jeg tolkede at graden af negativ betydning, der ligger i udtrykket er passende for de om talte år i filmen. 

@@ -1,0 +1,68 @@
+T1	MTP 1912 1918	styrke
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 343 347	vakt
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 394 400	drevet
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 568 574	ligger
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 799 803	ført
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 872 880	faldende
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	HPB 895 897	på
+A13	Dimension T7 QLT
+A14	Degree T7 1
+T8	HPB 898 903	ingen
+A15	Dimension T8 QLT
+A16	Degree T8 1
+T9	HPB 904 908	måde
+A17	Dimension T9 QLT
+A18	Degree T9 1
+R1	MultiWordExpression Arg1:T7 Arg2:T8	
+R2	MultiWordExpression Arg1:T8 Arg2:T9	
+T10	MTP 1008 1013	grund
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 1082 1087	lever
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 1088 1090	op
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 1091 1094	til
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+R3	MultiWordExpression Arg1:T11 Arg2:T12	
+R4	MultiWordExpression Arg1:T12 Arg2:T13	
+T14	MTP 1253 1262	langhåret
+A27	Directness T14 DIR
+A28	Conventionality T14 NOV
+T15	MTP 1371 1374	set
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+T16	MTP 1380 1385	hører
+A31	Directness T16 IND
+A32	Conventionality T16 CNV
+T17	MTP 1386 1392	hjemme
+A33	Directness T17 IND
+A34	Conventionality T17 CNV
+R5	MultiWordExpression Arg1:T16 Arg2:T17	
+T18	MTP 1536 1539	bøn
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+T19	MTP 1605 1610	lyder
+A37	Directness T19 IND
+A38	Conventionality T19 CNV
+T20	MTP 1643 1645	se
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+T21	MTP 1889 1893	tegn
+A41	Directness T21 IND
+A42	Conventionality T21 CNV

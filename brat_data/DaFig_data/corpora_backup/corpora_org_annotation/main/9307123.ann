@@ -1,0 +1,16 @@
+T1	MTP 13 19	profil
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 245 252	udtaget
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 1129 1137	inventar
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 1124 1128	fast
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 1318 1324	gruppe
+A9	Directness T5 IND
+A10	Conventionality T5 NOV
+#1	AnnotatorNotes T5	´

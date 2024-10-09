@@ -1,0 +1,114 @@
+T1	MTP 8 14	knuser
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 85 90	gange
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 173 179	mindre
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 180 187	mirakel
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	HPB 180 187	mirakel
+A9	Dimension T5 QLT
+A10	Degree T5 1
+T6	MTP 210 213	tæt
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 273 276	tog
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 357 362	kampe
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 492 495	fik
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 691 698	roteret
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 720 728	mandskab
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 824 831	Opgøret
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 868 873	kampe
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 929 935	kampen
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 946 953	omsatte
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+T16	MTP 1048 1053	skabe
+A31	Directness T16 IND
+A32	Conventionality T16 CNV
+T17	MTP 1083 1088	opgør
+A33	Directness T17 IND
+A34	Conventionality T17 CNV
+T18	MTP 1112 1120	farligst
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+T19	MTP 1167 1173	truede
+A37	Directness T19 IND
+A38	Conventionality T19 NOV
+T20	MTP 1240 1245	tamme
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+T21	MTP 1314 1322	stjernen
+A41	Directness T21 IND
+A42	Conventionality T21 CNV
+T22	MTP 1369 1379	talismanen
+A43	Directness T22 IND
+A44	Conventionality T22 NOV
+T23	MTP 1380 1383	kom
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+T24	MTP 1399 1404	bagud
+A47	Directness T24 IND
+A48	Conventionality T24 CNV
+T25	MTP 1437 1446	misbrugte
+A49	Directness T25 IND
+A50	Conventionality T25 CNV
+T26	MTP 1480 1487	største
+A51	Directness T26 IND
+A52	Conventionality T26 CNV
+T27	HPB 1473 1479	hidtil
+A53	Dimension T27 QNT
+A54	Degree T27 2
+T28	MTP 1504 1508	duel
+A55	Directness T28 IND
+A56	Conventionality T28 CNV
+T29	MTP 1628 1633	muren
+A57	Directness T29 IND
+A58	Conventionality T29 CNV
+T30	HPB 1837 1841	nemt
+A59	Dimension T30 QLT
+A60	Degree T30 2
+T31	MTP 1872 1878	større
+A61	Directness T31 IND
+A62	Conventionality T31 CNV
+T32	MTP 1916 1922	kampen
+A63	Directness T32 IND
+A64	Conventionality T32 CNV
+T33	MTP 1923 1929	lukket
+A65	Directness T33 IND
+A66	Conventionality T33 CNV
+T34	MTP 1933 1940	slukket
+A67	Directness T34 IND
+A68	Conventionality T34 CNV
+T35	MTP 2036 2043	tættere
+A69	Directness T35 IND
+A70	Conventionality T35 CNV
+T36	HPB 2237 2242	fulde
+A71	Dimension T36 QNT
+A72	Degree T36 2
+T37	MTP 2145 2153	stjerner
+A73	Directness T37 IND
+A74	Conventionality T37 CNV
+T38	HPB 2184 2189	unikt
+A75	Dimension T38 QLT
+A76	Degree T38 2
