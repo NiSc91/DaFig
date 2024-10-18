@@ -16,7 +16,7 @@ A10	Conventionality T5 CNV
 T7	MTP 947 951	slog
 A11	Directness T7 IND
 A12	Conventionality T7 CNV
-T8	MTP 1165 1172	dynamit
+T8	MTP 1165 1177	dynamitpulje
 A13	Directness T8 DIR
 A14	Conventionality T8 CNV
 T9	MTP 1190 1195	store

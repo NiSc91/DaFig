@@ -4,7 +4,7 @@ A2	Conventionality T1 CNV
 T2	HPB 0 11	Ustoppelige
 A3	Dimension T2 QNT
 A4	Degree T2 2
-T3	MTP 156 161	stime
+T3	MTP 151 161	sejrsstime
 A5	Directness T3 IND
 A6	Conventionality T3 CNV
 T4	MTP 204 208	ende
@@ -33,7 +33,7 @@ R2	MultiWordExpression Arg1:T9 Arg2:T10
 T11	MTP 522 531	velsmurte
 A21	Directness T11 IND
 A22	Conventionality T11 CNV
-T12	MTP 539 546	maskine
+T12	MTP 532 546	fodboldmaskine
 A23	Directness T12 IND
 A24	Conventionality T12 CNV
 T13	MTP 611 623	udgangspunkt

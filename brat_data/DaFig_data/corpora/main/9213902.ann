@@ -46,10 +46,10 @@ A28	Conventionality T14 CNV
 T15	MTP 1371 1376	tabte
 A29	Directness T15 IND
 A30	Conventionality T15 CNV
-T16	MTP 1653 1660	højeste
+T16	MTP 1647 1660	tredjehøjeste
 A31	Directness T16 IND
 A32	Conventionality T16 CNV
-T17	MTP 1671 1677	niveau
+T17	MTP 1661 1677	landskampsniveau
 A33	Directness T17 IND
 A34	Conventionality T17 CNV
 T18	MTP 1708 1712	gang

@@ -6,7 +6,7 @@ A2	Conventionality T2 CNV
 T3	MTP 91 94	går
 A3	Directness T3 IND
 A4	Conventionality T3 CNV
-T4	MTP 279 286	stjerne
+T4	MTP 272 286	atletikstjerne
 A5	Directness T4 IND
 A6	Conventionality T4 CNV
 T5	MTP 537 539	se
@@ -32,7 +32,7 @@ R2	MultiWordExpression Arg1:T9 Arg2:T10
 T11	MTP 610 617	nedture
 A19	Directness T11 IND
 A20	Conventionality T11 CNV
-T12	MTP 641 647	synder
+T12	MTP 635 647	dopingsynder
 A21	Directness T12 IND
 A22	Conventionality T12 NOV
 T13	MTP 892 896	lang
@@ -50,7 +50,7 @@ A30	Conventionality T16 CNV
 T17	MTP 967 971	stod
 A31	Directness T17 IND
 A32	Conventionality T17 CNV
-T19	MTP 1030 1037	stjerne
+T19	MTP 1022 1037	sprinterstjerne
 A35	Directness T19 IND
 A36	Conventionality T19 CNV
 T20	MTP 1148 1153	sætte
@@ -67,7 +67,7 @@ R6	MultiWordExpression Arg1:T21 Arg2:T22
 T23	HPB 1182 1188	verden
 A43	Dimension T23 QLT
 A44	Degree T23 2
-T24	MTP 1576 1582	fælden
+T24	MTP 1570 1582	dopingfælden
 A45	Directness T24 IND
 A46	Conventionality T24 CNV
 T25	MTP 1764 1770	mærket

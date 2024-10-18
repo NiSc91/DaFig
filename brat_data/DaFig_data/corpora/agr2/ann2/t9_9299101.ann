@@ -45,7 +45,7 @@ T16	MTP 506 509	ind
 A29	Directness T16 IND
 A30	Conventionality T16 CNV
 #1	AnnotatorNotes T16	Variant af "sætte alle sejl til"
-T17	MTP 567 571	brøl
+T17	MTP 567 577	brølstærke
 A31	Directness T17 IND
 A32	Conventionality T17 NOV
 T18	MTP 596 606	involveret

@@ -90,12 +90,9 @@ T34	MTP 1599 1605	indlæg
 A61	Directness T34 IND
 A62	Conventionality T34 CNV
 R3	CHUNK Arg1:T33 Arg2:T34	
-T35	MTP 1635 1639	form
+T35	MTP 1635 1644	formsvage
 A63	Directness T35 IND
 A64	Conventionality T35 CNV
-T36	MTP 1639 1644	svage
-A65	Directness T36 IND
-A66	Conventionality T36 CNV
 T37	MTP 1669 1673	tabt
 A67	Directness T37 IND
 A68	Conventionality T37 CNV

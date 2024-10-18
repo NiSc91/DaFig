@@ -45,7 +45,7 @@ A30	Conventionality T15 CNV
 R2	MultiWordExpression Arg1:T12 Arg2:T13	
 R3	MultiWordExpression Arg1:T13 Arg2:T14	
 R4	MultiWordExpression Arg1:T14 Arg2:T15	
-T16	MTP 567 571	brøl
+T16	MTP 567 577	brølstærke
 A31	Directness T16 IND
 A32	Conventionality T16 NOV
 T18	MTP 684 688	udgå

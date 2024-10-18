@@ -181,7 +181,7 @@ R7	MultiWordExpression Arg1:T57 Arg2:T58
 T59	MTP 5117 5122	række
 A116	Directness T59 IND
 A117	Conventionality T59 CNV
-T60	MTP 5245 5253	imperium
+T60	MTP 5234 5253	forretningsimperium
 A118	Directness T60 IND
 A119	Conventionality T60 CNV
 T61	MTP 5154 5159	rolle
@@ -193,7 +193,7 @@ A123	Conventionality T62 CNV
 T63	MTP 5398 5402	køre
 A124	Directness T63 IND
 A125	Conventionality T63 CNV
-T64	MTP 5465 5473	imperium
+T64	MTP 5454 5473	forretningsimperium
 A126	Directness T64 IND
 A127	Conventionality T64 CNV
 T65	MTP 5486 5490	grus
@@ -228,7 +228,7 @@ A145	Conventionality T73 CNV
 T74	MTP 6656 6667	underspille
 A146	Directness T74 IND
 A147	Conventionality T74 CNV
-T75	MTP 6741 6749	imperium
+T75	MTP 6730 6749	forretningsimperium
 A148	Directness T75 IND
 A149	Conventionality T75 CNV
 T76	MTP 6699 6708	nedskrive

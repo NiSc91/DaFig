@@ -1,4 +1,4 @@
-T1	MTP 19 23	jagt
+T1	MTP 12 23	spillerjagt
 A1	Directness T1 IND
 A2	Conventionality T1 CNV
 T2	MTP 7 11	vild
@@ -173,13 +173,13 @@ T55	MTP 3591 3596	plads
 A105	Directness T55 IND
 A106	Conventionality T55 CNV
 R14	MultiWordExpression Arg1:T54 Arg2:T55	
-T37	MTP 1816 1822	bomber
+T37	MTP 1816 1826	bombertype
 A107	Directness T37 IND
 A108	Conventionality T37 NOV
 T56	HPB 1570 1578	bomberen
 A109	Dimension T56 QLT
 A110	Degree T56 3
-T57	HPB 1816 1822	bomber
+T57	HPB 1816 1826	bombertype
 A111	Dimension T57 QLT
 A112	Degree T57 3
 T58	MTP 1972 1980	oprydder

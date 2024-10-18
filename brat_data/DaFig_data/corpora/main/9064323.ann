@@ -4,7 +4,7 @@ A2	Conventionality T1 CNV
 T2	MTP 336 340	give
 A3	Directness T2 IND
 A4	Conventionality T2 CNV
-T3	MTP 405 411	profil
+T3	MTP 399 411	risikoprofil
 T4	MTP 15 18	går
 A7	Directness T4 IND
 A8	Conventionality T4 CNV
@@ -23,7 +23,7 @@ A14	Conventionality T8 CNV
 T9	MTP 812 818	højest
 A15	Directness T9 IND
 A16	Conventionality T9 CNV
-T10	MTP 1282 1288	profil
+T10	MTP 1276 1288	risikoprofil
 T11	MTP 1041 1053	understreger
 A17	Directness T11 IND
 A18	Conventionality T11 CNV

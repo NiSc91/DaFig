@@ -18,7 +18,7 @@ R1	MultiWordExpression Arg1:T6 Arg2:T7
 T8	MTP 985 989	lang
 A12	Directness T8 IND
 A13	Conventionality T8 CNV
-T9	MTP 1038 1046	grundlag
+T9	MTP 1031 1046	opholdsgrundlag
 A14	Directness T9 IND
 T11	MTP 1333 1338	søgte
 A16	Directness T11 IND

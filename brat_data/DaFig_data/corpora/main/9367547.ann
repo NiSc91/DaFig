@@ -10,12 +10,9 @@ A6	Conventionality T3 CNV
 T4	MTP 203 210	kontoen
 A7	Directness T4 IND
 A8	Conventionality T4 CNV
-T6	MTP 255 263	premiere
+T6	MTP 255 267	premierekamp
 A9	Directness T6 IND
 A10	Conventionality T6 CNV
-T7	MTP 263 267	kamp
-A11	Directness T7 IND
-A12	Conventionality T7 CNV
 T8	MTP 388 396	angriber
 A13	Directness T8 IND
 A14	Conventionality T8 CNV

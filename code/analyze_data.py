@@ -11,9 +11,11 @@ from config import *
 from parse_data import ExtendedExample, ExtendedBratParser, LexicalUnit, Span, Entity, Relation, Attribute
 from nltk.corpus import stopwords
 from collections import Counter, defaultdict
-from itertools import chain
+from itertools import chain, combinations
 from dataclasses import dataclass
 from matplotlib import pyplot as plt
+import seaborn as sns
+
 
 ## Declare variables
 handler = CollectionHandler(CORPORA_DIR)
@@ -102,7 +104,6 @@ def suggest_full_word_annotation(text, start, end):
     
     return word_start, word_end
 
-
 def write_misaligned_spans(corpus_path, output_dir):
     # Extract the corpus name from the path
     corpus_name = os.path.basename(corpus_path)
@@ -146,13 +147,13 @@ def write_misaligned_spans(corpus_path, output_dir):
     
     print(f"Results written to: {output_path}")
 
-# Do this for all corpora
-misaligned_main = write_misaligned_spans(MAIN_PATH, OUTPUT_DIR)
-misaligned_agr1 = write_misaligned_spans(AGR1_PATH, OUTPUT_DIR)
-misaligned_agr2 = write_misaligned_spans(AGR2_PATH, OUTPUT_DIR)
-misaligned_agr3 = write_misaligned_spans(AGR3_PATH, OUTPUT_DIR)
-misaligned_agr_final = write_misaligned_spans(AGR_FINAL_PATH, OUTPUT_DIR)
-misaligned_consensus_agr2 = write_misaligned_spans(CONSENSUS_PATH, OUTPUT_DIR)
+# This has been done across all corpora
+#misaligned_main = write_misaligned_spans(MAIN_PATH, OUTPUT_DIR)
+#misaligned_agr1 = write_misaligned_spans(AGR1_PATH, OUTPUT_DIR)
+#misaligned_agr2 = write_misaligned_spans(AGR2_PATH, OUTPUT_DIR)
+#misaligned_agr3 = write_misaligned_spans(AGR3_PATH, OUTPUT_DIR)
+#misaligned_agr_final = write_misaligned_spans(AGR_FINAL_PATH, OUTPUT_DIR)
+#misaligned_consensus_agr2 = write_misaligned_spans(CONSENSUS_PATH, OUTPUT_DIR)
 
 ### Gather advanced stats ###
 
@@ -165,12 +166,15 @@ token_counts = sum(len(lu.mention.split()) for lu in lexical_units)
 # Get tag info
 lu_tag_counts = Counter(lu.tag for lu in lexical_units)
 
-# Get the proportion of each tag in the lexical units
-tag_proportions = {tag: count / lu_counts for tag, count in lu_tag_counts.items()}
-
 # Get MWE and chunk info:
 mwe_chunk_counts = sum(len(lu.spans) > 1 for lu in lexical_units)
 lu_type_counts = Counter(lu.type for lu in lexical_units)
+
+# Get the types of lexical units, single words, MWEs (contiguous and non-contiguous), and chunks, across each of the tags (MTP, HPB, etc.)
+lu_type_tag_counts = Counter((lu.type, lu.tag) for lu in lexical_units)
+# Print out the counts for each tag
+for tag, counts in lu_type_tag_counts.items():
+    print(f"{tag}: {counts}")
 
 ### Frequency information ###
 
@@ -229,51 +233,7 @@ with open(os.path.join(OUTPUT_DIR, "lu_overlaps.txt"), "w") as f:
 
 ### Visualizations ###
 
-# Plot the distribution of lexical unit types and figures of speech in the corpus combined into a single plot
-
-# Create a figure with two subplots
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 8))
-
-# Subplot 1: Distribution of Tags (Figures of Speech)
-tag_mapping = {'MTP': 'Metaphor', 'VIR': 'Irony', 'HPB': 'Hyperbole'}
-sorted_tags = sorted(lu_tag_counts.items(), key=lambda x: x[1], reverse=True)
-tags, counts = zip(*sorted_tags)
-
-# Map the old tags to new names
-new_tags = [tag_mapping.get(tag, tag) for tag in tags]
-
-ax1.bar(range(len(new_tags)), counts)
-ax1.set_xticks(range(len(new_tags)))
-ax1.set_xticklabels(new_tags, rotation=45, ha='right')
-ax1.set_xlabel('Figure')
-ax1.set_ylabel('Count')
-ax1.set_title('Distribution of Figures of Speech')
-
-# Subplot 2: Lexical Unit Types (SingleWord, MWE, and Chunk)
-# Combine ContiguousMWE and NonContiguousMWE under MWE
-mwe_count = lu_type_counts['ContiguousMWE'] + lu_type_counts['NonContiguousMWE']
-combined_counts = {
-    'SingleWord': lu_type_counts['single_word'],
-    'MWE': mwe_count,
-    'Chunk': lu_type_counts['CHUNK']
-}
-
-lu_types = ['SingleWord', 'MWE', 'Chunk']
-type_counts = [combined_counts[t] for t in lu_types]
-
-ax2.pie(type_counts, labels=lu_types, autopct='%1.1f%%', startangle=90)
-ax2.set_title('Proportion of Lexical Unit Types')
-ax2.axis('equal')
-
-# Adjust layout and add a main title
-plt.tight_layout()
-fig.suptitle('Lexical Unit Analysis', fontsize=16)
-plt.subplots_adjust(top=0.9)
-
-# Save the figure
-output_file = os.path.join(OUTPUT_DIR, 'lexical_unit_analysis.png')
-plt.savefig(output_file, dpi=300, bbox_inches='tight')
-plt.close(fig)  # Close the figure to free up memory
+## Visualize information about overlaps between metaphor and hyperbole in a heatmap; i.e. where lexical units with different tags but same spans are located.
 
 ## Visualize attribute information
 
@@ -297,60 +257,8 @@ attribute_counts = defaultdict(Counter)
 for category, value in categorized_attributes:
     attribute_counts[category][value] += 1
 
-# Plot the distribution of attributes
-
-def plot_attribute_counts(attribute_counts):
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 12), sharex=True)
-    
-    # Metaphor plot
-    metaphor_data = attribute_counts['Metaphor']
-    conv_data = [metaphor_data.get('CNV', 0), metaphor_data.get('NOV', 0)]
-    dir_data = [metaphor_data.get('DIR', 0), metaphor_data.get('IND', 0)]
-    
-    x = np.arange(2)
-    width = 0.35
-    
-    ax1.bar(x - width/2, conv_data, width, label='Conventionality')
-    ax1.bar(x + width/2, dir_data, width, label='Directness')
-    
-    ax1.set_ylabel('Counts')
-    ax1.set_title('Metaphor Attributes')
-    ax1.set_xticks(x)
-    ax1.set_xticklabels(['Conventional/Direct', 'Novel/Indirect'])
-    ax1.legend()
-    
-    for i, v in enumerate(conv_data):
-        ax1.text(i - width/2, v, str(v), ha='center', va='bottom')
-    for i, v in enumerate(dir_data):
-        ax1.text(i + width/2, v, str(v), ha='center', va='bottom')
-    
-    # Hyperbole plot
-    hyperbole_data = attribute_counts['Hyperbole']
-    dim_data = [hyperbole_data.get('QNT', 0), hyperbole_data.get('QLT', 0)]
-    deg_data = [hyperbole_data.get('1', 0), hyperbole_data.get('2', 0), hyperbole_data.get('3', 0)]
-    
-    x_dim = np.arange(2)
-    x_deg = np.arange(3)
-    
-    ax2.bar(x_dim - width/2, dim_data, width, label='Dimension')
-    ax2.bar(x_deg + width/2, deg_data, width, label='Degree')
-    
-    ax2.set_ylabel('Counts')
-    ax2.set_title('Hyperbole Attributes')
-    ax2.set_xticks(np.arange(3))
-    ax2.set_xticklabels(['Quantitative/Degree 1', 'Qualitative/Degree 2', 'Degree 3'])
-    ax2.legend()
-    
-    for i, v in enumerate(dim_data):
-        ax2.text(i - width/2, v, str(v), ha='center', va='bottom')
-    for i, v in enumerate(deg_data):
-        ax2.text(i + width/2, v, str(v), ha='center', va='bottom')
-    
-    plt.tight_layout()
-    
-    # Save the figure
-    output_file = os.path.join(OUTPUT_DIR, 'attribute_analysis.png')
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
-    plt.close(fig)  # Close the figure to free up memory
-
-plot_attribute_counts(attribute_counts)
+# Print the attribute counts
+for category, counter in attribute_counts.items():
+    print(f"{category} Attribute Counts:")
+    print(counter)
+    print()

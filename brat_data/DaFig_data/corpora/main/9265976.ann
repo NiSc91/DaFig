@@ -14,13 +14,13 @@ A8	Conventionality T4 CNV
 T5	MTP 216 223	iskolde
 A9	Directness T5 IND
 A10	Conventionality T5 CNV
-T6	MTP 375 383	stjernen
+T6	MTP 367 383	midtbanestjernen
 A11	Directness T6 IND
 A12	Conventionality T6 CNV
 T7	HPB 0 9	Stjernens
 A13	Dimension T7 QLT
 A14	Degree T7 1
-T8	HPB 375 383	stjernen
+T8	HPB 367 383	midtbanestjernen
 A15	Dimension T8 QLT
 A16	Degree T8 1
 T9	MTP 505 511	falder

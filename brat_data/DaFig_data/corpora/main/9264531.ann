@@ -5,10 +5,10 @@ T2	MTP 20 23	sig
 A3	Directness T2 IND
 A4	Conventionality T2 CNV
 R1	MultiWordExpression Arg1:T1 Arg2:T2	
-T3	MTP 44 49	skræk
+T3	MTP 44 54	skrækrunde
 A5	Directness T3 IND
 A6	Conventionality T3 NOV
-T4	HPB 44 49	skræk
+T4	HPB 44 54	skrækrunde
 A7	Dimension T4 QLT
 A8	Degree T4 2
 T5	MTP 67 70	gik
@@ -45,7 +45,7 @@ R5	MultiWordExpression Arg1:T12 Arg2:T13
 T14	MTP 538 545	oplyser
 A27	Directness T14 IND
 A28	Conventionality T14 CNV
-T15	HPB 631 638	legende
+T15	HPB 627 638	golflegende
 A29	Dimension T15 QLT
 A30	Degree T15 1
 T17	MTP 643 649	kæmpet
@@ -62,8 +62,8 @@ T23	MTP 985 988	går
 A39	Directness T23 IND
 A40	Conventionality T23 CNV
 T26	MTP 1084 1087	kom
-T27	MTP 1102 1107	stime
-T29	HPB 1097 1102	skræk
+T27	MTP 1097 1107	skrækstime
+T29	HPB 1097 1107	skrækstime
 A43	Dimension T29 QLT
 A44	Degree T29 2
 T30	MTP 1446 1452	afgive
@@ -92,16 +92,16 @@ A57	Directness T18 IND
 A58	Conventionality T18 CNV
 A35	Directness T27 IND
 A36	Conventionality T27 CNV
-T16	HPB 1901 1909	legenden
+T16	HPB 1897 1909	Golflegenden
 A59	Dimension T16 QLT
 A60	Degree T16 1
-T20	MTP 1000 1008	stjernen
+T20	MTP 996 1008	golfstjernen
 A61	Directness T20 IND
 A62	Conventionality T20 CNV
-T21	MTP 211 217	ikonet
+T21	MTP 207 217	golfikonet
 A63	Directness T21 IND
 A64	Conventionality T21 CNV
-T24	HPB 211 217	ikonet
+T24	HPB 207 217	golfikonet
 A65	Dimension T24 QLT
 A66	Degree T24 1
 A41	Directness T31 IND

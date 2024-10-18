@@ -20,7 +20,7 @@ R1	CHUNK Arg1:T7 Arg2:T8
 T4	MTP 333 347	energiforladte
 A5	Directness T4 IND
 A6	Conventionality T4 CNV
-T9	HPB 333 346	energiforladt
+T9	HPB 333 347	energiforladte
 A15	Dimension T9 QLT
 A16	Degree T9 1
 T10	MTP 472 479	hamrede

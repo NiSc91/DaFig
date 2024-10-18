@@ -35,7 +35,7 @@ R1	MultiWordExpression Arg1:T10 Arg2:T11
 T12	MTP 1736 1742	dækket
 A23	Directness T12 IND
 A24	Conventionality T12 NOV
-T13	MTP 1793 1799	tråden
+T13	MTP 1787 1799	beskedtråden
 A25	Directness T13 IND
 A26	Conventionality T13 CNV
 T14	MTP 1800 1803	lød
@@ -56,7 +56,7 @@ A38	Conventionality T19 CNV
 T20	MTP 2405 2410	lille
 A39	Directness T20 IND
 A40	Conventionality T20 CNV
-T21	MTP 2486 2492	tråden
+T21	MTP 2480 2492	beskedtråden
 A41	Directness T21 IND
 A42	Conventionality T21 CNV
 T22	MTP 2569 2579	baggrunden

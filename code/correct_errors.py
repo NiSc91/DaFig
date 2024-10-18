@@ -76,39 +76,47 @@ def apply_corrections(ann_file: str, doc_corrections: List[Dict]) -> Tuple[List[
         lines = f.readlines()
 
     changes_made = 0
-    for correction in doc_corrections:
-        entity_id = correction['entity_ID']
-        for i, line in enumerate(lines):
-            if line.startswith(entity_id):
-                parts = line.split('\t')
-                if len(parts) >= 3:
-                    tag = parts[1].split()[0]
-                    old_start, old_end = map(int, parts[1].split()[1:3])
-                    old_mention = parts[2].strip()
-                    new_start = correction['suggested_span']['start']
-                    new_end = correction['suggested_span']['end']
-                    new_mention = correction['suggested_mention']
-                    
-                    print(f"\nFile: {ann_file}")
-                    print(f"Entity ID: {entity_id}")
-                    print(f"Current: {old_start} {old_end}\t{old_mention}")
-                    print(f"Suggested: {new_start} {new_end}\t{new_mention}")
-                    
-                    while True:
-                        choice = input("Accept this change? (y/n): ").lower()
-                        if choice in ['y', 'n']:
-                            break
-                        print("Please enter 'y' for yes or 'n' for no.")
-                    
-                    if choice == 'y':
-                        lines[i] = f"{entity_id}\t{tag} {new_start} {new_end}\t{new_mention}\n"
-                        changes_made += 1
-                        logging.info(f"Change accepted in {ann_file} for entity {entity_id}")
-                    else:
-                        logging.info(f"Change rejected in {ann_file} for entity {entity_id}")
-                break
+    new_lines = []
 
-    return lines, changes_made
+    for line in lines:
+        if line.startswith('T'):  # Entity line
+            entity_id = line.split('\t')[0]
+            correction = next((c for c in doc_corrections if c['entity_ID'] == entity_id), None)
+            
+            if correction:
+                parts = line.split('\t')
+                tag = parts[1].split()[0]
+                old_start, old_end = map(int, parts[1].split()[1:3])
+                old_mention = parts[2].strip()
+                new_start = correction['suggested_span']['start']
+                new_end = correction['suggested_span']['end']
+                new_mention = correction['suggested_mention']
+                
+                print(f"\nFile: {ann_file}")
+                print(f"Entity ID: {entity_id}")
+                print(f"Current: {old_start} {old_end}\t{old_mention}")
+                print(f"Suggested: {new_start} {new_end}\t{new_mention}")
+                
+                while True:
+                    choice = input("Accept this change? (y/n): ").lower()
+                    if choice in ['y', 'n']:
+                        break
+                    print("Please enter 'y' for yes or 'n' for no.")
+                
+                if choice == 'y':
+                    new_line = f"{entity_id}\t{tag} {new_start} {new_end}\t{new_mention}\n"
+                    new_lines.append(new_line)
+                    changes_made += 1
+                    logging.info(f"Change accepted in {ann_file} for entity {entity_id}")
+                else:
+                    new_lines.append(line)
+                    logging.info(f"Change rejected in {ann_file} for entity {entity_id}")
+            else:
+                new_lines.append(line)
+        else:
+            new_lines.append(line)
+
+    return new_lines, changes_made
 
 def process_files(corrections: Dict[str, List[Dict]], ann_dir: str) -> Tuple[int, int]:
     total_files_processed = 0
@@ -162,26 +170,25 @@ def process_single_corpus(corpus_path: str, corrections_file: str, output_dir: s
 
 def main():
     # Declare variables
-    CORRECTIONS_FILE = os.path.join(TEMP_DIR, 'misaligned_spans.json')
-
     handler = CollectionHandler(CORPORA_DIR)
 
     all_corpora = handler.get_collections()
     print("All annotated corpora:", all_corpora)
 
     corpora_paths = {
-        'main': handler.get_collection_path(os.path.join(CORPORA_DIR, 'main')),
-        'agr1': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr1')),
-        'agr2': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr2')),
-        'agr3': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr3')),
-        'agr_final': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr_final')),
-        'consensus': handler.get_collection_path(os.path.join(CORPORA_DIR, 'consensus_agr2')),
+        #'main': handler.get_collection_path(os.path.join(CORPORA_DIR, 'main')),
+        #'agr1': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr1')),
+        #'agr2': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr2')),
+        #'agr3': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr3')),
+        #'agr_final': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr_final')),
+        'consensus_agr2': handler.get_collection_path(os.path.join(CORPORA_DIR, 'consensus_agr2')),
     }
 
     OUTPUT_DIR = TEMP_DIR
 
     # Process each corpus
     for corpus_name, corpus_path in corpora_paths.items():
+        CORRECTIONS_FILE = os.path.join(OUTPUT_DIR, f"misaligned_spans_{corpus_name}.json")
         print(f"\nProcessing corpus: {corpus_name}")
         process_single_corpus(corpus_path, CORRECTIONS_FILE, OUTPUT_DIR)
 

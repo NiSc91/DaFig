@@ -99,7 +99,7 @@ A62	Conventionality T31 CNV
 T32	HPB 1372 1378	eneste
 A63	Dimension T32 QNT
 A64	Degree T32 2
-T33	MTP 1513 1524	gennembruds
+T33	MTP 1513 1530	gennembrudsstærke
 A65	Directness T33 IND
 A66	Conventionality T33 CNV
 T34	MTP 1728 1734	vokset
