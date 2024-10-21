@@ -1,0 +1,21 @@
+T1	MTP 293 298	lyder
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 1291 1298	optaget
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 1379 1386	grænser
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 765 774	undervejs
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 801 806	lyder
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 493 498	holdt
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 930 935	hårdt
+A13	Directness T7 IND
+A14	Conventionality T7 CNV

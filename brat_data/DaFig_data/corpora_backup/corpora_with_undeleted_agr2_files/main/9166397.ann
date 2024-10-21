@@ -1,0 +1,126 @@
+T1	MTP 12 18	banker
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T3	MTP 40 45	plads
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 73 78	møder
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 134 138	slog
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 430 435	store
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 468 475	største
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 576 582	kampen
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 632 636	møde
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 662 668	ligger
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 713 719	ligger
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 831 835	højt
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 914 919	nåede
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 937 942	vejen
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 932 936	hele
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+R1	CHUNK Arg1:T15 Arg2:T14	
+T16	MTP 1215 1221	venter
+A31	Directness T16 IND
+A32	Conventionality T16 CNV
+T17	MTP 1231 1237	større
+A33	Directness T17 IND
+A34	Conventionality T17 CNV
+T18	MTP 1304 1312	indtaget
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+T19	HPB 1304 1312	indtaget
+A37	Dimension T19 QLT
+A38	Degree T19 3
+T20	MTP 1583 1587	kamp
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+T21	MTP 1487 1492	slået
+A41	Directness T21 IND
+A42	Conventionality T21 CNV
+T22	MTP 1480 1482	se
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	MTP 1596 1601	langt
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+T24	MTP 1758 1764	højere
+A47	Directness T24 IND
+A48	Conventionality T24 CNV
+T25	MTP 1923 1927	tage
+A49	Directness T25 IND
+A50	Conventionality T25 CNV
+T26	MTP 1981 1985	styr
+A51	Directness T26 IND
+A52	Conventionality T26 CNV
+T27	MTP 1989 1995	formen
+A53	Directness T27 IND
+A54	Conventionality T27 CNV
+T28	MTP 2046 2051	lukke
+A55	Directness T28 IND
+A56	Conventionality T28 CNV
+T29	MTP 2082 2087	taget
+A57	Directness T29 IND
+A58	Conventionality T29 CNV
+T30	MTP 2162 2167	langt
+A59	Directness T30 IND
+A60	Conventionality T30 CNV
+T31	MTP 2168 2171	hen
+A61	Directness T31 IND
+A62	Conventionality T31 CNV
+T32	MTP 2172 2174	ad
+A63	Directness T32 IND
+A64	Conventionality T32 CNV
+T33	MTP 2175 2180	vejen
+A65	Directness T33 IND
+A66	Conventionality T33 CNV
+R2	MultiWordExpression Arg1:T31 Arg2:T32	
+R3	MultiWordExpression Arg1:T32 Arg2:T33	
+T34	MTP 2181 2185	styr
+A67	Directness T34 IND
+A68	Conventionality T34 CNV
+T35	MTP 2209 2215	højere
+A69	Directness T35 IND
+A70	Conventionality T35 CNV
+T36	MTP 2200 2205	viste
+A71	Directness T36 IND
+A72	Conventionality T36 CNV
+T38	MTP 2308 2313	plads
+A75	Directness T38 IND
+A76	Conventionality T38 CNV
+T39	MTP 2358 2362	møde
+A77	Directness T39 IND
+A78	Conventionality T39 CNV
+T40	MTP 2393 2397	gang
+A79	Directness T40 IND
+A80	Conventionality T40 CNV
+T41	MTP 2443 2447	gang
+A81	Directness T41 IND
+A82	Conventionality T41 CNV
+T42	MTP 2472 2475	røg
+A83	Directness T42 IND
+A84	Conventionality T42 CNV
+T43	MTP 2555 2561	kampen
+A85	Directness T43 IND
+A86	Conventionality T43 CNV

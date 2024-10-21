@@ -1,0 +1,66 @@
+T1	MTP 217 223	faldet
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 224 225	i
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 226 229	god
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 237 241	jord
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+R1	MultiWordExpression Arg1:T1 Arg2:T2	
+R2	MultiWordExpression Arg1:T2 Arg2:T3	
+R3	MultiWordExpression Arg1:T3 Arg2:T4	
+T5	MTP 310 314	gæst
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 576 580	vise
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 732 736	vise
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	HPB 1024 1034	uhyggelige
+A15	Dimension T8 QLT
+A16	Degree T8 2
+T9	MTP 1066 1079	understregede
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 1118 1123	fokus
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 1161 1167	pålagt
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	MTP 1279 1285	rammer
+A23	Directness T12 IND
+A24	Conventionality T12 CNV
+T13	MTP 1298 1301	ved
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 1302 1307	siden
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 1308 1310	af
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+R4	MultiWordExpression Arg1:T13 Arg2:T14	
+R5	MultiWordExpression Arg1:T14 Arg2:T15	
+T16	HPB 1286 1297	fuldstændig
+A31	Dimension T16 QNT
+A32	Degree T16 1
+T17	MTP 1366 1375	frygtelig
+A33	Directness T17 IND
+A34	Conventionality T17 CNV
+T18	HPB 1530 1534	helt
+A35	Dimension T18 QNT
+A36	Degree T18 2
+T19	HPB 1535 1540	andet
+A37	Dimension T19 QNT
+A38	Degree T19 2
+R6	CHUNK Arg1:T18 Arg2:T19	
+T20	MTP 1590 1596	følger
+A39	Directness T20 IND
+A40	Conventionality T20 CNV

@@ -1,0 +1,72 @@
+T1	MTP 208 211	ser
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 310 316	vækket
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 406 411	holde
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 926 931	vejer
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 932 938	højere
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+R1	CHUNK Arg1:T4 Arg2:T5	
+T6	MTP 1408 1412	rent
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 1433 1436	ser
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 1812 1820	bevæbnet
+#1	AnnotatorNotes T8	"Bevæbnet" lægger sig her både til "våben", hvor betydningen ikke er overført, og til "horn", hvor jeg vil sige at man godt kan argumentere for at "bevæbnet" er en metafor (betydning 1.a i DDO lyder: "udstyre med et hjælpemiddel"
+T9	MTP 1855 1863	nedlagde
+A15	Directness T9 IND
+A16	Conventionality T9 CNV
+T10	MTP 1222 1225	led
+A17	Directness T10 IND
+A18	Conventionality T10 CNV
+T11	MTP 2048 2060	efterspillet
+A19	Directness T11 IND
+A20	Conventionality T11 CNV
+T12	MTP 1212 1221	naturligt
+A21	Directness T12 IND
+A22	Conventionality T12 CNV
+T13	MTP 2198 2200	ro
+A23	Directness T13 IND
+A24	Conventionality T13 CNV
+T14	MTP 2274 2279	store
+A25	Directness T14 IND
+A26	Conventionality T14 CNV
+T15	MTP 2389 2394	langt
+A27	Directness T15 IND
+A28	Conventionality T15 CNV
+T16	MTP 2440 2447	ophøjet
+A29	Directness T16 IND
+A30	Conventionality T16 CNV
+T17	MTP 2465 2470	klart
+A31	Directness T17 IND
+A32	Conventionality T17 CNV
+T18	MTP 2481 2487	følger
+A33	Conventionality T18 CNV
+A34	Directness T18 IND
+T19	MTP 2488 2491	med
+A35	Directness T19 IND
+A36	Conventionality T19 CNV
+R2	MultiWordExpression Arg1:T18 Arg2:T19	
+T20	HPB 1070 1074	fint
+A37	Dimension T20 QLT
+A38	Degree T20 1
+T21	MTP 1070 1074	fint
+A39	Directness T21 IND
+A40	Conventionality T21 CNV
+A41	Directness T8 IND
+A42	Conventionality T8 CNV
+T22	MTP 12 16	Fint
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	HPB 12 16	Fint
+A45	Dimension T23 QLT
+A46	Degree T23 1

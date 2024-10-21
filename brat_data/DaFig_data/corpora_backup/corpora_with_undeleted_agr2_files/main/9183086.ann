@@ -1,0 +1,85 @@
+T1	MTP 59 63	tråd
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 585 591	dækket
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 683 690	knyttes
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 757 764	Konkret
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 1008 1013	gange
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 1014 1019	forud
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 1172 1182	lokkefugle
+A13	Directness T7 IND
+A14	Conventionality T7 NOV
+T8	MTP 1339 1348	netværket
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 1516 1522	tråden
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 1693 1700	løftede
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 1710 1716	sløret
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+R1	MultiWordExpression Arg1:T10 Arg2:T11	
+T12	MTP 1736 1742	dækket
+A23	Directness T12 IND
+A24	Conventionality T12 NOV
+T13	MTP 1787 1799	beskedtråden
+A25	Directness T13 IND
+A26	Conventionality T13 CNV
+T14	MTP 1800 1803	lød
+A27	Directness T14 IND
+A28	Conventionality T14 CNV
+T15	MTP 1949 1954	grund
+A29	Directness T15 IND
+A30	Conventionality T15 CNV
+T16	HPB 2258 2261	alt
+A31	Dimension T16 QNT
+A32	Degree T16 1
+T18	HPB 2265 2269	alle
+A35	Dimension T18 QNT
+A36	Degree T18 1
+T19	MTP 2272 2275	lød
+A37	Directness T19 IND
+A38	Conventionality T19 CNV
+T20	MTP 2405 2410	lille
+A39	Directness T20 IND
+A40	Conventionality T20 CNV
+T21	MTP 2480 2492	beskedtråden
+A41	Directness T21 IND
+A42	Conventionality T21 CNV
+T22	MTP 2569 2579	baggrunden
+A43	Directness T22 IND
+A44	Conventionality T22 CNV
+T23	MTP 2544 2552	uddybede
+A45	Directness T23 IND
+A46	Conventionality T23 CNV
+T24	MTP 2614 2619	røget
+A47	Directness T24 IND
+A48	Conventionality T24 CNV
+T25	MTP 2688 2694	spille
+A49	Directness T25 IND
+A50	Conventionality T25 CNV
+T26	MTP 2695 2697	en
+A51	Directness T26 IND
+A52	Conventionality T26 CNV
+T27	MTP 2706 2711	rolle
+A53	Directness T27 IND
+A54	Conventionality T27 CNV
+R4	MultiWordExpression Arg1:T25 Arg2:T26	
+R5	MultiWordExpression Arg1:T26 Arg2:T27	
+T28	MTP 2698 2705	central
+A55	Directness T28 IND
+A56	Conventionality T28 CNV
+R2	CHUNK Arg1:T16 Arg2:T18	

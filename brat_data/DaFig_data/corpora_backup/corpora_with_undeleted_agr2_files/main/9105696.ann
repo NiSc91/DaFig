@@ -1,0 +1,39 @@
+T1	MTP 0 4	Stor
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 25 33	stjerner
+A3	Directness T2 IND
+T3	MTP 93 97	gang
+A4	Directness T3 IND
+A5	Conventionality T3 CNV
+T4	MTP 137 141	gang
+A6	Directness T4 IND
+A7	Conventionality T4 CNV
+T5	MTP 291 295	gang
+A8	Directness T5 IND
+A9	Conventionality T5 CNV
+T6	MTP 326 332	kommer
+A10	Directness T6 IND
+A11	Conventionality T6 CNV
+T7	MTP 373 381	stjernen
+A12	Directness T7 IND
+A13	Conventionality T7 CNV
+T8	MTP 505 512	noteret
+A14	Directness T8 IND
+T9	MTP 800 805	entré
+A15	Directness T9 IND
+A16	Conventionality T9 CNV
+T10	MTP 828 841	håndboldscene
+A17	Directness T10 IND
+T11	MTP 1224 1229	panel
+A18	Directness T11 IND
+A19	Conventionality T11 CNV
+T13	MTP 1290 1297	udpeget
+A22	Directness T13 IND
+A23	Conventionality T13 CNV
+T14	MTP 1323 1328	tabte
+A24	Directness T14 IND
+A25	Conventionality T14 CNV
+A20	Conventionality T2 CNV
+A21	Conventionality T8 CNV
+A26	Conventionality T10 CNV

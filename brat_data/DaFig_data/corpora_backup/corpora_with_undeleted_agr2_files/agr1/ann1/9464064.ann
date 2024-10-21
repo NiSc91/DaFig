@@ -1,0 +1,58 @@
+T1	MTP 262 265	sad
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 2013 2022	i spidsen
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 2007 2012	stået
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 2584 2590	brænde
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 2591 2593	på
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+R1	MultiWordExpression Arg1:T4 Arg2:T5	
+T6	MTP 2477 2486	blomstrer
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 2705 2711	render
+A13	Directness T7 IND
+A14	Conventionality T7 NOV
+T8	MTP 2712 2717	rundt
+A15	Directness T8 IND
+A16	Conventionality T8 NOV
+T9	MTP 2718 2719	i
+A17	Directness T9 IND
+A18	Conventionality T9 NOV
+T10	MTP 2720 2727	cirkler
+A19	Directness T10 IND
+A20	Conventionality T10 NOV
+R2	MultiWordExpression Arg1:T7 Arg2:T8	
+R3	MultiWordExpression Arg1:T8 Arg2:T9	
+R4	MultiWordExpression Arg1:T9 Arg2:T10	
+#1	AnnotatorNotes T7	"rende rundt i cirkler" er højst sansynligt lånt fra engelsk "run around in circles"
+T11	HPB 2731 2736	råber
+A21	Dimension T11 QLT
+A22	Degree T11 1
+T12	HPB 2740 2747	skriger
+A23	Dimension T12 QLT
+A24	Degree T12 1
+T13	MTP 2731 2736	råber
+A25	Directness T13 IND
+A26	Conventionality T13 NOV
+T14	MTP 2740 2747	skriger
+A27	Directness T14 IND
+A28	Conventionality T14 NOV
+T15	MTP 3617 3622	sendt
+A29	Directness T15 IND
+A30	Conventionality T15 NOV
+T16	MTP 3623 3624	i
+A31	Directness T16 IND
+A32	Conventionality T16 NOV
+T17	MTP 3625 3629	byen
+A33	Directness T17 IND
+A34	Conventionality T17 NOV
+R5	MultiWordExpression Arg1:T15 Arg2:T16	
+R6	MultiWordExpression Arg1:T16 Arg2:T17	

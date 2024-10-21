@@ -1,0 +1,61 @@
+T1	MTP 0 9	Stjernens
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 108 110	på
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 111 116	banen
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+R1	MultiWordExpression Arg1:T2 Arg2:T3	
+T4	MTP 101 107	kommer
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 216 223	iskolde
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 367 383	midtbanestjernen
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	HPB 0 9	Stjernens
+A13	Dimension T7 QLT
+A14	Degree T7 1
+T8	HPB 367 383	midtbanestjernen
+A15	Dimension T8 QLT
+A16	Degree T8 1
+T9	MTP 505 511	falder
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 607 609	lå
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 398 401	får
+T12	MTP 329 334	lille
+A21	Directness T12 IND
+A22	Conventionality T12 CNV
+T13	MTP 756 758	lå
+A23	Directness T13 IND
+A24	Conventionality T13 CNV
+T14	MTP 762 769	ventede
+A25	Directness T14 IND
+A26	Conventionality T14 CNV
+R2	CHUNK Arg1:T13 Arg2:T14	
+T15	HPB 1123 1131	stjernen
+A27	Dimension T15 QLT
+A28	Degree T15 1
+T16	MTP 1123 1131	stjernen
+A29	Directness T16 IND
+A30	Conventionality T16 CNV
+T17	MTP 1441 1444	vej
+A31	Directness T17 IND
+A32	Conventionality T17 NOV
+T18	MTP 1669 1672	Får
+T19	MTP 1869 1872	vej
+A33	Directness T19 IND
+A34	Conventionality T19 NOV
+#1	AnnotatorNotes T19	så vidt jeg kan søge mig frem til, er dette nok en anglicisme baseret på udtrykket "come one's way"
+#2	AnnotatorNotes T17	så vidt jeg kan søge mig frem til, er dette nok en anglicisme baseret på udtrykket "come one's way"
+A35	Directness T18 IND
+A36	Conventionality T18 CNV
+A37	Directness T11 IND
+A38	Conventionality T11 CNV

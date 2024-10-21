@@ -1,0 +1,45 @@
+T1	MTP 364 367	tog
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 448 452	hele
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 453 458	vejen
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 459 464	rundt
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+R1	MultiWordExpression Arg1:T2 Arg2:T3	
+R2	MultiWordExpression Arg1:T3 Arg2:T4	
+T5	MTP 540 544	true
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T7	MTP 919 922	bød
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 930 932	på
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+R3	MultiWordExpression Arg1:T7 Arg2:T8	
+T9	MTP 1187 1197	drejebogen
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T12	MTP 1449 1456	samlede
+A19	Directness T12 IND
+T13	MTP 275 278	sat
+A20	Directness T13 IND
+A21	Conventionality T13 NOV
+T14	MTP 287 289	op
+A22	Directness T14 IND
+A23	Conventionality T14 NOV
+R4	MultiWordExpression Arg1:T13 Arg2:T14	
+#1	AnnotatorNotes T13	Note: Tvetydig pga. metonymi
+#2	AnnotatorNotes T14	Note: Tvetydig pga. metonymi
+T6	MTP 1148 1154	udbrud
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T10	MTP 1261 1267	udbrud
+A24	Directness T10 IND
+A25	Conventionality T10 CNV
+A26	Conventionality T12 CNV

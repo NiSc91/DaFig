@@ -181,7 +181,7 @@ def main():
         #'agr2': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr2')),
         #'agr3': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr3')),
         #'agr_final': handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr_final')),
-        'consensus_agr2': handler.get_collection_path(os.path.join(CORPORA_DIR, 'consensus_agr2')),
+        #'consensus_agr2': handler.get_collection_path(os.path.join(CORPORA_DIR, 'consensus_agr2')),
     }
 
     OUTPUT_DIR = TEMP_DIR

@@ -1,0 +1,28 @@
+T1	MTP 366 373	oplyser
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 421 426	Målet
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 888 893	kæden
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 813 818	kæden
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 1040 1051	hotelkongen
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 1165 1172	svarede
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 1173 1176	til
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+R1	MultiWordExpression Arg1:T6 Arg2:T7	
+T8	MTP 534 541	markere
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 1325 1330	række
+A17	Directness T9 IND
+A18	Conventionality T9 CNV

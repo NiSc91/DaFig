@@ -1,0 +1,78 @@
+T1	HPB 14 21	legende
+#1	AnnotatorNotes T1	Overdrivelse eller ej? DDO har en definition der lyder: "kendt person eller ting der er genstand for mytedannelse". Men hvad vil det sige at være genstand for mytedannelse? Har han været det?
+T2	MTP 126 130	lang
+A1	Directness T2 IND
+A2	Conventionality T2 CNV
+T3	MTP 91 94	går
+A3	Directness T3 IND
+A4	Conventionality T3 CNV
+T4	MTP 272 286	atletikstjerne
+A5	Directness T4 IND
+A6	Conventionality T4 CNV
+T5	MTP 537 539	se
+A7	Directness T5 IND
+A8	Conventionality T5 CNV
+T6	MTP 540 547	tilbage
+A9	Directness T6 IND
+A10	Conventionality T6 CNV
+R1	MultiWordExpression Arg1:T5 Arg2:T6	
+T7	MTP 554 558	lang
+A11	Directness T7 IND
+A12	Conventionality T7 CNV
+T8	MTP 585 590	store
+A13	Directness T8 IND
+A14	Conventionality T8 CNV
+T9	MTP 577 581	budt
+A15	Directness T9 IND
+A16	Conventionality T9 CNV
+T10	MTP 582 584	på
+A17	Directness T10 IND
+A18	Conventionality T10 CNV
+R2	MultiWordExpression Arg1:T9 Arg2:T10	
+T11	MTP 610 617	nedture
+A19	Directness T11 IND
+A20	Conventionality T11 CNV
+T12	MTP 635 647	dopingsynder
+A21	Directness T12 IND
+A22	Conventionality T12 NOV
+T13	MTP 892 896	lang
+A23	Directness T13 IND
+A24	Conventionality T13 CNV
+T14	MTP 882 888	fulgte
+A25	Directness T14 IND
+A26	Conventionality T14 CNV
+T15	MTP 928 932	ramt
+A27	Directness T15 IND
+A28	Conventionality T15 CNV
+T16	MTP 974 981	skyggen
+A29	Directness T16 IND
+A30	Conventionality T16 CNV
+T17	MTP 967 971	stod
+A31	Directness T17 IND
+A32	Conventionality T17 CNV
+T19	MTP 1022 1037	sprinterstjerne
+A35	Directness T19 IND
+A36	Conventionality T19 CNV
+T20	MTP 1148 1153	sætte
+A37	Directness T20 IND
+A38	Conventionality T20 CNV
+T21	MTP 1167 1169	på
+A39	Directness T21 IND
+A40	Conventionality T21 CNV
+T22	MTP 1170 1175	plads
+A41	Directness T22 IND
+A42	Conventionality T22 CNV
+R5	MultiWordExpression Arg1:T20 Arg2:T21	
+R6	MultiWordExpression Arg1:T21 Arg2:T22	
+T23	HPB 1182 1188	verden
+A43	Dimension T23 QLT
+A44	Degree T23 2
+T24	MTP 1570 1582	dopingfælden
+A45	Directness T24 IND
+A46	Conventionality T24 CNV
+T25	MTP 1764 1770	mærket
+A47	Directness T25 IND
+A48	Conventionality T25 CNV
+A49	Dimension T1 QLT
+A50	Degree T1 1
+R3	CHUNK Arg1:T17 Arg2:T16	

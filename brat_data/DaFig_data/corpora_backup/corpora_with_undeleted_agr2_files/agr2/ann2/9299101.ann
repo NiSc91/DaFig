@@ -1,0 +1,132 @@
+T1	MTP 57 64	drømmer
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 123 129	feltet
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	MTP 136 142	rammer
+A5	Directness T3 IND
+A6	Conventionality T3 CNV
+T4	MTP 177 184	drømmen
+A7	Directness T4 IND
+A8	Conventionality T4 CNV
+T5	MTP 193 197	knæk
+A9	Directness T5 IND
+A10	Conventionality T5 CNV
+T6	MTP 185 189	lidt
+A11	Directness T6 IND
+A12	Conventionality T6 CNV
+T7	MTP 222 225	bud
+A13	Directness T7 IND
+A14	Conventionality T7 CNV
+T8	MTP 294 300	rammer
+A15	Directness T8 IND
+A16	Conventionality T8 CNV
+T9	MTP 324 330	venter
+A17	Directness T9 IND
+A18	Conventionality T9 CNV
+T10	MTP 419 422	guf
+A19	Directness T10 IND
+A20	Conventionality T10 CNV
+T11	MTP 415 418	ren
+A21	Directness T11 IND
+A22	Conventionality T11 CNV
+T12	WIDLII 430 436	rytter
+T13	MTP 489 495	sætter
+A23	Directness T13 IND
+A24	Conventionality T13 CNV
+T14	MTP 496 500	alle
+A25	Directness T14 IND
+A26	Conventionality T14 CNV
+T15	MTP 501 505	sejl
+A27	Directness T15 IND
+A28	Conventionality T15 CNV
+T16	MTP 506 509	ind
+A29	Directness T16 IND
+A30	Conventionality T16 CNV
+#1	AnnotatorNotes T16	Variant af "sætte alle sejl til"
+T17	MTP 567 577	brølstærke
+A31	Directness T17 IND
+A32	Conventionality T17 NOV
+T18	MTP 596 606	involveret
+A33	Directness T18 IND
+A34	Conventionality T18 CNV
+T19	MTP 684 688	udgå
+A35	Directness T19 IND
+A36	Conventionality T19 CNV
+T20	MTP 746 750	drøm
+A37	Directness T20 IND
+A38	Conventionality T20 CNV
+T21	MTP 751 755	lidt
+A39	Directness T21 IND
+A40	Conventionality T21 CNV
+T22	MTP 759 763	knæk
+A41	Directness T22 IND
+A42	Conventionality T22 CNV
+T23	MTP 850 854	sige
+A43	Directness T23 IND
+A44	Conventionality T23 CNV
+T24	MTP 1117 1123	kommer
+A45	Directness T24 IND
+A46	Conventionality T24 CNV
+T25	MTP 1124 1127	til
+A47	Directness T25 IND
+A48	Conventionality T25 CNV
+R1	MultiWordExpression Arg1:T13 Arg2:T14	
+R2	MultiWordExpression Arg1:T14 Arg2:T15	
+R3	MultiWordExpression Arg1:T15 Arg2:T16	
+R4	MultiWordExpression Arg1:T24 Arg2:T25	
+T26	MTP 1131 1135	køre
+A49	Directness T26 IND
+A50	Conventionality T26 CNV
+T27	MTP 1417 1421	sige
+A51	Directness T27 IND
+A52	Conventionality T27 CNV
+T28	MTP 1422 1428	farvel
+A53	Directness T28 IND
+A54	Conventionality T28 CNV
+T29	MTP 1429 1432	til
+A55	Directness T29 IND
+A56	Conventionality T29 CNV
+R5	MultiWordExpression Arg1:T27 Arg2:T28	
+R6	MultiWordExpression Arg1:T28 Arg2:T29	
+T30	MTP 1579 1582	tog
+A57	Directness T30 IND
+A58	Conventionality T30 CNV
+T31	MTP 1583 1586	sig
+A59	Directness T31 IND
+A60	Conventionality T31 CNV
+T32	MTP 1587 1589	af
+A61	Directness T32 IND
+R7	MultiWordExpression Arg1:T30 Arg2:T31	
+R8	MultiWordExpression Arg1:T31 Arg2:T32	
+T33	MTP 1625 1631	kommer
+A62	Directness T33 IND
+A63	Conventionality T33 CNV
+T34	MTP 1632 1635	mig
+A64	Directness T34 IND
+A65	Conventionality T34 CNV
+R9	MultiWordExpression Arg1:T33 Arg2:T34	
+T35	WIDLII 1645 1652	udtalte
+A66	Conventionality T35 CNV
+T36	MTP 1699 1702	har
+A67	Directness T36 IND
+T37	MTP 1733 1736	til
+A68	Directness T37 IND
+A69	Conventionality T37 CNV
+T38	MTP 1737 1741	gode
+A70	Directness T38 IND
+A71	Conventionality T38 CNV
+R10	MultiWordExpression Arg1:T36 Arg2:T37	
+R11	MultiWordExpression Arg1:T37 Arg2:T38	
+T39	MTP 1747 1751	blev
+A72	Directness T39 IND
+T40	MTP 1890 1892	på
+A73	Directness T40 IND
+A74	Conventionality T40 CNV
+T41	MTP 1893 1899	spring
+A75	Directness T41 IND
+A76	Conventionality T41 CNV
+R12	MultiWordExpression Arg1:T40 Arg2:T41	
+T42	MTP 1942 1945	bud
+A77	Directness T42 IND

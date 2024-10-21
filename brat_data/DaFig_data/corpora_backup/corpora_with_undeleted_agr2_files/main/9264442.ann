@@ -1,0 +1,189 @@
+T1	MTP 12 23	spillerjagt
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 7 11	vild
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+T3	HPB 7 11	vild
+A5	Dimension T3 QNT
+T4	HPB 30 40	katastrofe
+A6	Dimension T4 QLT
+A7	Degree T4 1
+T5	MTP 196 202	følger
+A8	Directness T5 IND
+T6	MTP 203 206	med
+A9	Directness T6 IND
+A10	Conventionality T6 CNV
+A11	Conventionality T5 CNV
+R1	MultiWordExpression Arg1:T5 Arg2:T6	
+T7	MTP 227 237	overlevede
+A12	Directness T7 IND
+A13	Conventionality T7 CNV
+T8	MTP 268 272	står
+A14	Directness T8 IND
+A15	Conventionality T8 CNV
+T9	HPB 71 79	voldsomt
+A16	Dimension T9 QLT
+A17	Degree T9 1
+T10	MTP 71 79	voldsomt
+A18	Directness T10 IND
+A19	Conventionality T10 CNV
+T11	MTP 368 372	slår
+A20	Directness T11 IND
+A21	Conventionality T11 CNV
+T12	MTP 382 386	fast
+A22	Directness T12 IND
+A23	Conventionality T12 CNV
+R2	MultiWordExpression Arg1:T11 Arg2:T12	
+T13	MTP 458 463	store
+A24	Directness T13 IND
+A25	Conventionality T13 CNV
+T14	MTP 482 488	venter
+A26	Directness T14 IND
+A27	Conventionality T14 CNV
+T15	MTP 553 557	åbne
+A28	Directness T15 IND
+A29	Conventionality T15 CNV
+T16	MTP 787 791	gang
+A30	Directness T16 IND
+T17	MTP 873 879	kampen
+A31	Directness T17 IND
+A32	Conventionality T17 CNV
+T18	MTP 885 891	kigger
+A33	Directness T18 IND
+A34	Conventionality T18 CNV
+T19	MTP 915 920	holde
+A35	Directness T19 IND
+A36	Conventionality T19 CNV
+T20	MTP 921 925	fast
+A37	Directness T20 IND
+A38	Conventionality T20 CNV
+R3	MultiWordExpression Arg1:T19 Arg2:T20	
+T21	MTP 976 981	peger
+A39	Directness T21 IND
+A40	Conventionality T21 CNV
+T22	MTP 1001 1007	højere
+A41	Directness T22 IND
+A42	Conventionality T22 CNV
+T23	MTP 1020 1022	på
+A43	Directness T23 IND
+A44	Conventionality T23 CNV
+T24	MTP 1023 1026	den
+A45	Directness T24 IND
+A46	Conventionality T24 CNV
+T25	MTP 1027 1032	korte
+A47	Directness T25 IND
+A48	Conventionality T25 CNV
+T26	MTP 1033 1037	bane
+A49	Directness T26 IND
+A50	Conventionality T26 CNV
+R4	MultiWordExpression Arg1:T23 Arg2:T24	
+R5	MultiWordExpression Arg1:T24 Arg2:T25	
+R6	MultiWordExpression Arg1:T25 Arg2:T26	
+T27	MTP 1424 1428	side
+A51	Directness T27 IND
+A52	Conventionality T27 CNV
+T28	MTP 1461 1469	jonglere
+A53	Directness T28 IND
+A54	Conventionality T28 CNV
+T29	MTP 1515 1521	spille
+A55	Directness T29 IND
+A56	Conventionality T29 CNV
+T30	MTP 1522 1525	med
+A57	Directness T30 IND
+A58	Conventionality T30 CNV
+T31	MTP 1526 1535	musklerne
+A59	Directness T31 IND
+A60	Conventionality T31 CNV
+R7	MultiWordExpression Arg1:T29 Arg2:T30	
+R8	MultiWordExpression Arg1:T30 Arg2:T31	
+T32	MTP 1570 1578	bomberen
+A61	Directness T32 IND
+A62	Conventionality T32 NOV
+#1	AnnotatorNotes T32	I ordbogen kun opslag ang. pilot i bombefly.
+T33	MTP 1746 1751	langt
+A63	Directness T33 IND
+A64	Conventionality T33 CNV
+T34	MTP 1752 1758	fremme
+A65	Directness T34 IND
+A66	Conventionality T34 CNV
+R9	CHUNK Arg1:T33 Arg2:T34	
+T35	MTP 1786 1787	i
+A67	Directness T35 IND
+A68	Conventionality T35 CNV
+T36	MTP 1788 1792	spil
+A69	Directness T36 IND
+A70	Conventionality T36 CNV
+R10	MultiWordExpression Arg1:T35 Arg2:T36	
+T38	MTP 1984 1993	efterlyst
+A71	Directness T38 IND
+A72	Conventionality T38 CNV
+T39	MTP 2052 2057	rolle
+A73	Directness T39 IND
+A74	Conventionality T39 CNV
+T40	MTP 2260 2265	anker
+A75	Directness T40 IND
+A76	Conventionality T40 NOV
+T41	HPB 2427 2435	desperat
+A77	Dimension T41 QLT
+A78	Degree T41 1
+T42	MTP 2558 2564	nærmer
+A79	Directness T42 IND
+A80	Conventionality T42 CNV
+T43	MTP 2591 2594	sig
+A81	Directness T43 IND
+A82	Conventionality T43 CNV
+R11	MultiWordExpression Arg1:T42 Arg2:T43	
+T44	MTP 2647 2652	varmt
+A83	Directness T44 IND
+A84	Conventionality T44 CNV
+T45	MTP 2653 2657	blik
+A85	Directness T45 IND
+R12	CHUNK Arg1:T44 Arg2:T45	
+A86	Conventionality T45 CNV
+T46	MTP 2709 2712	har
+A87	Directness T46 IND
+A88	Conventionality T46 CNV
+T47	HPB 2761 2767	uskønt
+A89	Dimension T47 QLT
+A90	Degree T47 1
+T48	MTP 2830 2839	mysterium
+A91	Directness T48 DIR
+A92	Conventionality T48 CNV
+T49	HPB 2830 2839	mysterium
+A93	Dimension T49 QLT
+A94	Degree T49 2
+T50	MTP 3107 3125	omdrejningspunktet
+A95	Directness T50 IND
+A96	Conventionality T50 CNV
+T51	MTP 3349 3353	slog
+A97	Directness T51 IND
+A98	Conventionality T51 CNV
+T52	MTP 3354 3358	fast
+A99	Directness T52 IND
+A100	Conventionality T52 CNV
+R13	MultiWordExpression Arg1:T51 Arg2:T52	
+T53	MTP 3554 3561	markant
+A101	Directness T53 IND
+A102	Conventionality T53 CNV
+T54	MTP 3588 3590	på
+A103	Directness T54 IND
+A104	Conventionality T54 CNV
+T55	MTP 3591 3596	plads
+A105	Directness T55 IND
+A106	Conventionality T55 CNV
+R14	MultiWordExpression Arg1:T54 Arg2:T55	
+T37	MTP 1816 1826	bombertype
+A107	Directness T37 IND
+A108	Conventionality T37 NOV
+T56	HPB 1570 1578	bomberen
+A109	Dimension T56 QLT
+A110	Degree T56 3
+T57	HPB 1816 1826	bombertype
+A111	Dimension T57 QLT
+A112	Degree T57 3
+T58	MTP 1972 1980	oprydder
+A113	Directness T58 IND
+A114	Conventionality T58 CNV
+A115	Degree T3 1
+A116	Conventionality T16 CNV

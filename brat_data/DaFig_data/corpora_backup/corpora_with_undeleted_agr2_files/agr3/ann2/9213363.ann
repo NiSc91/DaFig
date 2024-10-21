@@ -1,0 +1,40 @@
+T1	MTP 41 60	grænseoverskridende
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T3	MTP 423 428	omløb
+T4	MTP 474 479	lille
+A3	Directness T4 IND
+A4	Conventionality T4 CNV
+T5	HPB 626 628	så
+A5	Dimension T5 QNT
+A6	Degree T5 2
+T6	HPB 629 634	snart
+A7	Dimension T6 QNT
+A8	Degree T6 2
+R1	MultiWordExpression Arg1:T5 Arg2:T6	
+T7	MTP 738 757	grænseoverskridende
+A9	Directness T7 IND
+A10	Conventionality T7 CNV
+T8	MTP 1156 1159	får
+A11	Directness T8 IND
+A12	Conventionality T8 CNV
+T9	MTP 1193 1201	omfanget
+A13	Directness T9 IND
+A14	Conventionality T9 CNV
+T10	MTP 1220 1226	større
+A15	Directness T10 IND
+A16	Conventionality T10 CNV
+T11	MTP 1214 1219	langt
+A17	Directness T11 IND
+A18	Conventionality T11 CNV
+T13	MTP 1609 1614	langt
+A19	Directness T13 IND
+A20	Conventionality T13 CNV
+A21	Directness T3 IND
+A22	Conventionality T3 CNV
+T2	MTP 688 691	let
+A23	Directness T2 IND
+A24	Conventionality T2 CNV
+T12	MTP 1352 1358	urolig
+A25	Directness T12 IND
+A26	Conventionality T12 CNV

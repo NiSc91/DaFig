@@ -1,0 +1,14 @@
+T1	MTP 478 483	rydde
+A1	Directness T1 IND
+A2	Conventionality T1 CNV
+T2	MTP 484 486	op
+A3	Directness T2 IND
+A4	Conventionality T2 CNV
+R1	MultiWordExpression Arg1:T1 Arg2:T2	
+T3	HPB 593 597	ikke
+A5	Dimension T3 QNT
+A6	Degree T3 1
+T4	HPB 610 615	nogen
+A7	Dimension T4 QNT
+A8	Degree T4 1
+R2	CHUNK Arg1:T3 Arg2:T4	

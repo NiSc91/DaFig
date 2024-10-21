@@ -40,7 +40,8 @@ A28	Conventionality T14 CNV
 T15	MTP 1220 1226	større
 A29	Directness T15 IND
 A30	Conventionality T15 CNV
-T16	WIDLII 1433 1441	opslaget
+T16	MTP 1433 1441	opslaget
+#2	AnnotatorNotes T16	Redigeret fra WIDLII til MTP og tilføjet conventional or indirect.
 T17	MTP 1474 1482	profiler
 A31	Directness T17 IND
 A32	Conventionality T17 CNV
@@ -65,4 +66,6 @@ A44	Conventionality T23 CNV
 T24	MTP 397 405	profiler
 A45	Directness T24 IND
 A46	Conventionality T24 CNV
+A47	Directness T16 IND
+A48	Conventionality T16 CNV
 #1	AnnotatorNotes T16	i tvivl om det skal være metaphor (conventional, indirect). 

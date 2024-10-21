@@ -5,8 +5,9 @@ T2	MTP 51 56	viser
 A3	Directness T2 IND
 A4	Conventionality T2 CNV
 #1	AnnotatorNotes T2	4. bære eller være (klart) vidnesbyrd om; vidne om
-T3	WIDLII 347 357	udspillede
-T4	WIDLII 381 384	sig
+T3	MTP 347 357	udspillede
+T4	MTP 381 384	sig
+#2	AnnotatorNotes T3-T4	Redigeret fra "WIDLII" til "MTP"
 T5	MTP 374 380	scener
 A5	Directness T5 IND
 A6	Conventionality T5 NOV
@@ -47,5 +48,9 @@ A28	Conventionality T16 CNV
 T17	MTP 1719 1725	slippe
 A29	Directness T17 IND
 A30	Conventionality T17 CNV
+A31	Directness T3 IND
+A32	Conventionality T3 CNV
+A33	Directness T4 IND
+A34	Conventionality T4 CNV
 #2	AnnotatorNotes T3	i tvivl om det skal være metaphor (conventional, indirect).
 #3	AnnotatorNotes T4	i tvivl om det skal være metaphor (conventional, indirect).

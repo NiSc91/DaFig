@@ -1,18 +1,20 @@
 import os
 from config import *
 import subprocess
+import peek
 
-# Get agreement collection
-CORPUS_PATHS = {
-    'samuel_combined': os.path.join(ANNOTATED_DIR, "agr_collection/combined_agr/Samuel"),
-    'stephanie_combined': os.path.join(ANNOTATED_DIR, "agr_collection/combined_agr/Stephanie"),
-# Uncomment and add other corpus paths as needed
- 'samuel_sample3': os.path.join(ANNOTATED_DIR, 'agr_collection/Samuel/sample3'),
- 'stephanie_sample3': os.path.join(ANNOTATED_DIR, 'agr_collection/Stephanie/sample3'),
-# ... and so on
-}
+## Declare variables
+handler = CollectionHandler(CORPORA_DIR)
+AGR_NAMES = ['agr1', 'agr2', 'agr3', 'agr_combined', 'consensus']
+AGR_PATHS = {f"{name.upper()}_PATH": handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in AGR_NAMES}
+OUTPUT_DIR = TEMP_DIR
 
-## Helper functions
+# Create a lambda function to get ann paths
+get_ann_path = lambda base_path, ann_folder: os.path.join(base_path, ann_folder)
+ann_paths = {f"{name.upper()}_ANN1_PATH": get_ann_path(base_path, 'ann1') for name, base_path in AGR_PATHS.items()}
+ann_paths.update({f"{name.upper()}_ANN2_PATH": get_ann_path(base_path, 'ann2') for name, base_path in AGR_PATHS.items()})
+
+### Helper functions ###
 def extract_tar_gz_file(file_path, destination_path):
     with tarfile.open(file_path, 'r:gz') as tar:
         tar.extractall(path=destination_path)
@@ -29,14 +31,9 @@ def rename_files(directory):
     
     return mappings
 
-##Define annotators and create brat_peek corpus objects
-import peek
-
-ANNOTATOR_1 = "Samuel"
-ANNOTATOR_2 = "Stephanie"
-
-ann_corpus_ann1 = peek.AnnCorpus(CORPUS_PATHS[f'{ANNOTATOR_1.lower()}_combined'])
-ann_corpus_ann2 = peek.AnnCorpus(CORPUS_PATHS[f'{ANNOTATOR_2.lower()}_combined'])
+## Create brat_peek corpus objects for the AGR_COMBINED collection
+ann_corpus_ann1 = peek.AnnCorpus(ann_paths['AGR3_PATH_ANN1_PATH'])
+ann_corpus_ann2 = peek.AnnCorpus(ann_paths['AGR3_PATH_ANN2_PATH'])
 
 # Calculate agreement
 peek.metrics.show_iaa([ann_corpus_ann1, ann_corpus_ann2], ['filename', 'label', 'offset'], ['MTP', 'HPB', 'WIDLII'], tsv=True)
@@ -84,13 +81,11 @@ def run_brateval(evaluation_folder, groundtruth_folder, span_match='exact', type
         print(f"Error output: {e.stderr}")
         return None
 
+# Run brateval for AGR_COMBINED path with exact span and type match
 output = run_brateval(
-    CORPUS_PATHS['samuel_combined'],
-    CORPUS_PATHS['stephanie_combined'],
-    span_match='approx',
-    threshold=0.8,
-    type_match='exact',
+    ann_paths['AGR3_PATH_ANN1_PATH'],
+    ann_paths['AGR3_PATH_ANN2_PATH'],
     verbose=False,
     full_taxonomy=True,
-    config_path=ANNOTATED_DIR
+    config_path=CORPORA_DIR
 )   
