@@ -16,19 +16,26 @@ from dataclasses import dataclass
 from matplotlib import pyplot as plt
 import seaborn as sns
 
-
 ## Declare variables
 handler = CollectionHandler(CORPORA_DIR)
 
 all_corpora = handler.get_collections()
 print("All annotated corpora:", all_corpora)
-MAIN_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'main'))
-AGR1_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr1'))
-AGR2_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr2'))
-AGR3_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr3'))
-AGR_FINAL_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'agr_final'))
-CONSENSUS_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR, 'consensus_agr2'))
+
+# Create path for main corpus
+MAIN_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR,'main'))
+# Create paths for the agreement corpora
+AGR_NAMES = ['main', 'agr1', 'agr2', 'agr3', 'agr_combined', 'consensus']
+AGR_PATHS = {f"{name.upper()}_PATH": handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in AGR_NAMES}
 OUTPUT_DIR = TEMP_DIR
+
+# Create a lambda function to get ann paths (does not apply to main)
+get_ann_path = lambda base_path, ann_folder: os.path.join(base_path, ann_folder)
+
+# Create a dictionary with the paths to the ann folders for each corpus except for main
+base_paths = {name: handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in AGR_NAMES}
+ann_paths = {f"{name.upper()}_ANN1_PATH": get_ann_path(base_path, 'ann1') for name, base_path in AGR_PATHS.items()}
+ann_paths.update({f"{name.upper()}_ANN2_PATH": get_ann_path(base_path, 'ann2') for name, base_path in AGR_PATHS.items()})
 
 ## Read in the main corpus and perform some basic operations
 main_corpus = peek.AnnCorpus(MAIN_PATH, txt=True)

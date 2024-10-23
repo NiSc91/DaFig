@@ -5,12 +5,16 @@ import peek
 
 ## Declare variables
 handler = CollectionHandler(CORPORA_DIR)
-AGR_NAMES = ['agr1', 'agr2', 'agr3', 'agr_combined', 'consensus']
+# Create paths for the agreement corpora
+AGR_NAMES = ['main', 'agr1', 'agr2', 'agr3', 'agr_combined', 'consensus']
 AGR_PATHS = {f"{name.upper()}_PATH": handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in AGR_NAMES}
 OUTPUT_DIR = TEMP_DIR
 
-# Create a lambda function to get ann paths
+# Create a lambda function to get ann paths (does not apply to main)
 get_ann_path = lambda base_path, ann_folder: os.path.join(base_path, ann_folder)
+
+# Create a dictionary with the paths to the ann folders for each corpus except for main
+base_paths = {name: handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in AGR_NAMES}
 ann_paths = {f"{name.upper()}_ANN1_PATH": get_ann_path(base_path, 'ann1') for name, base_path in AGR_PATHS.items()}
 ann_paths.update({f"{name.upper()}_ANN2_PATH": get_ann_path(base_path, 'ann2') for name, base_path in AGR_PATHS.items()})
 
