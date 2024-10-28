@@ -1,9 +1,12 @@
+import pdb
 from config import *
 import json
 import torch
 #import torch_directml
 from transformers import AutoTokenizer, DistilBertForTokenClassification
+from transformers import AdamW, get_linear_schedule_with_warmup
 from torch.utils.data import Dataset, DataLoader, random_split
+
 # Load the JSON file
 with open(os.path.join(TEMP_DIR, 'tagged_documents.json'), 'r', encoding='utf-8') as f:
     data = json.load(f)
@@ -33,7 +36,7 @@ tokenizer = AutoTokenizer.from_pretrained("distilbert-base-multilingual-cased")
 model = DistilBertForTokenClassification.from_pretrained('distilbert-base-multilingual-cased', num_labels=len(label2id))
 
 class MyDataset(Dataset):
-    def __init__(self, texts, labels, tokenizer, max_len=128):
+    def __init__(self, texts, labels, tokenizer, max_len=512):
         self.texts = texts
         self.labels = labels
         self.tokenizer = tokenizer
@@ -61,11 +64,8 @@ class MyDataset(Dataset):
             'labels': torch.tensor(label_ids)
         }
 
-# Create dataset and dataloader
+# Create dataset
 dataset = MyDataset(documents, label_ids, tokenizer)
-#dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
-
-from transformers import AdamW, get_linear_schedule_with_warmup
 
 # Hyperparameters
 num_epochs = 10
@@ -80,6 +80,41 @@ train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
 
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_dataloader = DataLoader(val_dataset, batch_size=batch_size)
+
+# Get a random sample from the dataset
+sample_idx = torch.randint(len(dataset), size=(1,)).item()
+sample = dataset[sample_idx]
+
+# Print the sample
+print("Sample from the dataset:")
+print(f"Input IDs shape: {sample['input_ids'].shape}")
+print(f"Attention Mask shape: {sample['attention_mask'].shape}")
+print(f"Labels shape: {sample['labels'].shape}")
+
+# Decode the input IDs back to text
+decoded_text = tokenizer.decode(sample['input_ids'])
+print(f"\nDecoded text:\n{decoded_text}")
+
+# Print the labels
+print(f"\nLabels:\n{sample['labels'].tolist()}")
+
+# Check if shapes match
+assert sample['input_ids'].shape == sample['attention_mask'].shape == sample['labels'].shape, "Shapes don't match!"
+
+# Check if the number of labels is correct
+unique_labels = set(sample['labels'].tolist()) - {-100}  # Exclude padding label
+print(f"\nUnique labels in this sample: {unique_labels}")
+print(f"Total number of unique labels in the dataset: {len(label2id)}")
+
+# Check dataloader
+batch = next(iter(train_dataloader))
+print(f"\nBatch shapes:")
+print(f"Input IDs: {batch['input_ids'].shape}")
+print(f"Attention Mask: {batch['attention_mask'].shape}")
+print(f"Labels: {batch['labels'].shape}")
+
+# Verify batch size
+assert batch['input_ids'].shape[0] == batch_size, f"Expected batch size {batch_size}, got {batch['input_ids'].shape[0]}"
 
 # Set up DirectML device
 #dml = torch_directml.device()
