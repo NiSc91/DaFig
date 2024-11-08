@@ -10,6 +10,7 @@ import json
 from config import *
 from parse_data import ExtendedExample, ExtendedBratParser, LexicalUnit, Span, Entity, Relation, Attribute
 from nltk.corpus import stopwords
+from nltk.tokenize import sent_tokenize
 from collections import Counter, defaultdict
 from itertools import chain, combinations
 from dataclasses import dataclass
@@ -43,6 +44,12 @@ doc = main_corpus.get_random_doc()
 print("Random corpus document from the main collection:")
 print()
 print(doc.anns.items())
+
+# Create span class to handle spans
+@dataclass(frozen=True)
+class Span:
+    start: int
+    end: int
 
 ### Rudimentary analysis using brat_peek library ###
 
@@ -210,39 +217,106 @@ all_texts = {
     example.id: example.text
     for example in examples}
 
-## Create an all_lexical_units dictionary with document_ID as key, and a list of lexical units as values.
+# Create an all_lexical_units dictionary with document_ID as key, and a list of lexical units as values.
 all_lus = {
     example.id: [(lu.mention, lu.spans, lu.type, lu.tag) for lu in example.lexical_units]
-    for example in examples}
+    for example in examples
+}
 
-# Based on the all_lus dictionary, create a new dictionary with document_ID as key, and a list of entities which have different tags but same or over-lapping spans, as values.
-lus_with_different_types = defaultdict(list)
+# Create a new dictionary with document_ID as key, and a list of entities which have different tags but same or overlapping spans, as values.
+lu_overlaps = defaultdict(set)
 
 for doc_id, lus in all_lus.items():
-    for lu1, spans1, type1, tag1 in lus:
-        for lu2, spans2, type2, tag2 in lus:
-            if tag1!= tag2 and spans1 == spans2:
-                lus_with_different_types[doc_id].append((lu1, type1, tag1, lu2, type2, tag2))
+    # Use combinations to compare each pair of LUs only once
+    for (lu1, spans1, type1, tag1), (lu2, spans2, type2, tag2) in combinations(lus, 2):
+        if tag1 != tag2 and spans1 == spans2:
+            # Create tuples for each LU info, converting spans to a hashable type
+            lu_info1 = (lu1, tuple((s.start, s.end) for s in spans1), type1, tag1)
+            lu_info2 = (lu2, tuple((s.start, s.end) for s in spans2), 
+                        type2, tag2)
+            # Use a frozenset to ensure uniqueness and allow it to be added to a set
+            overlap = frozenset([lu_info1, lu_info2])
+            lu_overlaps[doc_id].add(overlap)
 
-# Avoid duplicates by converting the list to a set
-lus_with_different_types = {doc_id: list(set(lus)) for doc_id, lus in lus_with_different_types.items()}
+# Convert sets back to lists for consistency with your original output
+lu_overlaps = {k: [tuple(o) for o in v] for k, v in lu_overlaps.items()}
 
-# Output the results to a txt-file and save to OUTPUT_DIR as overlaps.txt
-with open(os.path.join(OUTPUT_DIR, "lu_overlaps.txt"), "w") as f:
-    for doc_id, lus in lus_with_different_types.items():
-        f.write(f"Document ID: {doc_id}\n")
-        f.write(f"Annotations with different tags but same spans:\n")
+# Output the results to a json-file and save to OUTPUT_DIR as lu_overlaps.json
+with open(os.path.join(OUTPUT_DIR, 'lu_overlaps.json'), 'w', encoding='utf-8') as f:
+    json.dump(lu_overlaps, f, ensure_ascii=False, indent=2)
 
-        for lu1, type1, tag1, lu2, type2, tag2 in lus:
-            f.write(f"Entity 1: {lu1} ({type1} - {tag1})\n")
-            f.write(f"Entity 2: {lu2} ({type2} - {tag2})\n")
-            f.write("\n")
+### Extract sentences with figurative tag information
 
-### Visualizations ###
+def get_figurative_sentences(lus_dict, texts_dict, fig_tags):
+    """
+    Extract sentences containing figurative language and their associated tags using NLTK.
+    
+    Args:
+        lus_dict (dict): Dictionary of lexical units with their spans and tags
+        texts_dict (dict): Dictionary of full texts
+        fig_tags (list): List of figurative tags to look for (e.g., ['MTP', 'HPB', 'BIR'])
+    
+    Returns:
+        pd.DataFrame: DataFrame with columns ['doc_id', 'sentence', 'tagged_word', 'tag']
+    """
+    results = []
+    
+    for doc_id, text in texts_dict.items():
+        if doc_id not in lus_dict:
+            continue
+            
+        # Split text into sentences using NLTK and newlines
+        sentences = [sent.strip() 
+                    for line in text.split('\n')
+                    for sent in sent_tokenize(line, language='danish')]
+        
+        # Calculate sentence spans
+        current_pos = 0
+        sent_spans = []
+        
+        for sent in sentences:
+            # Find the exact position of the sentence in the original text
+            sent_start = text.find(sent, current_pos)
+            sent_end = sent_start + len(sent)
+            sent_spans.append((sent_start, sent_end, sent))
+            current_pos = sent_end        
+            
+        # Process each lexical unit
+        for lu in lus_dict[doc_id]:
+            mention, spans, type, tag = lu
+            
+            # Skip if tag not in requested figurative tags
+            if tag not in fig_tags:
+                continue
+            
+            # Get the start position of the first span
+            lu_start = spans[0].start
+            
+            # Find which sentence contains this lexical unit
+            for sent_start, sent_end, sentence in sent_spans:
+                if sent_start <= lu_start < sent_end:
+                    results.append({
+                        'doc_id': doc_id,
+                        'sentence': sentence.strip(),
+                        'tagged_word': mention,
+                        'tag': tag,
+                        'type': type
+                    })
+                    break
+    
+    return pd.DataFrame(results)
 
-## Visualize information about overlaps between metaphor and hyperbole in a heatmap; i.e. where lexical units with different tags but same spans are located.
+# Find metaphorical sentences (tagged MTP)
+mtp_df = get_figurative_sentences(all_lus, all_texts, ['MTP'])
 
-## Visualize attribute information
+# Find hyperbolic sentences (tagged HPB)
+hpb_df = get_figurative_sentences(all_lus, all_texts, ['HPB'])
+
+# Write the metaphorical and hyperbolic sentences to a csv file
+mtp_df.to_csv(os.path.join(OUTPUT_DIR,'mtp_sentences.csv'), encoding='utf-8', index=False)
+hpb_df.to_csv(os.path.join(OUTPUT_DIR, 'hpb_sentences.csv'), encoding='utf-8', index=False)
+
+### Visualize attribute information
 
 def categorize_attribute(attr_type):
     if attr_type in ['Conventionality', 'Directness']:
