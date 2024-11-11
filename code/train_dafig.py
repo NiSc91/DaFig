@@ -92,7 +92,7 @@ def evaluate_model(model, dataloader, device):
     })
     
     # Per-class metrics
-    for label in range(9):  # 0 through 8
+    for label in range(7):  # 0 through 6
         label_mask = np.array(all_labels) == label
         if np.any(label_mask):
             metrics[f'class_{label}_f1'] = f1_score(
@@ -164,7 +164,35 @@ print(f"Number of -100 labels: {sum(1 for l in labels[0] if l == -100)}")
 ### Dataset and data loader ###
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-multilingual-cased")
 model = DistilBertForTokenClassification.from_pretrained('distilbert-base-multilingual-cased', num_labels=len(label2id))
+# Set up CUDA device
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.to(device)
 
+# Initialize model with correct configuration
+"""model = DistilBertForTokenClassification.from_pretrained(
+    'distilbert-base-multilingual-cased',
+    num_labels=len(label2id),
+    label2id=label2id,
+    id2label=id2label,
+    problem_type="token_classification"  # explicitly set the task type
+)
+"""
+
+# Verify the config after initialization
+print("Updated config:", model.config)
+print("Updated classifier shape:", model.classifier.weight.shape)
+
+# Set up DirectML device
+#dml = torch_directml.device()
+#model.to(dml)
+
+# Hyperparameters
+batch_size = 16
+max_len = 512
+num_epochs = 10
+learning_rate=2e-5
+
+# Custom dataset and data loader
 class MyDataset(Dataset):
     def __init__(self, texts, labels, tokenizer, max_len=512):  # Changed from init to __init__
         self.processed_texts = []
@@ -212,14 +240,6 @@ class MyDataset(Dataset):
                                 padding='max_length')
 
         word_ids = encoding.word_ids()
-        
-        # Debug print for first item
-        if idx == 0:
-            print("\nSample label processing:")
-            print(f"Original label length: {len(label)}")
-            print(f"Word IDs length: {len(word_ids)}")
-            print(f"Number of -100 labels: {sum(1 for l in label if l == -100)}")
-            
         label_ids = [-100 if word_id is None else label[word_id] for word_id in word_ids]
 
         return {
@@ -236,12 +256,6 @@ dataset = MyDataset(documents, label_ids, tokenizer)
 
 # analyze sequence lengths
 print(analyze_sequence_lengths(dataset))
-
-# Hyperparameters
-num_epochs = 10
-batch_size = 16
-learning_rate = 5e-5
-weight_decay = 0.01
 
 # Split dataset into train and validation
 train_size = int(0.8 * len(dataset))
@@ -285,14 +299,6 @@ print(f"Labels: {batch['labels'].shape}")
 
 # Verify batch size
 assert batch['input_ids'].shape[0] == batch_size, f"Expected batch size {batch_size}, got {batch['input_ids'].shape[0]}"
-
-# Set up DirectML device
-#dml = torch_directml.device()
-#model.to(dml)
-
-# Set up CUDA device
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model.to(device)
 
 # Early stopping class
 class EarlyStopping:
@@ -431,12 +437,12 @@ model = train_model(model=model,
     val_dataloader=val_dataloader,
     num_epochs=10,
     device=device,
-    initial_lr=5e-5,  # Reduced learning rate
+    initial_lr=learning_rate,  # Reduced learning rate
     patience=3        # Early stopping patience
 )
 
 # Save the best model
-#model.save_pretrained("fine_tuned_distilbert_dafig")
+model.save_pretrained("fine_tuned_distilbert_dafig")
 
 # Evaluate the model
 metrics, conf_matrix = evaluate_model(model, val_dataloader, device)

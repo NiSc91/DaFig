@@ -1,4 +1,3 @@
-import pdb
 import re
 import json
 from dataclasses import dataclass
@@ -40,7 +39,7 @@ class LexicalUnit:
     unit_type: str
     fig_type: str
 
-class   FigurativeLanguageTagger:
+class   OldFigurativeLanguageTagger:
     def __init__(self):
         self.valid_tags = {'O', 'B', 'I_', 'I~', 'o', 'b', 'i_', 'i~'}
         self.figurative_tags = {'MTP', 'VIR', 'HPB'}
@@ -111,6 +110,78 @@ class   FigurativeLanguageTagger:
             print(f"{token}/{tag}", end=" ")
         print()
 
+### Simplified tagging scheme ###
+
+class NewFigurativeLanguageTagger:
+    def __init__(self):
+        # Simplified tags but maintain gap marking
+        self.valid_tags = {
+            'O',    # Outside
+            'B',    # Beginning
+            'I',    # Inside
+            'G'     # Gap (single marker for gaps in non-contiguous spans)
+        }
+        self.figurative_tags = {'MTP', 'HPB'}  # Remove VIR due to low frequency
+    
+    def tokenize(self, text):
+        return re.findall(r'\w+|[^\w\s]', text)
+
+    def map_char_to_token_spans(self, text, tokens, char_spans):
+        token_spans = []
+        char_index = 0
+        for token_index, token in enumerate(tokens):
+            token_start = text.index(token, char_index)
+            token_end = token_start + len(token)
+            for char_span in char_spans:
+                if (char_span.start >= token_start and char_span.start < token_end) or \
+                   (char_span.end > token_start and char_span.end <= token_end) or \
+                   (char_span.start <= token_start and char_span.end >= token_end):
+                    token_spans.append(token_index)
+                    break
+            char_index = token_end
+        return token_spans
+
+    def tag_document(self, text: str, lexical_units: List[LexicalUnit]):
+        tokens = self.tokenize(text)
+        tagged_tokens = ['O'] * len(tokens)
+        
+        span_units = {}
+        for unit in lexical_units:
+            unit = LexicalUnit(unit[0], unit[1], unit[2], unit[3])
+            # Check if the fig_type is in the allowed set
+            if unit.fig_type not in self.figurative_tags:
+                break
+                
+            # Group lexical units by span
+            span_key = tuple(sorted((span.start, span.end) for span in unit.spans))
+            if span_key not in span_units:
+                span_units[span_key] = []
+            span_units[span_key].append(unit)
+        
+        # Process each span, combining tags if needed
+        for spans, units in span_units.items():
+            fig_types = sorted(set(unit.fig_type for unit in units))
+            fig_tag = f'-{"|".join(fig_types)}'
+            
+            token_spans = self.map_char_to_token_spans(text, tokens, units[0].spans)
+            
+            if units[0].unit_type == 'single_word':
+                if token_spans:
+                    tagged_tokens[token_spans[0]] = f'B{fig_tag}'
+            else:
+                for i, token_index in enumerate(token_spans):
+                    if i == 0:
+                        tagged_tokens[token_index] = f'B{fig_tag}'
+                    else:
+                        tagged_tokens[token_index] = f'I{fig_tag}'
+        
+        return list(zip(tokens, tagged_tokens))
+
+    def print_tagged(self, tagged_tokens):
+        for token, tag in tagged_tokens:
+            print(f"{token}/{tag}", end=" ")
+        print()
+
 ## Apply tagger to all documents in the main corpus
 
 brat = ExtendedBratParser(input_dir=MAIN_PATH, error="ignore")
@@ -125,7 +196,7 @@ all_lus = {
     for example in examples}
 
 # Create a figurative language tagger
-tagger = FigurativeLanguageTagger()
+tagger = NewFigurativeLanguageTagger()
 
 # Process all documents
 all_tagged_documents = {}
