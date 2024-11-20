@@ -1,6 +1,0 @@
-T1	MTP 220 227	oplyser
-A1	Directness T1 IND
-T2	MTP 1120 1128	baggrund
-A2	Directness T2 IND
-A3	Conventionality T2 CNV
-A4	Conventionality T1 CNV

@@ -159,6 +159,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Other extensions (not related to python)
+# Custom files and folders to ignore (not related to python)
 deps/
 articles_with_front_headlines.json
+models/
+brat_data/
