@@ -1,20 +1,131 @@
+from transformers import (
+    DistilBertForTokenClassification,
+    DistilBertTokenizerFast,
+    XLMRobertaForTokenClassification,
+    XLMRobertaTokenizerFast,
+    LongformerForTokenClassification,
+    LongformerTokenizerFast
+    )
 from config import *
 import json
 import torch
 import numpy as np
-#import torch_directml
-from transformers import AutoTokenizer, DistilBertForTokenClassification
-from transformers import AdamW, get_linear_schedule_with_warmup
 from torch.utils.data import Dataset, DataLoader, random_split
 import math
 from sklearn.metrics import precision_score, recall_score, f1_score, confusion_matrix
 from sklearn.utils.class_weight import compute_class_weight
 import torch.nn as nn
+from bio_encoder import process_corpus
 
-# Load the JSON file
-with open(os.path.join(TEMP_DIR, 'tagged_documents.json'), 'r', encoding='utf-8') as f:
-    data = json.load(f)
+# Variables
+handler = CollectionHandler(CORPORA_DIR)
+all_corpora = handler.get_collections()
+print("All annotated corpora:", all_corpora)
 
+# Create paths for the agreement corpora
+CORPUS_NAMES = ['main', 'agr1', 'agr2', 'agr3', 'agr_combined', 'consensus']
+CORPUS_PATHS = {f"{name.upper()}_PATH": handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in CORPUS_NAMES}
+OUTPUT_DIR = os.path.join(CORPORA_DIR, "../BIO")
+
+# Check if the output directory exists, if not, create it
+if not os.path.exists(OUTPUT_DIR):
+    os.makedirs(OUTPUT_DIR)
+
+# Create a lambda function to get ann paths
+get_ann_path = lambda base_path, ann_folder: os.path.join(base_path, ann_folder)
+
+# Create a dictionary with the paths to the ann folders for each corpus except for main
+base_paths = {name: handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in CORPUS_NAMES[1:]}
+ann_paths = {f"{name.upper()}_ANN1_PATH": get_ann_path(base_path, 'ann1') for name, base_path in base_paths.items()}
+ann_paths.update({f"{name.upper()}_ANN2_PATH": get_ann_path(base_path, 'ann2') for name, base_path in base_paths.items()})
+
+# Model and training config
+def get_model_config(model_type, num_labels):
+    base_config = {
+        # Training configurations (stays same for all models)
+        'batch_size': 16,
+        'num_epochs': 20,
+        'learning_rate': 2e-5,
+        'train_split': 0.8,
+        'early_stopping_patience': 3,
+        'num_labels': num_labels  # Now directly using num_labels
+    }
+    
+    # Model-specific configurations
+    model_configs = {
+        'distilbert': {
+            'model_type': 'distilbert',
+            'model_name': 'distilbert-base-multilingual-cased',
+            'max_length': 512,
+        },
+        'xlmroberta': {
+            'model_type': 'xlmroberta',
+            'model_name': 'xlm-roberta-base',
+            'max_length': 512,
+        },
+        'longformer': {
+            'model_type': 'longformer',
+            'model_name': 'allenai/longformer-base-4096',
+            'max_length': 4096,
+        }
+    }
+    
+    # Combine base config with model-specific config
+    config = {**base_config, **model_configs[model_type]}
+    return config
+
+### Preprocess the data ###
+
+# Prepare dataset
+
+def prepare_data(corpus_path, tagging_scheme='joint', label2id=None):
+    """
+    Prepare data for a single corpus.
+    
+    Args:
+        corpus_path (str): Path to the corpus
+        tagging_scheme (str, optional): Tagger to use for extracting labels. Defaults to 'joint'
+        label2id (dict, optional): Existing label mapping. If None, a new mapping will be created
+    
+    Returns:
+        documents (list): List of tokenized documents
+        label_ids (list): List of label IDs
+        label2id (dict): Mapping of labels to IDs
+        id2label (dict): Mapping of IDs to labels
+    """
+    # Get tagged documents from single corpus
+    data = process_corpus(corpus_path, tagging_scheme=tagging_scheme)
+    
+    # Process the data
+    documents = []
+    labels = []
+    
+    for doc_id, tokens in data.items():
+        doc_tokens = []
+        doc_labels = []
+        for token, label in tokens:
+            doc_tokens.append(token)
+            doc_labels.append(label)
+        documents.append(doc_tokens)
+        labels.append(doc_labels)
+    
+    # Create or update label mappings
+    if label2id is None:
+        unique_labels = set([label for doc_labels in labels for label in doc_labels])
+        label2id = {label: i for i, label in enumerate(unique_labels)}
+    id2label = {i: label for label, i in label2id.items()}
+    
+    # Convert labels to IDs
+    label_ids = [[label2id[label] for label in doc_labels] for doc_labels in labels]
+    
+    # Print some basic statistics
+    print(f"\nCorpus Statistics for {corpus_path}:")
+    print(f"Number of documents: {len(documents)}")
+    print(f"Number of unique labels in this corpus: {len(unique_labels)}")
+
+    return documents, label_ids, label2id, id2label
+
+# Split sequences longer than max_len
 def split_long_document(text, labels, max_len):
     # Create overlapping chunks for long documents
     chunks_text = []
@@ -37,161 +148,7 @@ def analyze_sequence_lengths(dataset):
     print(f"Mean length: {sum(lengths)/len(lengths):.2f}")
     print(f"Number of splits: {len(dataset.processed_texts)}")
 
-# evaluation metrics for split-aware learning
-def evaluate_model(model, dataloader, device):
-    model.eval()
-    all_predictions = []
-    all_labels = []
-    overlap_predictions = []
-    overlap_labels = []
-    
-    max_len = 512
-    overlap_size = max_len // 2
-    
-    with torch.no_grad():
-        for batch in dataloader:
-            input_ids = batch['input_ids'].to(device)
-            attention_mask = batch['attention_mask'].to(device)
-            labels = batch['labels'].to(device)
-            
-            outputs = model(input_ids=input_ids, attention_mask=attention_mask)
-            predictions = torch.argmax(outputs.logits, dim=-1)
-            
-            for pred, label, mask in zip(predictions, labels, attention_mask):
-                valid_mask = (label != -100) & (mask == 1)
-                valid_pred = pred[valid_mask].cpu().numpy()
-                valid_label = label[valid_mask].cpu().numpy()
-                
-                if len(valid_pred) >= overlap_size:
-                    content_length = len(valid_pred)
-                    start_idx = content_length // 4
-                    end_idx = 3 * content_length // 4
-                    
-                    overlap_region_pred = valid_pred[start_idx:end_idx]
-                    overlap_region_label = valid_label[start_idx:end_idx]
-                    
-                    overlap_predictions.extend(overlap_region_pred)
-                    overlap_labels.extend(overlap_region_label)
-                
-                all_predictions.extend(valid_pred)
-                all_labels.extend(valid_label)
-
-    # Calculate metrics for both minority and majority classes
-    metrics = {}
-    
-    # Overall metrics
-    metrics.update({
-        'overall_f1_weighted': f1_score(all_labels, all_predictions, 
-                                      average='weighted', zero_division=0),
-        'overall_f1_macro': f1_score(all_labels, all_predictions, 
-                                   average='macro', zero_division=0),
-        'overall_precision': precision_score(all_labels, all_predictions, 
-                                          average='weighted', zero_division=0),
-        'overall_recall': recall_score(all_labels, all_predictions, 
-                                     average='weighted', zero_division=0)
-    })
-    
-    # Per-class metrics
-    for label in range(7):  # 0 through 6
-        label_mask = np.array(all_labels) == label
-        if np.any(label_mask):
-            metrics[f'class_{label}_f1'] = f1_score(
-                np.array(all_labels) == label,
-                np.array(all_predictions) == label,
-                zero_division=0
-            )
-    
-    # Overlap metrics
-    if len(overlap_predictions) > 0:
-        metrics.update({
-            'overlap_f1': f1_score(overlap_labels, overlap_predictions, 
-                                 average='weighted', zero_division=0),
-            'overlap_precision': precision_score(overlap_labels, overlap_predictions, 
-                                              average='weighted', zero_division=0),
-            'overlap_recall': recall_score(overlap_labels, overlap_predictions, 
-                                        average='weighted', zero_division=0)
-        })
-    
-    # Add confusion matrix
-    conf_matrix = confusion_matrix(all_labels, all_predictions)
-    
-    # Add per-class precision and recall
-    for label in range(9):
-        label_mask = np.array(all_labels) == label
-        if np.any(label_mask):
-            metrics[f'class_{label}_precision'] = precision_score(
-                np.array(all_labels) == label,
-                np.array(all_predictions) == label,
-                zero_division=0
-            )
-            metrics[f'class_{label}_recall'] = recall_score(
-                np.array(all_labels) == label,
-                np.array(all_predictions) == label,
-                zero_division=0
-            )
-    
-    return metrics, conf_matrix
-
-### Preprocess the data ###
-documents = []
-labels = []
-
-for doc_id, tokens in data.items():
-    doc_tokens = []
-    doc_labels = []
-    for token, label in tokens:
-        doc_tokens.append(token)
-        doc_labels.append(label)
-    documents.append(doc_tokens)
-    labels.append(doc_labels)
-
-# Create label to ID mapping
-unique_labels = set([label for doc_labels in labels for label in doc_labels])
-label2id = {label: i for i, label in enumerate(unique_labels)}
-id2label = {i: label for label, i in label2id.items()}
-
-# Convert labels to IDs
-label_ids = [[label2id[label] for label in doc_labels] for doc_labels in labels]
-
-# After creating labels
-print("\nLabel Statistics before dataset creation:")
-print(f"Number of documents: {len(labels)}")
-print("Sample of labels from first document:")
-print(f"Length: {len(labels[0])}")
-print(f"Unique values: {set(labels[0])}")
-print(f"Number of -100 labels: {sum(1 for l in labels[0] if l == -100)}")
-
 ### Dataset and data loader ###
-tokenizer = AutoTokenizer.from_pretrained("distilbert-base-multilingual-cased")
-model = DistilBertForTokenClassification.from_pretrained('distilbert-base-multilingual-cased', num_labels=len(label2id))
-# Set up CUDA device
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model.to(device)
-
-# Initialize model with correct configuration
-"""model = DistilBertForTokenClassification.from_pretrained(
-    'distilbert-base-multilingual-cased',
-    num_labels=len(label2id),
-    label2id=label2id,
-    id2label=id2label,
-    problem_type="token_classification"  # explicitly set the task type
-)
-"""
-
-# Verify the config after initialization
-print("Updated config:", model.config)
-print("Updated classifier shape:", model.classifier.weight.shape)
-
-# Set up DirectML device
-#dml = torch_directml.device()
-#model.to(dml)
-
-# Hyperparameters
-batch_size = 16
-max_len = 512
-num_epochs = 10
-learning_rate=2e-5
-
 # Custom dataset and data loader
 class MyDataset(Dataset):
     def __init__(self, texts, labels, tokenizer, max_len=512):  # Changed from init to __init__
@@ -251,55 +208,6 @@ class MyDataset(Dataset):
     def __len__(self):  # Added __len__ method
         return len(self.processed_texts)
 
-# Create dataset
-dataset = MyDataset(documents, label_ids, tokenizer)
-
-# analyze sequence lengths
-print(analyze_sequence_lengths(dataset))
-
-# Split dataset into train and validation
-train_size = int(0.8 * len(dataset))
-val_size = len(dataset) - train_size
-train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
-
-train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-val_dataloader = DataLoader(val_dataset, batch_size=batch_size)
-
-# Get a random sample from the dataset
-sample_idx = torch.randint(len(dataset), size=(1,)).item()
-sample = dataset[sample_idx]
-
-# Print the sample
-print("Sample from the dataset:")
-print(f"Input IDs shape: {sample['input_ids'].shape}")
-print(f"Attention Mask shape: {sample['attention_mask'].shape}")
-print(f"Labels shape: {sample['labels'].shape}")
-
-# Decode the input IDs back to text
-decoded_text = tokenizer.decode(sample['input_ids'])
-print(f"\nDecoded text:\n{decoded_text}")
-
-# Print the labels
-print(f"\nLabels:\n{sample['labels'].tolist()}")
-
-# Check if shapes match
-assert sample['input_ids'].shape == sample['attention_mask'].shape == sample['labels'].shape, "Shapes don't match!"
-
-# Check if the number of labels is correct
-unique_labels = set(sample['labels'].tolist()) - {-100}  # Exclude padding label
-print(f"\nUnique labels in this sample: {unique_labels}")
-print(f"Total number of unique labels in the dataset: {len(label2id)}")
-
-# Check dataloader
-batch = next(iter(train_dataloader))
-print(f"\nBatch shapes:")
-print(f"Input IDs: {batch['input_ids'].shape}")
-print(f"Attention Mask: {batch['attention_mask'].shape}")
-print(f"Labels: {batch['labels'].shape}")
-
-# Verify batch size
-assert batch['input_ids'].shape[0] == batch_size, f"Expected batch size {batch_size}, got {batch['input_ids'].shape[0]}"
-
 # Early stopping class
 class EarlyStopping:
     def __init__(self, patience=3, min_delta=0.001):
@@ -347,8 +255,8 @@ def train_model(model, train_dataloader, val_dataloader, num_epochs, device,
     
     # Initialize optimizer
     optimizer = torch.optim.AdamW(model.parameters(), 
-                                 lr=initial_lr, 
-                                 weight_decay=0.01)
+                                lr=initial_lr, 
+                                weight_decay=0.01)
     
     # Learning rate scheduler
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
@@ -431,33 +339,247 @@ def train_model(model, train_dataloader, val_dataloader, num_epochs, device,
     
     return model
 
-# Train the model
-model = train_model(model=model,
-    train_dataloader=train_dataloader,
-    val_dataloader=val_dataloader,
-    num_epochs=10,
-    device=device,
-    initial_lr=learning_rate,  # Reduced learning rate
-    patience=3        # Early stopping patience
-)
+# evaluation metrics for split-aware learning
+def evaluate_model(model, dataloader, device):
+    model.eval()
+    all_predictions = []
+    all_labels = []
+    overlap_predictions = []
+    overlap_labels = []
+    
+    max_len = 512
+    overlap_size = max_len // 2
+    
+    with torch.no_grad():
+        for batch in dataloader:
+            input_ids = batch['input_ids'].to(device)
+            attention_mask = batch['attention_mask'].to(device)
+            labels = batch['labels'].to(device)
+            
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+            predictions = torch.argmax(outputs.logits, dim=-1)
+            
+            for pred, label, mask in zip(predictions, labels, attention_mask):
+                valid_mask = (label != -100) & (mask == 1)
+                valid_pred = pred[valid_mask].cpu().numpy()
+                valid_label = label[valid_mask].cpu().numpy()
+                
+                if len(valid_pred) >= overlap_size:
+                    content_length = len(valid_pred)
+                    start_idx = content_length // 4
+                    end_idx = 3 * content_length // 4
+                    
+                    overlap_region_pred = valid_pred[start_idx:end_idx]
+                    overlap_region_label = valid_label[start_idx:end_idx]
+                    
+                    overlap_predictions.extend(overlap_region_pred)
+                    overlap_labels.extend(overlap_region_label)
+                
+                all_predictions.extend(valid_pred)
+                all_labels.extend(valid_label)
 
-# Save the best model
-model.save_pretrained("fine_tuned_distilbert_dafig")
+    # Calculate metrics for both minority and majority classes
+    metrics = {}
+    
+    # Overall metrics
+    metrics.update({
+        'overall_f1_weighted': f1_score(all_labels, all_predictions, 
+                                    average='weighted', zero_division=0),
+        'overall_f1_macro': f1_score(all_labels, all_predictions, 
+                                average='macro', zero_division=0),
+        'overall_precision': precision_score(all_labels, all_predictions, 
+                                        average='weighted', zero_division=0),
+        'overall_recall': recall_score(all_labels, all_predictions, 
+                                    average='weighted', zero_division=0)
+    })
+    
+    # Per-class metrics
+    for label in range(7):  # 0 through 6
+        label_mask = np.array(all_labels) == label
+        if np.any(label_mask):
+            metrics[f'class_{label}_f1'] = f1_score(
+                np.array(all_labels) == label,
+                np.array(all_predictions) == label,
+                zero_division=0
+            )
+    
+    # Overlap metrics
+    if len(overlap_predictions) > 0:
+        metrics.update({
+            'overlap_f1': f1_score(overlap_labels, overlap_predictions, 
+                                average='weighted', zero_division=0),
+            'overlap_precision': precision_score(overlap_labels, overlap_predictions, 
+                                            average='weighted', zero_division=0),
+            'overlap_recall': recall_score(overlap_labels, overlap_predictions, 
+                                        average='weighted', zero_division=0)
+        })
+    
+    # Add confusion matrix
+    conf_matrix = confusion_matrix(all_labels, all_predictions)
+    
+    # Add per-class precision and recall
+    for label in range(7):
+        label_mask = np.array(all_labels) == label
+        if np.any(label_mask):
+            metrics[f'class_{label}_precision'] = precision_score(
+                np.array(all_labels) == label,
+                np.array(all_predictions) == label,
+                zero_division=0
+            )
+            metrics[f'class_{label}_recall'] = recall_score(
+                np.array(all_labels) == label,
+                np.array(all_predictions) == label,
+                zero_division=0
+            )
+    
+    return metrics, conf_matrix
 
-# Evaluate the model
-metrics, conf_matrix = evaluate_model(model, val_dataloader, device)
+### Setting up datasets and models for various tasks ###
 
-# Print evaluation results
-print("\nFinal Evaluation Results:")
-print(f"Overall F1 (weighted): {metrics['overall_f1_weighted']:.4f}")
-print(f"Overall F1 (macro): {metrics['overall_f1_macro']:.4f}")
-print(f"Overall Precision: {metrics['overall_precision']:.4f}")
-print(f"Overall Recall: {metrics['overall_recall']:.4f}")
+# Load and prepare dataset
+def setup_data(config, train_path, test_path=None, tokenizer=None, tagging_scheme='joint'):
+    """
+    Set up data loaders for training, validation, and/or test data.        
+    Args:
+        config (dict): Configuration dictionary
+        train_path (str): Path to training data
+        test_path (str, optional): Path to test data
+        tokenizer: The tokenizer to use
+        tagging_scheme (str): The tagging scheme to use ('joint' or other schemes)        
+    Returns:
+        tuple: If test_path is None:
+            (train_dataloader, val_dataloader, label2id, id2label)            If test_path is provided:
+            (train_dataloader, val_dataloader, test_dataloader, label2id, id2label)
+    """
+    # Prepare training data first to establish label mappings
+    train_documents, train_label_ids, label2id, id2label = prepare_data(
+        train_path, 
+        tagging_scheme=tagging_scheme
+    )
+        
+    # Create dataset for training data
+    train_full_dataset = MyDataset(train_documents, train_label_ids, tokenizer)        
+    # Split into train and validation
+    train_size = int(config['train_split'] * len(train_full_dataset))
+    val_size = len(train_full_dataset) - train_size
+    train_dataset, val_dataset = random_split(
+        train_full_dataset, 
+        [train_size, val_size]
+    )
+    
+    # Create data loaders
+    train_dataloader = DataLoader(
+        train_dataset, 
+        batch_size=config['batch_size'], 
+        shuffle=True        )
+    val_dataloader = DataLoader(
+        val_dataset, 
+        batch_size=config['batch_size']        )        
+    if test_path:
+    # Prepare test data using the same label mappings
+        test_documents, test_label_ids, _, _ = prepare_data(
+            test_path, 
+            tagging_scheme=tagging_scheme,
+            label2id=label2id  # Use existing label mappings
+            )
+        test_dataset = MyDataset(test_documents, test_label_ids, tokenizer)
+        test_dataloader = DataLoader(
+            test_dataset, 
+            batch_size=config['batch_size']
+        )
+        return train_dataloader, val_dataloader, test_dataloader, label2id, id2label
+        
+    return train_dataloader, val_dataloader, label2id, id2label
 
-print("\nPer-class F1 scores:")
-for label in range(9):
-    if f'class_{label}_f1' in metrics:
-        print(f"Class {label}: {metrics[f'class_{label}_f1']:.4f}")
+# Model set-up function
+def setup_model(config):
+    """
+    Set up the model, tokenizer, and device based on configuration.
+    
+    Args:
+        config (dict): Configuration dictionary containing:
+            - model_name: Name/path of the pre-trained model
+            - model_type: Type of model ('distilbert', 'xlmroberta', or 'longformer')
+            - num_labels: Number of labels for classification
+            - max_length: Maximum sequence length
+    
+    Returns:
+        tuple: (model, tokenizer, device)
+    """
+    model_mapping = {
+        'distilbert': (DistilBertForTokenClassification, DistilBertTokenizerFast),
+        'xlmroberta': (XLMRobertaForTokenClassification, XLMRobertaTokenizerFast),
+        'longformer': (LongformerForTokenClassification, LongformerTokenizerFast)
+    }
+    # Get the appropriate model and tokenizer classes
+    if config['model_type'] not in model_mapping:
+        raise ValueError(f"Unsupported model type: {config['model_type']}")
+        
+    ModelClass, TokenizerClass = model_mapping[config['model_type']]
+        
+    # Initialize tokenizer and model
+    try:
+        tokenizer = TokenizerClass.from_pretrained(
+            config['model_name'],
+            max_length=config['max_length'],
+            is_split_into_words=True,
+            truncation=True
+        )
+            
+        model = ModelClass.from_pretrained(
+            config['model_name'],
+            num_labels=config['num_labels']
+        )
+    except Exception as e:
+        raise Exception(f"Error loading model or tokenizer: {str(e)}")
+    
+    # Set up device
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model.to(device)
+    
+    return model, tokenizer, device
 
-print("\nConfusion Matrix:")
-print(conf_matrix)
+def main():
+    # Get configuration
+    num_labels = 7  # Number of labels for joint task
+    model_type = 'distilbert'  # or 'xlmroberta' or 'longformer'
+    config = get_model_config(model_type, num_labels)
+
+    # Set up model and get tokenizer
+    model, tokenizer, device = setup_model(config)
+
+    # Load and prepare data
+    train_dataloader, val_dataloader, label2id, id2label = setup_data(
+        config, 
+        CORPUS_PATHS['MAIN_PATH'], 
+        tokenizer=tokenizer
+    )
+
+    # Train model
+    trained_model = train_model(
+        model, 
+        train_dataloader, 
+        val_dataloader, 
+        config['num_epochs'], 
+        device, 
+        initial_lr=config['learning_rate'],  # Note: changed from initial_lr to learning_rate
+        patience=config['early_stopping_patience']  # Note: changed from patience to early_stopping_patience
+    )
+
+    # Save model with model type in the filename
+    model_filename = f"../models/{model_type}_{num_labels}labels.pt"
+    model.save_pretrained(model_filename)
+    # Evaluate model
+    metrics, conf_matrix = evaluate_model(trained_model, val_dataloader, device)
+
+    # Print evaluation metrics
+    print("Evaluation Metrics:")
+    for metric, value in metrics.items():
+        print(f"{metric}: {value:.4f}")
+
+    # Print confusion matrix
+    print("\nConfusion Matrix:")
+    print(conf_matrix)
+
+if __name__ == "__main__":
+    main()
