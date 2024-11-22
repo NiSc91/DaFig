@@ -45,7 +45,7 @@ def get_model_config(model_type, num_labels):
         # Training configurations (stays same for all models)
         'batch_size': 16,
         'num_epochs': 20,
-        'learning_rate': 2e-5,
+        'learning_rate': 1e-5,
         'train_split': 0.8,
         'early_stopping_patience': 3,
         'num_labels': num_labels  # Now directly using num_labels
@@ -121,7 +121,7 @@ def prepare_data(corpus_path, tagging_scheme='joint', label2id=None):
     # Print some basic statistics
     print(f"\nCorpus Statistics for {corpus_path}:")
     print(f"Number of documents: {len(documents)}")
-    print(f"Number of unique labels in this corpus: {len(unique_labels)}")
+    print(f"Number of unique labels in this corpus: {len(label2id)}")
 
     return documents, label_ids, label2id, id2label
 
@@ -340,14 +340,13 @@ def train_model(model, train_dataloader, val_dataloader, num_epochs, device,
     return model
 
 # evaluation metrics for split-aware learning
-def evaluate_model(model, dataloader, device):
+def evaluate_model(model, dataloader, device, num_labels, id2label, max_len):
     model.eval()
     all_predictions = []
     all_labels = []
     overlap_predictions = []
     overlap_labels = []
     
-    max_len = 512
     overlap_size = max_len // 2
     
     with torch.no_grad():
@@ -394,10 +393,11 @@ def evaluate_model(model, dataloader, device):
     })
     
     # Per-class metrics
-    for label in range(7):  # 0 through 6
+    for label in range(num_labels): # Per class
+        label_name = id2label[label]
         label_mask = np.array(all_labels) == label
         if np.any(label_mask):
-            metrics[f'class_{label}_f1'] = f1_score(
+            metrics[f'class_{label_name}_f1'] = f1_score(
                 np.array(all_labels) == label,
                 np.array(all_predictions) == label,
                 zero_division=0
@@ -418,15 +418,16 @@ def evaluate_model(model, dataloader, device):
     conf_matrix = confusion_matrix(all_labels, all_predictions)
     
     # Add per-class precision and recall
-    for label in range(7):
+    for label in range(num_labels):
+        label_name = id2label[label]
         label_mask = np.array(all_labels) == label
         if np.any(label_mask):
-            metrics[f'class_{label}_precision'] = precision_score(
+            metrics[f'class_{label_name}_precision'] = precision_score(
                 np.array(all_labels) == label,
                 np.array(all_predictions) == label,
                 zero_division=0
             )
-            metrics[f'class_{label}_recall'] = recall_score(
+            metrics[f'class_{label_name}_recall'] = recall_score(
                 np.array(all_labels) == label,
                 np.array(all_predictions) == label,
                 zero_division=0
@@ -549,9 +550,10 @@ def main():
     model, tokenizer, device = setup_model(config)
 
     # Load and prepare data
-    train_dataloader, val_dataloader, label2id, id2label = setup_data(
+    train_dataloader, val_dataloader, test_dataloader, label2id, id2label = setup_data(
         config, 
-        CORPUS_PATHS['MAIN_PATH'], 
+        CORPUS_PATHS['MAIN_PATH'],
+        ann_paths['AGR_COMBINED_ANN1_PATH'],
         tokenizer=tokenizer
     )
 
@@ -569,8 +571,8 @@ def main():
     # Save model with model type in the filename
     model_filename = f"../models/{model_type}_{num_labels}labels.pt"
     model.save_pretrained(model_filename)
-    # Evaluate model
-    metrics, conf_matrix = evaluate_model(trained_model, val_dataloader, device)
+    # Evaluate model on validation data
+    metrics, conf_matrix = evaluate_model(trained_model, val_dataloader, device, config['num_labels'], id2label, config['max_length'])
 
     # Print evaluation metrics
     print("Evaluation Metrics:")
@@ -580,6 +582,19 @@ def main():
     # Print confusion matrix
     print("\nConfusion Matrix:")
     print(conf_matrix)
+    # Evaluate model on test data
+    test_metrics, conf_matrix = evaluate_model(trained_model, test_dataloader, device, config['num_labels'], id2label, config['max_length'])
+    print("\nTest Evaluation Metrics:")
+    for metric, value in test_metrics.items():
+        print(f"{metric}: {value:.4f}")
+        
+    # print confusion matrix
+    print("\nTest Confusion Matrix:")
+    print(conf_matrix)
+    # Print label mapping
+    print("\nLabel Mapping:")
+    for label, id in label2id.items():
+        print(f"{label}: {id}")
 
 if __name__ == "__main__":
     main()
