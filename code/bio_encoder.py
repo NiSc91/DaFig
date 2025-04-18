@@ -138,36 +138,37 @@ class FigurativeLanguageTagger:
 
     def tag_document(self, text: str, lexical_units: List[LexicalUnit]):
         tokens = self.tokenize(text)
+
         if self.tagging_scheme == 'separate':
             tagged_tokens_met = ['O'] * len(tokens)
             tagged_tokens_hyp = ['O'] * len(tokens)
         else:
             tagged_tokens = ['O'] * len(tokens)
-        
+
         span_units = {}
         for unit in lexical_units:
             unit = LexicalUnit(unit[0], unit[1], unit[2], unit[3])
             if unit.fig_type not in self.figurative_tags:
                 continue
-                
+
             span_key = tuple(sorted((span.start, span.end) for span in unit.spans))
             if span_key not in span_units:
                 span_units[span_key] = []
             span_units[span_key].append(unit)
-        
+
         for spans, units in span_units.items():
             fig_types = set(unit.fig_type for unit in units)
             token_spans = self.map_char_to_token_spans(text, tokens, units[0].spans)
-            
+
             for i, token_index in enumerate(token_spans):
                 prefix = 'B' if i == 0 or units[0].unit_type == 'single_word' else 'I'
                 if self.tagging_scheme == 'separate':
                     met_tag, hyp_tag = self.create_tag(fig_types, prefix)
                     tagged_tokens_met[token_index] = met_tag
                     tagged_tokens_hyp[token_index] = hyp_tag
-                else:
+                elif self.tagging_scheme in ['joint', 'metaphor', 'hyperbole']:
                     tagged_tokens[token_index] = self.create_tag(fig_types, prefix)
-        
+
         if self.tagging_scheme == 'separate':
             return {
                 'metaphor': list(zip(tokens, tagged_tokens_met)),

@@ -7,6 +7,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.abspath(os.path.join(BASE_DIR, '..'))
 DATA_DIR = os.path.join(PARENT_DIR, 'brat_data')
 DEPS_DIR = os.path.join(PARENT_DIR, 'deps')
+RESULTS_DIR = os.path.join(PARENT_DIR,'results')
+MODELS_DIR = os.path.join(PARENT_DIR,'models')
 
 # Add necessary directories to sys.path
 sys.path.extend([
@@ -65,3 +67,11 @@ class CollectionHandler:
         collection_path = os.path.dirname(file_path)
         collection = os.path.basename(collection_path)
         return collection
+
+    def get_txt_files(self, collection_path):
+        txt_files = []
+        for root, dirs, files in os.walk(collection_path):
+            for file in files:
+                if file.endswith('.txt'):
+                    txt_files.append(file)
+        return txt_files

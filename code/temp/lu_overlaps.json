@@ -10,7 +10,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "Fint",
@@ -21,7 +21,7 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ],
     [
@@ -34,7 +34,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "fint",
@@ -45,7 +45,7 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
@@ -86,7 +86,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "energiforladte",
@@ -97,7 +97,7 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
@@ -112,7 +112,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "mareridt",
@@ -123,7 +123,7 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
@@ -156,26 +156,26 @@
   "9264442": [
     [
       [
-        "voldsomt",
+        "bomberen",
         [
           [
-            71,
-            79
-          ]
-        ],
-        "single_word",
-        "HPB"
-      ],
-      [
-        "voldsomt",
-        [
-          [
-            71,
-            79
+            1570,
+            1578
           ]
         ],
         "single_word",
         "MTP"
+      ],
+      [
+        "bomberen",
+        [
+          [
+            1570,
+            1578
+          ]
+        ],
+        "single_word",
+        "HPB"
       ]
     ],
     [
@@ -188,7 +188,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "bombertype",
@@ -199,55 +199,7 @@
           ]
         ],
         "single_word",
-        "MTP"
-      ]
-    ],
-    [
-      [
-        "mysterium",
-        [
-          [
-            2830,
-            2839
-          ]
-        ],
-        "single_word",
         "HPB"
-      ],
-      [
-        "mysterium",
-        [
-          [
-            2830,
-            2839
-          ]
-        ],
-        "single_word",
-        "MTP"
-      ]
-    ],
-    [
-      [
-        "bomberen",
-        [
-          [
-            1570,
-            1578
-          ]
-        ],
-        "single_word",
-        "HPB"
-      ],
-      [
-        "bomberen",
-        [
-          [
-            1570,
-            1578
-          ]
-        ],
-        "single_word",
-        "MTP"
       ]
     ],
     [
@@ -260,7 +212,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "vild",
@@ -271,7 +223,55 @@
           ]
         ],
         "single_word",
+        "HPB"
+      ]
+    ],
+    [
+      [
+        "voldsomt",
+        [
+          [
+            71,
+            79
+          ]
+        ],
+        "single_word",
         "MTP"
+      ],
+      [
+        "voldsomt",
+        [
+          [
+            71,
+            79
+          ]
+        ],
+        "single_word",
+        "HPB"
+      ]
+    ],
+    [
+      [
+        "mysterium",
+        [
+          [
+            2830,
+            2839
+          ]
+        ],
+        "single_word",
+        "MTP"
+      ],
+      [
+        "mysterium",
+        [
+          [
+            2830,
+            2839
+          ]
+        ],
+        "single_word",
+        "HPB"
       ]
     ]
   ],
@@ -334,7 +334,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "skrækrunde",
@@ -345,37 +345,13 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
   "9265976": [
     [
       [
-        "Stjernens",
-        [
-          [
-            0,
-            9
-          ]
-        ],
-        "single_word",
-        "MTP"
-      ],
-      [
-        "Stjernens",
-        [
-          [
-            0,
-            9
-          ]
-        ],
-        "single_word",
-        "HPB"
-      ]
-    ],
-    [
-      [
         "stjernen",
         [
           [
@@ -408,7 +384,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "midtbanestjernen",
@@ -416,6 +392,30 @@
           [
             367,
             383
+          ]
+        ],
+        "single_word",
+        "HPB"
+      ]
+    ],
+    [
+      [
+        "Stjernens",
+        [
+          [
+            0,
+            9
+          ]
+        ],
+        "single_word",
+        "HPB"
+      ],
+      [
+        "Stjernens",
+        [
+          [
+            0,
+            9
           ]
         ],
         "single_word",
@@ -429,23 +429,23 @@
         "ravage",
         [
           [
-            229,
-            235
+            9,
+            15
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "ravage",
         [
           [
-            229,
-            235
+            9,
+            15
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ],
     [
@@ -453,23 +453,23 @@
         "ravage",
         [
           [
-            9,
-            15
+            229,
+            235
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "ravage",
         [
           [
-            9,
-            15
+            229,
+            235
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
@@ -512,7 +512,7 @@
           ]
         ],
         "NonContiguousMWE",
-        "HPB"
+        "MTP"
       ],
       [
         "gik amok",
@@ -527,7 +527,7 @@
           ]
         ],
         "NonContiguousMWE",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
@@ -542,7 +542,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "eksploderet",
@@ -553,23 +553,36 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
   "9348201": [
     [
       [
-        "knuste",
+        "knækkede",
         [
           [
-            240,
-            246
+            494,
+            502
+          ]
+        ],
+        "single_word",
+        "MTP"
+      ],
+      [
+        "knækkede",
+        [
+          [
+            494,
+            502
           ]
         ],
         "single_word",
         "HPB"
-      ],
+      ]
+    ],
+    [
       [
         "knuste",
         [
@@ -580,26 +593,13 @@
         ],
         "single_word",
         "MTP"
-      ]
-    ],
-    [
-      [
-        "knækkede",
-        [
-          [
-            494,
-            502
-          ]
-        ],
-        "single_word",
-        "MTP"
       ],
       [
-        "knækkede",
+        "knuste",
         [
           [
-            494,
-            502
+            240,
+            246
           ]
         ],
         "single_word",
@@ -670,7 +670,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "Vild",
@@ -681,7 +681,7 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
@@ -696,7 +696,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "bombe",
@@ -707,7 +707,7 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ],
     [
@@ -720,7 +720,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "bombe",
@@ -731,133 +731,13 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
   "9448683": [
     [
       [
-        "stormede",
-        [
-          [
-            2582,
-            2590
-          ]
-        ],
-        "single_word",
-        "HPB"
-      ],
-      [
-        "stormede",
-        [
-          [
-            2582,
-            2590
-          ]
-        ],
-        "single_word",
-        "MTP"
-      ]
-    ],
-    [
-      [
-        "stormen",
-        [
-          [
-            2536,
-            2543
-          ]
-        ],
-        "single_word",
-        "HPB"
-      ],
-      [
-        "stormen",
-        [
-          [
-            2536,
-            2543
-          ]
-        ],
-        "single_word",
-        "MTP"
-      ]
-    ],
-    [
-      [
-        "Stormen",
-        [
-          [
-            3426,
-            3433
-          ]
-        ],
-        "single_word",
-        "HPB"
-      ],
-      [
-        "Stormen",
-        [
-          [
-            3426,
-            3433
-          ]
-        ],
-        "single_word",
-        "MTP"
-      ]
-    ],
-    [
-      [
-        "stormen",
-        [
-          [
-            3558,
-            3565
-          ]
-        ],
-        "single_word",
-        "HPB"
-      ],
-      [
-        "stormen",
-        [
-          [
-            3558,
-            3565
-          ]
-        ],
-        "single_word",
-        "MTP"
-      ]
-    ],
-    [
-      [
-        "fulde",
-        [
-          [
-            248,
-            253
-          ]
-        ],
-        "single_word",
-        "HPB"
-      ],
-      [
-        "fulde",
-        [
-          [
-            248,
-            253
-          ]
-        ],
-        "single_word",
-        "MTP"
-      ]
-    ],
-    [
-      [
         "fulde",
         [
           [
@@ -882,16 +762,77 @@
     ],
     [
       [
-        "Stormen",
+        "stormede",
         [
           [
-            2456,
-            2463
+            2582,
+            2590
+          ]
+        ],
+        "single_word",
+        "MTP"
+      ],
+      [
+        "stormede",
+        [
+          [
+            2582,
+            2590
           ]
         ],
         "single_word",
         "HPB"
+      ]
+    ],
+    [
+      [
+        "stormen",
+        [
+          [
+            2536,
+            2543
+          ]
+        ],
+        "single_word",
+        "MTP"
       ],
+      [
+        "stormen",
+        [
+          [
+            2536,
+            2543
+          ]
+        ],
+        "single_word",
+        "HPB"
+      ]
+    ],
+    [
+      [
+        "Stormen",
+        [
+          [
+            3426,
+            3433
+          ]
+        ],
+        "single_word",
+        "MTP"
+      ],
+      [
+        "Stormen",
+        [
+          [
+            3426,
+            3433
+          ]
+        ],
+        "single_word",
+        "HPB"
+      ]
+    ],
+    [
       [
         "Stormen",
         [
@@ -902,6 +843,65 @@
         ],
         "single_word",
         "MTP"
+      ],
+      [
+        "Stormen",
+        [
+          [
+            2456,
+            2463
+          ]
+        ],
+        "single_word",
+        "HPB"
+      ]
+    ],
+    [
+      [
+        "stormen",
+        [
+          [
+            3558,
+            3565
+          ]
+        ],
+        "single_word",
+        "MTP"
+      ],
+      [
+        "stormen",
+        [
+          [
+            3558,
+            3565
+          ]
+        ],
+        "single_word",
+        "HPB"
+      ]
+    ],
+    [
+      [
+        "fulde",
+        [
+          [
+            248,
+            253
+          ]
+        ],
+        "single_word",
+        "MTP"
+      ],
+      [
+        "fulde",
+        [
+          [
+            248,
+            253
+          ]
+        ],
+        "single_word",
+        "HPB"
       ]
     ]
   ],
@@ -916,7 +916,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "gyserafslutning",
@@ -927,7 +927,7 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],
@@ -942,7 +942,7 @@
           ]
         ],
         "single_word",
-        "HPB"
+        "MTP"
       ],
       [
         "mirakel",
@@ -953,7 +953,7 @@
           ]
         ],
         "single_word",
-        "MTP"
+        "HPB"
       ]
     ]
   ],

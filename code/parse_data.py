@@ -82,43 +82,47 @@ class MWEParser:
 
     def create_lexical_units(self, example, mwe_groups, chunk_groups):
         lexical_units = []
-
-        # Process MWEs
-        for group in mwe_groups:
-            spans = sorted([span for entity in group for span in entity.spans], key=lambda s: s.start)
-            mention = ' '.join(example.text[span.start:span.end] for span in spans)
-            tag = group[0].type  # Assuming all entities in MWE have the same tag
-            ref_ids = [entity.id for entity in group]
-
-            if any(spans[i+1].start - spans[i].end > 1 for i in range(len(spans)-1)):
-                type = 'NonContiguousMWE'
-            else:
-                type = 'ContiguousMWE'
-
-            lexical_units.append(LexicalUnit(mention, type, spans, tag, ref_ids))
-
-        # Process CHUNKs
-        for group in chunk_groups:
-            spans = sorted([span for entity in group for span in entity.spans], key=lambda s: s.start)
+        
+        for i, group in enumerate(mwe_groups + chunk_groups):
+            try:
+                spans = sorted([span for entity in group for span in entity.spans], key=lambda s: s.start)
+            except AttributeError as e:
+                print(f"AttributeError in example {example.id} group {i}: {e}")
+                continue
             
-            # Merge spans if there are gaps
-            merged_spans = []
-            current_span = spans[0]
-            for i in range(1, len(spans)):
-                if spans[i].start == current_span.end:
-                    current_span = Span(current_span.start, spans[i].end)
-                else:
-                    merged_spans.append(current_span)
-                    current_span = spans[i]
-            merged_spans.append(current_span)
+            # Process MWEs
+            if group in mwe_groups:
+                mention = ' '.join(example.text[span.start:span.end] for span in spans)
+                tag = group[0].type  # Assuming all entities in MWE have the same tag
+                ref_ids = [entity.id for entity in group]
 
-            # Create a single span from the first to the last
-            full_span = Span(merged_spans[0].start, merged_spans[-1].end)
-    
-            mention = example.text[full_span.start:full_span.end]
-            tag = group[0].type  # Assuming all entities in CHUNK have the same tag
-            ref_ids = [entity.id for entity in group]
-            lexical_units.append(LexicalUnit(mention, 'CHUNK', [full_span], tag, ref_ids))
+                if any(spans[i+1].start - spans[i].end > 1 for i in range(len(spans)-1)):
+                    type = 'NonContiguousMWE'
+                else:
+                    type = 'ContiguousMWE'
+
+                lexical_units.append(LexicalUnit(mention, type, spans, tag, ref_ids))
+
+            # Process CHUNKs
+            elif group in chunk_groups:
+                # Merge spans if there are gaps
+                merged_spans = []
+                current_span = spans[0]
+                for i in range(1, len(spans)):
+                    if spans[i].start == current_span.end:
+                        current_span = Span(current_span.start, spans[i].end)
+                    else:
+                        merged_spans.append(current_span)
+                        current_span = spans[i]
+                merged_spans.append(current_span)
+
+                # Create a single span from the first to the last
+                full_span = Span(merged_spans[0].start, merged_spans[-1].end)
+        
+                mention = example.text[full_span.start:full_span.end]
+                tag = group[0].type  # Assuming all entities in CHUNK have the same tag
+                ref_ids = [entity.id for entity in group]
+                lexical_units.append(LexicalUnit(mention, 'CHUNK', [full_span], tag, ref_ids))
 
         # Process single-word entities (not part of MWEs or CHUNKs)
         grouped_entity_ids = set(entity.id for groups in (mwe_groups, chunk_groups) for group in groups for entity in group)

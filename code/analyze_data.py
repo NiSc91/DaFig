@@ -1,3 +1,4 @@
+import pdb
 import os
 import shutil
 from config import *
@@ -16,12 +17,11 @@ from itertools import chain, combinations
 from dataclasses import dataclass
 from matplotlib import pyplot as plt
 import seaborn as sns
-
-## Declare variables
-handler = CollectionHandler(CORPORA_DIR)
-
-all_corpora = handler.get_collections()
-print("All annotated corpora:", all_corpora)
+from pygamma_agreement import Continuum, CombinedCategoricalDissimilarity
+from pyannote.core import Segment
+from pygamma_agreement import show_alignment
+import spacy
+import lemmy
 
 # Variables
 handler = CollectionHandler(CORPORA_DIR)
@@ -33,7 +33,7 @@ MAIN_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR,'main'))
 # Create paths for the agreement corpora
 CORPUS_NAMES = ['main', 'agr1', 'agr2', 'agr3', 'agr_combined', 'consensus']
 CORPUS_PATHS = {f"{name.upper()}_PATH": handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in CORPUS_NAMES}
-OUTPUT_DIR = os.path.join(CORPORA_DIR, "../BIO")
+OUTPUT_DIR = TEMP_DIR
 
 # Check if the output directory exists, if not, create it
 if not os.path.exists(OUTPUT_DIR):
@@ -46,6 +46,8 @@ get_ann_path = lambda base_path, ann_folder: os.path.join(base_path, ann_folder)
 base_paths = {name: handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in CORPUS_NAMES[1:]}
 ann_paths = {f"{name.upper()}_ANN1_PATH": get_ann_path(base_path, 'ann1') for name, base_path in base_paths.items()}
 ann_paths.update({f"{name.upper()}_ANN2_PATH": get_ann_path(base_path, 'ann2') for name, base_path in base_paths.items()})
+
+### Analysis on training corpus ###
 
 ## Read in the main corpus and perform some basic operations
 main_corpus = peek.AnnCorpus(MAIN_PATH, txt=True)
@@ -306,8 +308,8 @@ def get_figurative_sentences(lus_dict, texts_dict, fig_tags):
                 if sent_start <= lu_start < sent_end:
                     results.append({
                         'doc_id': doc_id,
+                        'tagged_word': mention.lower(),
                         'sentence': sentence.strip(),
-                        'tagged_word': mention,
                         'tag': tag,
                         'type': type
                     })
@@ -317,13 +319,35 @@ def get_figurative_sentences(lus_dict, texts_dict, fig_tags):
 
 # Find metaphorical sentences (tagged MTP)
 mtp_df = get_figurative_sentences(all_lus, all_texts, ['MTP'])
+# Sort the metaphorical sentences by the tagged_word column
+mtp_df = mtp_df.sort_values('tagged_word')
 
 # Find hyperbolic sentences (tagged HPB)
 hpb_df = get_figurative_sentences(all_lus, all_texts, ['HPB'])
+# Sort the hyperbolic sentences by the tagged_word column
+hpb_df = hpb_df.sort_values('tagged_word')
 
-# Write the metaphorical and hyperbolic sentences to a csv file
-mtp_df.to_csv(os.path.join(OUTPUT_DIR,'mtp_sentences.csv'), encoding='utf-8', index=False)
-hpb_df.to_csv(os.path.join(OUTPUT_DIR, 'hpb_sentences.csv'), encoding='utf-8', index=False)
+## Lemmatize metaphors using spaCy
+nlp = spacy.load("da_core_news_md")  # Load the Danish model
+
+# Process the metaphors in mtp_df
+mtp_df['lemma'] = mtp_df['tagged_word'].apply(lambda word: nlp(word)[0].lemma_)
+
+## Output the lemmatized metaphors to a csv file
+mtp_df.to_csv(os.path.join(OUTPUT_DIR,'mtp_sentences_lemmatized.csv'), encoding='utf-8', index=False)
+
+# Pull metaphor list from txt-file
+metaphor_list = []
+with open(os.path.join(DATA_DIR,'metaphor_lemma_list.txt'), 'r', encoding='utf-8') as f:
+    for line in f:
+        # Make sure that numbers and other non/alphanumeric characters are removed before adding it to the list
+        metaphor_list.append(re.sub(r'[^a-zA-Z0-9 ]+', '', line.strip()))
+
+## Create a new dataframe consisting of the subset of lemmas in mtp_df which also exist in the metaphor list
+lemmatized_mtp_df = mtp_df[mtp_df['lemma'].isin(metaphor_list)]
+
+## Save the results to a csv file
+lemmatized_mtp_df.to_csv(os.path.join(OUTPUT_DIR,'mtp_sentences_from_DDO.csv'), encoding='utf-8', index=False)
 
 ### Visualize attribute information
 
@@ -352,3 +376,204 @@ for category, counter in attribute_counts.items():
     print(f"{category} Attribute Counts:")
     print(counter)
     print()
+
+### Analyses on agreement corpora ###
+
+def create_combined_annotations(annotator1, annotator2):
+    """
+    Create a nested combined lexical units dictionary organized by label and doc_id.
+    Structure: {label: {doc_id: [annotator1_annotations, annotator2_annotations]}}
+    """
+    labels = ['MTP', 'HPB', 'VIR', 'WIDLII']
+    combined_annotations = {label: {} for label in labels}
+    
+    for annotator, corpus in [('annotator1', annotator1), ('annotator2', annotator2)]:
+        for example in corpus:
+            doc_id = example.id
+            for lu in example.lexical_units:
+                label = lu.tag
+                if label not in labels:
+                    continue  # Skip labels not in the predefined list
+                if doc_id not in combined_annotations[label]:
+                    combined_annotations[label][doc_id] = ([], [])
+                if annotator == 'annotator1':
+                    combined_annotations[label][doc_id][0].append((lu.mention, lu.spans, lu.type, lu.tag))
+                else:
+                    combined_annotations[label][doc_id][1].append((lu.mention, lu.spans, lu.type, lu.tag))
+    
+    return combined_annotations
+
+def convert_to_gamma_format(annotations_dict):
+    """
+    Convert annotations to a gamma Continuum format.
+    """
+    continuum = Continuum()
+    
+    for doc_id, annotator_pairs in annotations_dict.items():
+        # Process each annotator's annotations
+        for annotator_idx, annotations in enumerate(annotator_pairs, 1):
+            annotator_name = f"Annotator{annotator_idx}"
+            
+            # Process each annotation tuple (mention, spans, type, tag)
+            for _, spans, _, category in annotations:
+                for span in spans:
+                    # Convert character positions to "time-like" segments
+                    # Using character positions as if they were timestamps
+                    segment = Segment(span.start, span.end)
+                    continuum.add(annotator_name, segment, category)
+    
+    return continuum
+
+def calculate_gamma_agreement(ann1_path, ann2_path):
+    """
+    Calculate overall and per-label gamma agreements between two annotators.
+    
+    Args:
+        ann1_path (str): Path to annotator 1's annotations.
+        ann2_path (str): Path to annotator 2's annotations.
+        
+    Returns:
+        dict: A dictionary containing overall gamma and per-label gamma scores.
+    """
+    # Load the annotations for two annotators
+    brat1 = ExtendedBratParser(input_dir=ann1_path, error="ignore")
+    ann1_corpus = list(brat1.parse(ann1_path))
+    
+    brat2 = ExtendedBratParser(input_dir=ann2_path, error="ignore")
+    ann2_corpus = list(brat2.parse(ann2_path))
+    
+    # Create a nested combined annotations dictionary per label
+    combined_annotations = create_combined_annotations(ann1_corpus, ann2_corpus)
+    
+    # Initialize results dictionary
+    agreement_results = {}
+    
+    # Calculate overall gamma agreement across all labels
+    # Merge all labels into a single annotations dictionary
+    overall_annotations = {}
+    for label_dict in combined_annotations.values():
+        for doc_id, annotator_pairs in label_dict.items():
+            if doc_id not in overall_annotations:
+                overall_annotations[doc_id] = ([], [])
+            overall_annotations[doc_id][0].extend(annotator_pairs[0])
+            overall_annotations[doc_id][1].extend(annotator_pairs[1])
+    
+    overall_continuum = convert_to_gamma_format(overall_annotations)
+    dissim = CombinedCategoricalDissimilarity(delta_empty=1, alpha=3, beta=1)
+    overall_gamma_agreement = overall_continuum.compute_gamma(dissim, precision_level=0.02)
+    agreement_results['Overall'] = overall_gamma_agreement.gamma
+    
+    # Calculate gamma agreement per label
+    for label, label_annotations in combined_annotations.items():
+        if not label_annotations:
+            agreement_results[label] = None  # No data for this label
+            continue
+        
+        label_continuum = convert_to_gamma_format(label_annotations)
+        # If AssertionError, handle the error and replace with 0
+        try:
+            label_gamma_agreement = label_continuum.compute_gamma(dissim)
+        except AssertionError as e:
+            print(f"AssertionError in {label}: {e}")
+            agreement_results[label] = 0
+            continue
+        
+        agreement_results[label] = label_gamma_agreement.gamma
+        label_gamma_agreement = label_continuum.compute_gamma(dissim)
+        agreement_results[label] = label_gamma_agreement.gamma
+    
+    return agreement_results
+
+### Create gamma agreement report for multiple corpora
+# Initialize a list to collect results
+gamma_results_list = []
+
+# Define annotation stages and their corresponding paths
+annotation_stages = {
+    'AGR1\n(5h Annotation)': ('AGR1_ANN1_PATH', 'AGR1_ANN2_PATH'),
+    'AGR2\n(40h Annotation)': ('AGR2_ANN1_PATH', 'AGR2_ANN2_PATH'),
+    'Consensus\n(AGR2 Discussion)': ('CONSENSUS_ANN1_PATH', 'CONSENSUS_ANN2_PATH'),
+    'AGR3\n(Final Stage)': ('AGR3_ANN1_PATH', 'AGR3_ANN2_PATH')
+}
+
+# Iterate through each annotation stage and calculate gamma agreements
+for stage_label, (ann1_key, ann2_key) in annotation_stages.items():
+    ann1_path = ann_paths[ann1_key]
+    ann2_path = ann_paths[ann2_key]
+    gamma_agreement = calculate_gamma_agreement(ann1_path, ann2_path)
+    
+    # Add stage label to each result
+    for metric, score in gamma_agreement.items():
+        gamma_results_list.append({
+            'Annotation Stage': stage_label,
+            'Metric': metric,
+            'Gamma Score': score
+        })
+    
+    # Optional: Print progress
+    print(f"Gamma Agreement for {stage_label}: {gamma_agreement}")
+
+# Convert the list of results into a pandas DataFrame
+gamma_df = pd.DataFrame(gamma_results_list)
+
+# Drop rows where gamma score is NaN, and exclude the 'VIR' label if present
+gamma_df_clean = gamma_df.dropna(subset=['Gamma Score'])
+gamma_df_clean = gamma_df_clean[gamma_df_clean['Metric']!= 'VIR']
+
+# Verify the cleaned DataFrame
+print(gamma_df_clean.head())
+
+### Visualize gamma agreement progression
+# Set seaborn theme for publication-quality graphics
+sns.set(style='whitegrid', font_scale=1.2)
+
+# Define the order of metrics to ensure consistent coloring
+metric_order = ['Overall', 'MTP', 'HPB', 'WIDLII']
+
+# Define a color palette
+palette = sns.color_palette("Set2", n_colors=len(metric_order))
+
+# Initialize the matplotlib figure
+plt.figure(figsize=(14, 8))
+
+# Create the bar plot using the cleaned DataFrame
+sns.barplot(
+    data=gamma_df_clean,
+    x='Annotation Stage',
+    y='Gamma Score',
+    hue='Metric',
+    palette=palette,
+    order=sorted(gamma_df_clean['Annotation Stage'].unique()),  # Adjust as needed
+    hue_order=metric_order
+)
+
+# Customize the plot
+plt.title('Inter-Annotator Gamma Agreement Across Annotation Stages and Labels', fontsize=16, pad=20)
+plt.xlabel('Annotation Stage', fontsize=14)
+plt.ylabel('Gamma Agreement Score', fontsize=14)
+plt.ylim(0, 1.05)  # Adjust if needed based on your data
+
+plt.legend(title='Metric', fontsize=12, title_fontsize=13, loc='upper left', bbox_to_anchor=(1, 1))
+
+# Add value labels on top of each bar, skipping non-finite heights
+for p in plt.gca().patches:
+    height = p.get_height()
+    if np.isfinite(height):
+        plt.gca().text(
+            p.get_x() + p.get_width() / 2., 
+            height + 0.01, 
+            f'{height:.2f}', 
+            ha='center', 
+            va='bottom',
+            fontsize=10
+        )
+
+# Adjust layout to accommodate the legend
+plt.tight_layout()
+
+# Save the figure
+output_path = os.path.join(OUTPUT_DIR, 'gamma_agreement_grouped_bar.png')   
+plt.savefig(output_path, dpi=300, bbox_inches='tight')
+
+# Save gamma_df to a CSV file
+gamma_df.to_csv(os.path.join(OUTPUT_DIR, 'gamma_agreement_scores.csv'), index=False)

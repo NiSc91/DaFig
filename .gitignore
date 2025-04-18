@@ -163,4 +163,6 @@ cython_debug/
 deps/
 articles_with_front_headlines.json
 models/
+results/
 brat_data/
+temp/

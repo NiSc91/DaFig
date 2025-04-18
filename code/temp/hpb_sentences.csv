@@ -1,137 +1,137 @@
-doc_id,sentence,tagged_word,tag,type
-9048255,"- Jeg sender denne video for at fortælle alle, at jeg har det godt, og at jeg er i sikkerhed.",alle,HPB,single_word
-9083738,Ustoppelige: Ny sejr i topbrag,Ustoppelige,HPB,single_word
-9109649,"Faktaboks - Samler Siden Mitshi fik inddraget sin opholdstilladelse 7. januar, har familien gjort alt i deres magt til at ændre beslutningen, men uden held.",alt,HPB,single_word
-9109649,Siden har Mishti Dixit gjort alt i sin magt for at integrere sig.,alt,HPB,single_word
-9125228,"De skuffede dog begge i styrtløbet, og da de var tvunget til at satse i slalom, kørte de af banen.",tvunget,HPB,single_word
-9126957,Kontroversiel legende stopper omgående,legende,HPB,single_word
-9126957,"Først i Bolts sidste løb i karrieren, VM-finalen i 2017, lykkedes det for Gatlin at sætte konkurrenten på plads, mens verden så på.",verden,HPB,single_word
-9128946,"- Det vil jeg have det fint med, siger han til Ekstra Bladet.",fint,HPB,single_word
-9128946,Borgmester: Fint med amerikanske soldater på Bornholm,Fint,HPB,single_word
-9165073,"Det er altid ærgerligt, når noget går i stykker.",altid,HPB,single_word
-9166397,Her bliver den ene ende af banen nemlig indtaget af den 25-årige Matteo Berrettini.,indtaget,HPB,single_word
-9167351,"Intet at gøre Uheldet skete kort før, han blev præsenteret og skulle ud på scenen, så der var intet at gøre, kunne han fortælle og tilføjede, at det ikke var sådan, at det stod ud i stimer fra bagdelen.",Intet,HPB,single_word
-9167351,"- Fy for helvede, det er det sjoveste, jeg længe har hørt.",sjoveste,HPB,single_word
-9167351,"Intet at gøre Uheldet skete kort før, han blev præsenteret og skulle ud på scenen, så der var intet at gøre, kunne han fortælle og tilføjede, at det ikke var sådan, at det stod ud i stimer fra bagdelen.",intet,HPB,single_word
-9183086,"De stopper alt og alle’, lød det i en besked 16. november skrevet af jons55.",alt og alle,HPB,CHUNK
-9189461,De mest tarvelige 45 minutter i Kasper Hjulmands landstrænertid blev dog hurtigt glemt.,mest tarvelige,HPB,CHUNK
-9189461,"Han bankede også den første parentes op omkring det kollaps i Parken, som for mig og mange andre, der var i Parken den aften mod Finland, stadig sidder i kroppen som noget af det mest uhyggelige.",mest uhyggelige,HPB,CHUNK
-9189461,Det kan ikke være mere glædeligt.,mere glædeligt,HPB,CHUNK
-9189461,"Og de hollandske modstandere hamrede igennem med en sådan kraft og ærgerrighed, så man næsten sad og håbede, at Christian Eriksen ikke skulle ind til den øretæve.",sådan kraft og ærgerrighed,HPB,CHUNK
-9189461,"Målløs over Eriksen: - Hold nu kæft, et comeback!",Målløs,HPB,single_word
-9189461,I 45 minutter hang Hjulmands energiforladte og tamme taktiske oplæg og koncept som en slatten boksebold i den ene ende af Amsterdam Arena.,energiforladte,HPB,single_word
-9189461,"LÆS OGSÅ: Dansk klub i kaos: Vi giver ikke nøglerne fra os En ting er nemlig at gå ind og score efter et par minutter i sit comeback, men målet efter smukt oplæg af Rasmus Nissen Kristensen og Andreas Skov Olsen - der aldrig bør starte ude på landsholdet - var også med en signaturafslutning fra Eriksen.",kaos,HPB,single_word
-9189461,"LÆS OGSÅ: Dansk klub i kaos: Vi giver ikke nøglerne fra os En ting er nemlig at gå ind og score efter et par minutter i sit comeback, men målet efter smukt oplæg af Rasmus Nissen Kristensen og Andreas Skov Olsen - der aldrig bør starte ude på landsholdet - var også med en signaturafslutning fra Eriksen.",aldrig,HPB,single_word
-9189461,"Alexander Bah var konstant en meter fra, hvor han burde være.",konstant,HPB,single_word
-9189461,De mest tarvelige 45 minutter i Kasper Hjulmands landstrænertid blev dog hurtigt glemt.,glemt,HPB,single_word
-9205478,"Det lille retslokale var fyldt til bristepunktet med de to drenges pårørende, da anklager Rune Rydik læste sigtelserne op tidligere torsdag.",bristepunktet,HPB,single_word
-9205478,"Det lille retslokale var fyldt til bristepunktet med de to drenges pårørende, da anklager Rune Rydik læste sigtelserne op tidligere torsdag.",fyldt,HPB,single_word
-9210153,Byder en million for kaos-klub,kaos,HPB,single_word
-9214940,Og det sætter jeg umenneskelig meget pris på.,umenneskelig meget,HPB,CHUNK
-9214940,Men derimod med det dyrebareste venskab - nemlig forældreskabet.,dyrebareste,HPB,single_word
-9227539,"Tony Lindkold forklarer i bogen, at noget sådant ikke kunne være sket i en nordeuropæisk operation.",ikke kunne være sket,HPB,CHUNK
-9227539,"Nu er min uniform en opdigtet identitet med dertilhørende tøj, frisure og smykker, og mit eneste våben er min evne til at lyve og foregive, at jeg er en anden, end jeg er.'",eneste,HPB,single_word
-9227539,"- Dengang fik jeg straks nogle psykologsamtaler, og siden blev de også fulgt op, fortæller Tony Lindkold til Ekstra Bladet i dag.",straks,HPB,single_word
-9232585,Lindstrøm-mareridt: Udgår skadet i sejr,mareridt,HPB,single_word
-9232585,"Det var den danske landsholdsspiller, som med en perfekt stikning sendte Djibril Sow i dybden.",perfekt,HPB,single_word
-9247001,Ikon stopper på Wembley,Ikon,HPB,single_word
-9247001,"Det britiske fodboldikon Adebayo Akinfenwa får måske den perfekte afslutning på sin karriere, når han spiller sin sidste kamp i karrieren på Wembley",fodboldikon,HPB,single_word
-9257030,"Justin Biebers repertoire er så tyndt, at det heller ikke ville blive fedt, hvis han tog sig sammen.","så tyndt, at det heller ikke ville blive fedt, hvis han tog sig sammen",HPB,CHUNK
-9257030,Uduelig Bieber: Til at tude over,Uduelig,HPB,single_word
-9257030,Uduelig Bieber: Til at tude over,tude,HPB,single_word
-9257030,Garanti for eufori 1.,Garanti,HPB,single_word
-9257030,"Helt ude i skoven Justin Bieber, Bøgescenerne, onsdag klokken 23.45 En af verdens største popstjerner er også en af verdens værste entertainere.",værste,HPB,single_word
-9257030,Tøserne kommer til at vræle på stribe.,vræle,HPB,single_word
-9264442,AGF på vild spillerjagt efter katastrofe-sæson,vild,HPB,single_word
-9264442,AGF på vild spillerjagt efter katastrofe-sæson,katastrofe,HPB,single_word
-9264442,"Stig Inge Bjørnebye får voldsomt travlt med forhandlinger de næste 25 dage inden AGF-truppen samles igen, og klubben skal hindre, at forårets nedtur følger med ind i efteråret",voldsomt,HPB,single_word
-9264442,De Hvi’e har desperat brug for kantspillere.,desperat,HPB,single_word
-9264442,"Et andet emne er Lyngbys Magnus Kaastrup, der har en fortid i AGF, men hans exit fra klubben blev uskønt, og det er ikke aktuelt med en genforening.",uskønt,HPB,single_word
-9264442,AGF’s backs er et mysterium.,mysterium,HPB,single_word
-9264442,"SønderjyskE-bomberen Emil Berggreen har en frikøbsklausul i sin aftale med nedrykkerne, som betyder, at AGF kan hente ham for omkring en mio. kr.",bomberen,HPB,single_word
-9264442,"Dermed får klubben en bombertype, der kan afløse Patrick Mortensen, men samtidig også kan være en del af en duo med en hurtig type som Frederik Ihler eller Dawid Kurminowski.",bombertype,HPB,single_word
-9264531,Tiger Woods trækker sig fra golfmajor efter skrækrunde,skrækrunde,HPB,single_word
-9264531,"Den 46-årige golflegende har kæmpet med fysikken, siden en meget voldsom trafikulykke i februar 2021 næsten kostede ham det ene ben.",golflegende,HPB,single_word
-9264531,"Woods, der fire gange tidligere har vundet PGA Championship, kom ind i en skrækstime midt på runden lørdag.",skrækstime,HPB,single_word
-9264531,"Golflegenden Phil Mickelson vandt sidste års udgave af PGA Championship, men deltager ikke i den igangværende, som afvikles på Southern Hills Country Clubs bane i Tulsa i den amerikanske delstat Oklahoma.",Golflegenden,HPB,single_word
-9264531,"Der var ikke ret meget, der fungerede for golfikonet Tiger Woods, da han lørdag gik tredje runde af majorturneringen PGA Championship.",golfikonet,HPB,single_word
-9265976,Stjernens uvisse fremtid: - Vi skal snakke sammen,Stjernens,HPB,single_word
-9265976,"Nu er der gået et lille halvt år, og spørgsmålet er, om midtbanestjernen Jens Stage nu får lov til at skifte til udlandet.",midtbanestjernen,HPB,single_word
-9265976,"Lige nu skal jeg drikke øl, jeg skal fejre det, så skal jeg på ferie, og så ... ja, så sætter jeg mig nok ned med 'PC', og så finder vi nok ud af, hvad der skal ske, lød det med et drilsk smil fra FCK-stjernen.",stjernen,HPB,single_word
-9296130,"Men i år er glamouren forsvundet, for der er ikke nogen, der tør ses med russiske præsident i frygt for at blive sanktioneret af Vesten, der allerede har vedtaget i alt seks sanktionspakker mod landet.",ikke nogen,HPB,CHUNK
-9296130,Men i år tør ingen deltage,ingen,HPB,single_word
-9310134,"Vi tænkte, at vi kunne få en til at dække ind, men i morges klokken syv blev vi så ringet op og fik at vide, at der var en til, der var syg, og så var der ikke noget at gøre, siger han og fortæller, at der i alt er tre, der er tilknyttet revyen, der er smittet med corona.",ikke noget,HPB,CHUNK
-9310134,Ulf Pilgaard var i mange år en af Cirkusrevyens store stjerner - han giver dig her hemmeligheden bag sit ungdommelige udseende.,hemmeligheden,HPB,single_word
-9315367,Vil lave ravage i Wimbledon,ravage,HPB,single_word
-9315367,Historiens største tennisspiller på kvindesiden Serena Williams er tilbage og kan måske lave ravage i Wimbledon.,ravage,HPB,single_word
-9316321,"Linnets livsværk med 50 nyindspillede sange udgives til efteråret, ligesom der også kommer en udgivelse i forbindelse med DR-satsningen 'Min Sang til Danmark'.",livsværk,HPB,single_word
-9323469,Hiver og flår i Dreyer - FCM med i kampen,kampen,HPB,single_word
-9332888,"Her fortæller chefforhandler Keld Bækkelund Hansen til Ekstra Bladet: - Man kunne læse alle vegne i går, at SAS mente, at vores strejke ikke betød en skid, fordi deres connect-fly (hvor piloterne ikke er i strejke, red.)",alle vegne,HPB,ContiguousMWE
-9332888,"- Men jeg svarer hende, at jeg ikke kan forstå, hvorfor hun skriver sådan, når de hele dagen har sagt, at de ikke har behov for vores flymekanikere i pressen.",hele dagen,HPB,CHUNK
-9332888,"Her fortæller chefforhandler Keld Bækkelund Hansen til Ekstra Bladet: - Man kunne læse alle vegne i går, at SAS mente, at vores strejke ikke betød en skid, fordi deres connect-fly (hvor piloterne ikke er i strejke, red.)",ikke betød en skid,HPB,CHUNK
-9332888,"bare kunne flyve, som de ville.","flyve, som de ville",HPB,CHUNK
-9332888,Kaos om aftale: Forvirringen er total,Kaos,HPB,single_word
-9332888,Kaos om aftale: Forvirringen er total,total,HPB,single_word
-9332888,Kaosset fortsætter for tusindvis af SAS' kunder.,Kaosset,HPB,single_word
-9335044,Ond start for europamestrene,Ond,HPB,single_word
-9338439,Kort før en koncert i Budapest tirsdag fik croonerlegenden Tom Jones et ildebefindende og måtte aflyse,croonerlegenden,HPB,single_word
-9338439,"Den 82-årige walisiske legende er i gang med en turné, der bringer ham til København den 22. juli.",legende,HPB,single_word
-9344447,"Jeg startede bare med gåture, og så derefter gik jeg helt amok i fitness.",gik amok,HPB,NonContiguousMWE
-9344447,"Jeg brænder for, at bodybuilding skal blive ved med at være en del af mit liv, fortæller hun og fortsætter: - Det er fedt, fordi man lærer sig selv at kende, og man bliver disciplineret, og jeg kan godt lide at presse mig selv og give alt, hvad jeg har, hver gang jeg træner.","alt, hvad jeg har",HPB,CHUNK
-9344447,"Og så eksploderede vægten, da jeg startede på en videregående uddannelse, samtidig med at jeg arbejdede på en grillbar, fortæller Joan Larsen.",eksploderede,HPB,single_word
-9347340,"Der ville jeg tidligere være eksploderet, men i stedet blev jeg nummer tre på første etape, påpeger Kron.",eksploderet,HPB,single_word
-9347340,"Også på lørdagens skoldhede etape til Mende viste den 24-årige dansker, at kroppen kan fungere under de barske forhold.",skoldhede,HPB,single_word
-9348201,"Jonas Vingegaard kørte sig torsdag til en endnu større føring i Tour de France, da han knuste rivalen Tadej Pogacar og vandt 18. etape på toppen af Hautacam-stigningen i ensom majestæt.",knuste,HPB,single_word
-9348201,"Det skete efter en næsten perfekt holdpræstation af Jumbo-Visma, kulminerende med Wout van Aerts acceleration godt fire kilometer fra mål, som endegyldigt knækkede Tadej Pogacar.",knækkede,HPB,single_word
-9348201,"Det skete efter en næsten perfekt holdpræstation af Jumbo-Visma, kulminerende med Wout van Aerts acceleration godt fire kilometer fra mål, som endegyldigt knækkede Tadej Pogacar.",endegyldigt,HPB,single_word
-9348201,"Alle andre var også utrolig stærke, siger Jonas Vingegaard.",Alle,HPB,single_word
-9348201,"Alle andre var også utrolig stærke, siger Jonas Vingegaard.",utrolig,HPB,single_word
-9348201,"'Ekstra Tour': Kaffen galt i halsen Forinden lurede katastrofen ellers, da Vingegaard var ved at styrte på nedkørslen til Hautacam.",katastrofen,HPB,single_word
-9350265,"Han kører med en kynisme og et overskud, siger Brian Holm.",kynisme,HPB,single_word
-9350265,"- Det er fuldstændig vanvittigt, hvad han har lavet.",fuldstændig,HPB,single_word
-9350265,Lykkelig kæreste: - Verdens bedste cykelrytter Kæmpede med tårerne: - Det betyder alt Holdkammerat: Jonas ville ikke vinde  ekstra tour episode 20 .,alt,HPB,single_word
-9362377,"Beslutningen har dog ført til heftig kritik fra katteelskere i hele landet, der mener, at den faldende biodiversitet på ingen måde alene skyldes vores pelsede, spindende kompagnoner.",på ingen måde,HPB,ContiguousMWE
-9398525,Midtjylland taber til AGF på elendig hjemmebane - se alle mål og interviews her  FCK-fans må glemme Cornelius: Her er mulighederne til angrebet .,glemme,HPB,single_word
-9398525,Dermed slipper FCM-cheftræner Albert Capellas og midtjyderne for den 19-årige danske bomber.,bomber,HPB,single_word
-9404859,"Den britiske premierminister, Boris Johnson, udtaler, at han altid har beundret 'det mod og den integritet', Gorbatjov ifølge Johnson udviste, da han bragte den kolde krig til en fredelig afslutning.",altid,HPB,single_word
-9404859,"Vi vil aldrig glemme dette eftermæle, skriver hun på Twitter.",aldrig,HPB,single_word
-9417113,"I første halvlegs tillægstid glemte Plzen at dække Lewandowski op ved bageste stolpe, og hans hovedstød gjorde det til pausestillingen 3-1.",glemte,HPB,single_word
-9419146,Dansk drømmemål: - Det smukkeste siden Kim Larsen,smukkeste,HPB,single_word
-9419146,"Lars Tjærnås, ekspert for Aftenposten og Viaplay, kalder eksempelvis målet for ""det smukkeste, siden Kim Larsen spillede 'This Is My Life' på en scene i Horsens i 2016"".",smukkeste,HPB,single_word
-9422718,Watts dom: 'Igen genialt',genialt,HPB,single_word
-9427193,Totalt kaos i London: Politiet siger stop,Totalt kaos,HPB,CHUNK
-9427193,Der er totalt kaos i London onsdag eftermiddag.,totalt kaos,HPB,CHUNK
-9427193,Vanvids-kø på 30 timer ventes de kommende dage,Vanvids,HPB,single_word
-9427810,Vild udvikling i familiedrama: Pogba-bror fængslet,Vild,HPB,single_word
-9429787,"- Der er ingen tvivl om, at der er begået krigsforbrydelser i Ukraine.",ingen,HPB,single_word
-9438171,Smider bombe på tv: - Jeg er selv lidt i chok,bombe,HPB,single_word
-9438171,Smider bombe på tv: - Jeg er selv lidt i chok,chok,HPB,single_word
-9438171,"Det var på mange måde modsætninger, der mødtes, da Olivia Bak-Christensen blev smedet sammen med Patrick Kim Jensen i 'Gift ved første blik', og efter fire dage som ægtefolk smider hun noget af en bombe i det populære DR-program.",modsætninger,HPB,single_word
-9438171,"Det var på mange måde modsætninger, der mødtes, da Olivia Bak-Christensen blev smedet sammen med Patrick Kim Jensen i 'Gift ved første blik', og efter fire dage som ægtefolk smider hun noget af en bombe i det populære DR-program.",bombe,HPB,single_word
-9438171,"- Jeg var ikke forberedt på, at lige den scene ville komme med, så jeg er også selv lidt i chok, siger hun og understreger, at eksperimentet endnu ikke er slut.",chok,HPB,single_word
-9448683,Læs det fulde overblik her,fulde,HPB,single_word
-9448683,Ekstra Bladet giver dig her det fulde overblik over alle efterforskningerne mod den tidligere præsident.,fulde,HPB,single_word
-9448683,Læs også: Advarer om Kup Stormen på Kongressen 1 Repræsentanternes Hus undersøger begivenhederne omkring stormen på Kongressen den 6. januar 2021.,Stormen,HPB,single_word
-9448683,Læs også: Advarer om Kup Stormen på Kongressen 1 Repræsentanternes Hus undersøger begivenhederne omkring stormen på Kongressen den 6. januar 2021.,stormen,HPB,single_word
-9448683,Her stormede Trump-støtter den amerikanske Kongres-bygning.,stormede,HPB,single_word
-9448683,"Stormen på Kongressen 2 Det amerikanske justitsministeruim har foretaget en større efterforskninng af begivenhederne, der førte til stormen på kongressen den 6. januar 2021.",Stormen,HPB,single_word
-9448683,"Stormen på Kongressen 2 Det amerikanske justitsministeruim har foretaget en større efterforskninng af begivenhederne, der førte til stormen på kongressen den 6. januar 2021.",stormen,HPB,single_word
-9448683,"Det skete for at gøre sig selv rigere og snyde systemet og dermed os alle, sagde New Yorks justitsminister, Letitia James, da sagsanlægget blev offentliggjort.",alle,HPB,single_word
-9471224,"Hos Danmark var Mark Peters som altid en af de stærkeste, ligesom Kaare Momme og Sebastian Frederiksen også spillede store roller.",som altid,HPB,ContiguousMWE
-9471224,Danmark misser VM-finale efter gyserafslutning,gyserafslutning,HPB,single_word
-9471224,"Danskerne holdt spændingen intakt i hele kampen, selv om de stærke australiere i tredje og fjerde periode skabte et forspring.",hele,HPB,single_word
-9511812,"Ved runde 20 havde Furia fuld kontrol, og brasilianerne vandt det første map 16-6.",fuld kontrol,HPB,CHUNK
-9511812,Efter en nervepirrende semifinale mod et brasiliansk hold på hjemmebane er Heroic i finalen ved IEM Rio Major,nervepirrende,HPB,single_word
-9511812,"- I dag handler det om at hylde Furia, som har formået at forene Brasilien.",forene,HPB,single_word
-9523030,Der er heller ikke umiddelbart nogen tidshorisont på oprydningsarbejdet.,ikke umiddelbart nogen,HPB,CHUNK
-9529149,"Hvidt papir repræsenterer alt det, demonstranterne gerne vil sige, men ikke kan, fortæller kinesisk mand",alt,HPB,single_word
-9529149,"- Det hvide papir repræsenterer alt det, vi gerne vil sige, men ikke kan sige, siger 26-årige Johnny, som har taget del i protesterne.",alt,HPB,single_word
-9529149,"Udbredte demonstrationer er et sjældent syn i Kina, hvor præsident Xi Jinping har elimineret alt rum for politisk diversitet og uenighed.",alt,HPB,single_word
-9532265,"Wales skulle bruge et mindre mirakel, men var reelt aldrig tæt på at spille sig videre fra gruppespillet ved VM.",mirakel,HPB,single_word
-9532265,"En af de nye, Marcus Rashford, misbrugte i første halvleg Englands hidtil største chance efter en duel med keeper Danny Ward, men efter 50 minutter tog han revanche.",hidtil,HPB,single_word
-9532265,"To minutter senere pressede Rashford bolden fra Ben Davies, og Harry Kane smed et fladt indlæg til bageste stolpe, hvor Phil Foden nemt scorede sit første mål ved en større slutrunde.",nemt,HPB,single_word
-9532265,Få det fulde overblik over samtlige spillere LIGE HER .,fulde,HPB,single_word
-9532265,Med Ekstra Bladet+ får du et unikt indblik i lønhierarkiet på landsholdet.,unikt,HPB,single_word
-9536130,"Det må være svært for dem at svare på virkeligheden, og så kan det være fristende at svare på noget helt andet.",helt andet,HPB,CHUNK
-9536130,"Besøget af statuen blev dog ikke taget så godt imod af den iranske ambassade, der i et skriftligt svar til VG udtaler, at 'det er en skammelig praksis at misbruge et kunstværk til uhyggelige politiske formål.",uhyggelige,HPB,single_word
-9536130,"Artiklen fortsætter efter billedet ... En kommentar, der ifølge Christian Ringnes, rammer fuldstændig ved siden af.",fuldstændig,HPB,single_word
+doc_id,tagged_word,sentence,tag,type
+9404859,aldrig,"Vi vil aldrig glemme dette eftermæle, skriver hun på Twitter.",HPB,single_word
+9189461,aldrig,"LÆS OGSÅ: Dansk klub i kaos: Vi giver ikke nøglerne fra os En ting er nemlig at gå ind og score efter et par minutter i sit comeback, men målet efter smukt oplæg af Rasmus Nissen Kristensen og Andreas Skov Olsen - der aldrig bør starte ude på landsholdet - var også med en signaturafslutning fra Eriksen.",HPB,single_word
+9048255,alle,"- Jeg sender denne video for at fortælle alle, at jeg har det godt, og at jeg er i sikkerhed.",HPB,single_word
+9448683,alle,"Det skete for at gøre sig selv rigere og snyde systemet og dermed os alle, sagde New Yorks justitsminister, Letitia James, da sagsanlægget blev offentliggjort.",HPB,single_word
+9348201,alle,"Alle andre var også utrolig stærke, siger Jonas Vingegaard.",HPB,single_word
+9332888,alle vegne,"Her fortæller chefforhandler Keld Bækkelund Hansen til Ekstra Bladet: - Man kunne læse alle vegne i går, at SAS mente, at vores strejke ikke betød en skid, fordi deres connect-fly (hvor piloterne ikke er i strejke, red.)",HPB,ContiguousMWE
+9109649,alt,Siden har Mishti Dixit gjort alt i sin magt for at integrere sig.,HPB,single_word
+9350265,alt,Lykkelig kæreste: - Verdens bedste cykelrytter Kæmpede med tårerne: - Det betyder alt Holdkammerat: Jonas ville ikke vinde  ekstra tour episode 20 .,HPB,single_word
+9529149,alt,"Hvidt papir repræsenterer alt det, demonstranterne gerne vil sige, men ikke kan, fortæller kinesisk mand",HPB,single_word
+9529149,alt,"- Det hvide papir repræsenterer alt det, vi gerne vil sige, men ikke kan sige, siger 26-årige Johnny, som har taget del i protesterne.",HPB,single_word
+9529149,alt,"Udbredte demonstrationer er et sjældent syn i Kina, hvor præsident Xi Jinping har elimineret alt rum for politisk diversitet og uenighed.",HPB,single_word
+9109649,alt,"Faktaboks - Samler Siden Mitshi fik inddraget sin opholdstilladelse 7. januar, har familien gjort alt i deres magt til at ændre beslutningen, men uden held.",HPB,single_word
+9183086,alt og alle,"De stopper alt og alle’, lød det i en besked 16. november skrevet af jons55.",HPB,CHUNK
+9344447,"alt, hvad jeg har","Jeg brænder for, at bodybuilding skal blive ved med at være en del af mit liv, fortæller hun og fortsætter: - Det er fedt, fordi man lærer sig selv at kende, og man bliver disciplineret, og jeg kan godt lide at presse mig selv og give alt, hvad jeg har, hver gang jeg træner.",HPB,CHUNK
+9165073,altid,"Det er altid ærgerligt, når noget går i stykker.",HPB,single_word
+9404859,altid,"Den britiske premierminister, Boris Johnson, udtaler, at han altid har beundret 'det mod og den integritet', Gorbatjov ifølge Johnson udviste, da han bragte den kolde krig til en fredelig afslutning.",HPB,single_word
+9438171,bombe,"Det var på mange måde modsætninger, der mødtes, da Olivia Bak-Christensen blev smedet sammen med Patrick Kim Jensen i 'Gift ved første blik', og efter fire dage som ægtefolk smider hun noget af en bombe i det populære DR-program.",HPB,single_word
+9438171,bombe,Smider bombe på tv: - Jeg er selv lidt i chok,HPB,single_word
+9398525,bomber,Dermed slipper FCM-cheftræner Albert Capellas og midtjyderne for den 19-årige danske bomber.,HPB,single_word
+9264442,bomberen,"SønderjyskE-bomberen Emil Berggreen har en frikøbsklausul i sin aftale med nedrykkerne, som betyder, at AGF kan hente ham for omkring en mio. kr.",HPB,single_word
+9264442,bombertype,"Dermed får klubben en bombertype, der kan afløse Patrick Mortensen, men samtidig også kan være en del af en duo med en hurtig type som Frederik Ihler eller Dawid Kurminowski.",HPB,single_word
+9205478,bristepunktet,"Det lille retslokale var fyldt til bristepunktet med de to drenges pårørende, da anklager Rune Rydik læste sigtelserne op tidligere torsdag.",HPB,single_word
+9438171,chok,"- Jeg var ikke forberedt på, at lige den scene ville komme med, så jeg er også selv lidt i chok, siger hun og understreger, at eksperimentet endnu ikke er slut.",HPB,single_word
+9438171,chok,Smider bombe på tv: - Jeg er selv lidt i chok,HPB,single_word
+9338439,croonerlegenden,Kort før en koncert i Budapest tirsdag fik croonerlegenden Tom Jones et ildebefindende og måtte aflyse,HPB,single_word
+9264442,desperat,De Hvi’e har desperat brug for kantspillere.,HPB,single_word
+9214940,dyrebareste,Men derimod med det dyrebareste venskab - nemlig forældreskabet.,HPB,single_word
+9344447,eksploderede,"Og så eksploderede vægten, da jeg startede på en videregående uddannelse, samtidig med at jeg arbejdede på en grillbar, fortæller Joan Larsen.",HPB,single_word
+9347340,eksploderet,"Der ville jeg tidligere være eksploderet, men i stedet blev jeg nummer tre på første etape, påpeger Kron.",HPB,single_word
+9348201,endegyldigt,"Det skete efter en næsten perfekt holdpræstation af Jumbo-Visma, kulminerende med Wout van Aerts acceleration godt fire kilometer fra mål, som endegyldigt knækkede Tadej Pogacar.",HPB,single_word
+9189461,energiforladte,I 45 minutter hang Hjulmands energiforladte og tamme taktiske oplæg og koncept som en slatten boksebold i den ene ende af Amsterdam Arena.,HPB,single_word
+9227539,eneste,"Nu er min uniform en opdigtet identitet med dertilhørende tøj, frisure og smykker, og mit eneste våben er min evne til at lyve og foregive, at jeg er en anden, end jeg er.'",HPB,single_word
+9128946,fint,Borgmester: Fint med amerikanske soldater på Bornholm,HPB,single_word
+9128946,fint,"- Det vil jeg have det fint med, siger han til Ekstra Bladet.",HPB,single_word
+9332888,"flyve, som de ville","bare kunne flyve, som de ville.",HPB,CHUNK
+9247001,fodboldikon,"Det britiske fodboldikon Adebayo Akinfenwa får måske den perfekte afslutning på sin karriere, når han spiller sin sidste kamp i karrieren på Wembley",HPB,single_word
+9511812,forene,"- I dag handler det om at hylde Furia, som har formået at forene Brasilien.",HPB,single_word
+9511812,fuld kontrol,"Ved runde 20 havde Furia fuld kontrol, og brasilianerne vandt det første map 16-6.",HPB,CHUNK
+9448683,fulde,Læs det fulde overblik her,HPB,single_word
+9448683,fulde,Ekstra Bladet giver dig her det fulde overblik over alle efterforskningerne mod den tidligere præsident.,HPB,single_word
+9532265,fulde,Få det fulde overblik over samtlige spillere LIGE HER .,HPB,single_word
+9350265,fuldstændig,"- Det er fuldstændig vanvittigt, hvad han har lavet.",HPB,single_word
+9536130,fuldstændig,"Artiklen fortsætter efter billedet ... En kommentar, der ifølge Christian Ringnes, rammer fuldstændig ved siden af.",HPB,single_word
+9205478,fyldt,"Det lille retslokale var fyldt til bristepunktet med de to drenges pårørende, da anklager Rune Rydik læste sigtelserne op tidligere torsdag.",HPB,single_word
+9257030,garanti,Garanti for eufori 1.,HPB,single_word
+9422718,genialt,Watts dom: 'Igen genialt',HPB,single_word
+9344447,gik amok,"Jeg startede bare med gåture, og så derefter gik jeg helt amok i fitness.",HPB,NonContiguousMWE
+9398525,glemme,Midtjylland taber til AGF på elendig hjemmebane - se alle mål og interviews her  FCK-fans må glemme Cornelius: Her er mulighederne til angrebet .,HPB,single_word
+9189461,glemt,De mest tarvelige 45 minutter i Kasper Hjulmands landstrænertid blev dog hurtigt glemt.,HPB,single_word
+9417113,glemte,"I første halvlegs tillægstid glemte Plzen at dække Lewandowski op ved bageste stolpe, og hans hovedstød gjorde det til pausestillingen 3-1.",HPB,single_word
+9264531,golfikonet,"Der var ikke ret meget, der fungerede for golfikonet Tiger Woods, da han lørdag gik tredje runde af majorturneringen PGA Championship.",HPB,single_word
+9264531,golflegende,"Den 46-årige golflegende har kæmpet med fysikken, siden en meget voldsom trafikulykke i februar 2021 næsten kostede ham det ene ben.",HPB,single_word
+9264531,golflegenden,"Golflegenden Phil Mickelson vandt sidste års udgave af PGA Championship, men deltager ikke i den igangværende, som afvikles på Southern Hills Country Clubs bane i Tulsa i den amerikanske delstat Oklahoma.",HPB,single_word
+9471224,gyserafslutning,Danmark misser VM-finale efter gyserafslutning,HPB,single_word
+9471224,hele,"Danskerne holdt spændingen intakt i hele kampen, selv om de stærke australiere i tredje og fjerde periode skabte et forspring.",HPB,single_word
+9332888,hele dagen,"- Men jeg svarer hende, at jeg ikke kan forstå, hvorfor hun skriver sådan, når de hele dagen har sagt, at de ikke har behov for vores flymekanikere i pressen.",HPB,CHUNK
+9536130,helt andet,"Det må være svært for dem at svare på virkeligheden, og så kan det være fristende at svare på noget helt andet.",HPB,CHUNK
+9310134,hemmeligheden,Ulf Pilgaard var i mange år en af Cirkusrevyens store stjerner - han giver dig her hemmeligheden bag sit ungdommelige udseende.,HPB,single_word
+9532265,hidtil,"En af de nye, Marcus Rashford, misbrugte i første halvleg Englands hidtil største chance efter en duel med keeper Danny Ward, men efter 50 minutter tog han revanche.",HPB,single_word
+9332888,ikke betød en skid,"Her fortæller chefforhandler Keld Bækkelund Hansen til Ekstra Bladet: - Man kunne læse alle vegne i går, at SAS mente, at vores strejke ikke betød en skid, fordi deres connect-fly (hvor piloterne ikke er i strejke, red.)",HPB,CHUNK
+9227539,ikke kunne være sket,"Tony Lindkold forklarer i bogen, at noget sådant ikke kunne være sket i en nordeuropæisk operation.",HPB,CHUNK
+9296130,ikke nogen,"Men i år er glamouren forsvundet, for der er ikke nogen, der tør ses med russiske præsident i frygt for at blive sanktioneret af Vesten, der allerede har vedtaget i alt seks sanktionspakker mod landet.",HPB,CHUNK
+9310134,ikke noget,"Vi tænkte, at vi kunne få en til at dække ind, men i morges klokken syv blev vi så ringet op og fik at vide, at der var en til, der var syg, og så var der ikke noget at gøre, siger han og fortæller, at der i alt er tre, der er tilknyttet revyen, der er smittet med corona.",HPB,CHUNK
+9523030,ikke umiddelbart nogen,Der er heller ikke umiddelbart nogen tidshorisont på oprydningsarbejdet.,HPB,CHUNK
+9247001,ikon,Ikon stopper på Wembley,HPB,single_word
+9166397,indtaget,Her bliver den ene ende af banen nemlig indtaget af den 25-årige Matteo Berrettini.,HPB,single_word
+9429787,ingen,"- Der er ingen tvivl om, at der er begået krigsforbrydelser i Ukraine.",HPB,single_word
+9296130,ingen,Men i år tør ingen deltage,HPB,single_word
+9167351,intet,"Intet at gøre Uheldet skete kort før, han blev præsenteret og skulle ud på scenen, så der var intet at gøre, kunne han fortælle og tilføjede, at det ikke var sådan, at det stod ud i stimer fra bagdelen.",HPB,single_word
+9167351,intet,"Intet at gøre Uheldet skete kort før, han blev præsenteret og skulle ud på scenen, så der var intet at gøre, kunne han fortælle og tilføjede, at det ikke var sådan, at det stod ud i stimer fra bagdelen.",HPB,single_word
+9323469,kampen,Hiver og flår i Dreyer - FCM med i kampen,HPB,single_word
+9332888,kaos,Kaos om aftale: Forvirringen er total,HPB,single_word
+9210153,kaos,Byder en million for kaos-klub,HPB,single_word
+9189461,kaos,"LÆS OGSÅ: Dansk klub i kaos: Vi giver ikke nøglerne fra os En ting er nemlig at gå ind og score efter et par minutter i sit comeback, men målet efter smukt oplæg af Rasmus Nissen Kristensen og Andreas Skov Olsen - der aldrig bør starte ude på landsholdet - var også med en signaturafslutning fra Eriksen.",HPB,single_word
+9332888,kaosset,Kaosset fortsætter for tusindvis af SAS' kunder.,HPB,single_word
+9264442,katastrofe,AGF på vild spillerjagt efter katastrofe-sæson,HPB,single_word
+9348201,katastrofen,"'Ekstra Tour': Kaffen galt i halsen Forinden lurede katastrofen ellers, da Vingegaard var ved at styrte på nedkørslen til Hautacam.",HPB,single_word
+9348201,knuste,"Jonas Vingegaard kørte sig torsdag til en endnu større føring i Tour de France, da han knuste rivalen Tadej Pogacar og vandt 18. etape på toppen af Hautacam-stigningen i ensom majestæt.",HPB,single_word
+9348201,knækkede,"Det skete efter en næsten perfekt holdpræstation af Jumbo-Visma, kulminerende med Wout van Aerts acceleration godt fire kilometer fra mål, som endegyldigt knækkede Tadej Pogacar.",HPB,single_word
+9189461,konstant,"Alexander Bah var konstant en meter fra, hvor han burde være.",HPB,single_word
+9350265,kynisme,"Han kører med en kynisme og et overskud, siger Brian Holm.",HPB,single_word
+9126957,legende,Kontroversiel legende stopper omgående,HPB,single_word
+9338439,legende,"Den 82-årige walisiske legende er i gang med en turné, der bringer ham til København den 22. juli.",HPB,single_word
+9316321,livsværk,"Linnets livsværk med 50 nyindspillede sange udgives til efteråret, ligesom der også kommer en udgivelse i forbindelse med DR-satsningen 'Min Sang til Danmark'.",HPB,single_word
+9232585,mareridt,Lindstrøm-mareridt: Udgår skadet i sejr,HPB,single_word
+9189461,mere glædeligt,Det kan ikke være mere glædeligt.,HPB,CHUNK
+9189461,mest tarvelige,De mest tarvelige 45 minutter i Kasper Hjulmands landstrænertid blev dog hurtigt glemt.,HPB,CHUNK
+9189461,mest uhyggelige,"Han bankede også den første parentes op omkring det kollaps i Parken, som for mig og mange andre, der var i Parken den aften mod Finland, stadig sidder i kroppen som noget af det mest uhyggelige.",HPB,CHUNK
+9265976,midtbanestjernen,"Nu er der gået et lille halvt år, og spørgsmålet er, om midtbanestjernen Jens Stage nu får lov til at skifte til udlandet.",HPB,single_word
+9532265,mirakel,"Wales skulle bruge et mindre mirakel, men var reelt aldrig tæt på at spille sig videre fra gruppespillet ved VM.",HPB,single_word
+9438171,modsætninger,"Det var på mange måde modsætninger, der mødtes, da Olivia Bak-Christensen blev smedet sammen med Patrick Kim Jensen i 'Gift ved første blik', og efter fire dage som ægtefolk smider hun noget af en bombe i det populære DR-program.",HPB,single_word
+9264442,mysterium,AGF’s backs er et mysterium.,HPB,single_word
+9189461,målløs,"Målløs over Eriksen: - Hold nu kæft, et comeback!",HPB,single_word
+9532265,nemt,"To minutter senere pressede Rashford bolden fra Ben Davies, og Harry Kane smed et fladt indlæg til bageste stolpe, hvor Phil Foden nemt scorede sit første mål ved en større slutrunde.",HPB,single_word
+9511812,nervepirrende,Efter en nervepirrende semifinale mod et brasiliansk hold på hjemmebane er Heroic i finalen ved IEM Rio Major,HPB,single_word
+9335044,ond,Ond start for europamestrene,HPB,single_word
+9232585,perfekt,"Det var den danske landsholdsspiller, som med en perfekt stikning sendte Djibril Sow i dybden.",HPB,single_word
+9362377,på ingen måde,"Beslutningen har dog ført til heftig kritik fra katteelskere i hele landet, der mener, at den faldende biodiversitet på ingen måde alene skyldes vores pelsede, spindende kompagnoner.",HPB,ContiguousMWE
+9315367,ravage,Vil lave ravage i Wimbledon,HPB,single_word
+9315367,ravage,Historiens største tennisspiller på kvindesiden Serena Williams er tilbage og kan måske lave ravage i Wimbledon.,HPB,single_word
+9167351,sjoveste,"- Fy for helvede, det er det sjoveste, jeg længe har hørt.",HPB,single_word
+9347340,skoldhede,"Også på lørdagens skoldhede etape til Mende viste den 24-årige dansker, at kroppen kan fungere under de barske forhold.",HPB,single_word
+9264531,skrækrunde,Tiger Woods trækker sig fra golfmajor efter skrækrunde,HPB,single_word
+9264531,skrækstime,"Woods, der fire gange tidligere har vundet PGA Championship, kom ind i en skrækstime midt på runden lørdag.",HPB,single_word
+9419146,smukkeste,"Lars Tjærnås, ekspert for Aftenposten og Viaplay, kalder eksempelvis målet for ""det smukkeste, siden Kim Larsen spillede 'This Is My Life' på en scene i Horsens i 2016"".",HPB,single_word
+9419146,smukkeste,Dansk drømmemål: - Det smukkeste siden Kim Larsen,HPB,single_word
+9471224,som altid,"Hos Danmark var Mark Peters som altid en af de stærkeste, ligesom Kaare Momme og Sebastian Frederiksen også spillede store roller.",HPB,ContiguousMWE
+9265976,stjernen,"Lige nu skal jeg drikke øl, jeg skal fejre det, så skal jeg på ferie, og så ... ja, så sætter jeg mig nok ned med 'PC', og så finder vi nok ud af, hvad der skal ske, lød det med et drilsk smil fra FCK-stjernen.",HPB,single_word
+9265976,stjernens,Stjernens uvisse fremtid: - Vi skal snakke sammen,HPB,single_word
+9448683,stormede,Her stormede Trump-støtter den amerikanske Kongres-bygning.,HPB,single_word
+9448683,stormen,"Stormen på Kongressen 2 Det amerikanske justitsministeruim har foretaget en større efterforskninng af begivenhederne, der førte til stormen på kongressen den 6. januar 2021.",HPB,single_word
+9448683,stormen,"Stormen på Kongressen 2 Det amerikanske justitsministeruim har foretaget en større efterforskninng af begivenhederne, der førte til stormen på kongressen den 6. januar 2021.",HPB,single_word
+9448683,stormen,Læs også: Advarer om Kup Stormen på Kongressen 1 Repræsentanternes Hus undersøger begivenhederne omkring stormen på Kongressen den 6. januar 2021.,HPB,single_word
+9448683,stormen,Læs også: Advarer om Kup Stormen på Kongressen 1 Repræsentanternes Hus undersøger begivenhederne omkring stormen på Kongressen den 6. januar 2021.,HPB,single_word
+9227539,straks,"- Dengang fik jeg straks nogle psykologsamtaler, og siden blev de også fulgt op, fortæller Tony Lindkold til Ekstra Bladet i dag.",HPB,single_word
+9257030,"så tyndt, at det heller ikke ville blive fedt, hvis han tog sig sammen","Justin Biebers repertoire er så tyndt, at det heller ikke ville blive fedt, hvis han tog sig sammen.",HPB,CHUNK
+9189461,sådan kraft og ærgerrighed,"Og de hollandske modstandere hamrede igennem med en sådan kraft og ærgerrighed, så man næsten sad og håbede, at Christian Eriksen ikke skulle ind til den øretæve.",HPB,CHUNK
+9332888,total,Kaos om aftale: Forvirringen er total,HPB,single_word
+9427193,totalt kaos,Totalt kaos i London: Politiet siger stop,HPB,CHUNK
+9427193,totalt kaos,Der er totalt kaos i London onsdag eftermiddag.,HPB,CHUNK
+9257030,tude,Uduelig Bieber: Til at tude over,HPB,single_word
+9125228,tvunget,"De skuffede dog begge i styrtløbet, og da de var tvunget til at satse i slalom, kørte de af banen.",HPB,single_word
+9257030,uduelig,Uduelig Bieber: Til at tude over,HPB,single_word
+9536130,uhyggelige,"Besøget af statuen blev dog ikke taget så godt imod af den iranske ambassade, der i et skriftligt svar til VG udtaler, at 'det er en skammelig praksis at misbruge et kunstværk til uhyggelige politiske formål.",HPB,single_word
+9214940,umenneskelig meget,Og det sætter jeg umenneskelig meget pris på.,HPB,CHUNK
+9532265,unikt,Med Ekstra Bladet+ får du et unikt indblik i lønhierarkiet på landsholdet.,HPB,single_word
+9264442,uskønt,"Et andet emne er Lyngbys Magnus Kaastrup, der har en fortid i AGF, men hans exit fra klubben blev uskønt, og det er ikke aktuelt med en genforening.",HPB,single_word
+9083738,ustoppelige,Ustoppelige: Ny sejr i topbrag,HPB,single_word
+9348201,utrolig,"Alle andre var også utrolig stærke, siger Jonas Vingegaard.",HPB,single_word
+9427193,vanvids,Vanvids-kø på 30 timer ventes de kommende dage,HPB,single_word
+9126957,verden,"Først i Bolts sidste løb i karrieren, VM-finalen i 2017, lykkedes det for Gatlin at sætte konkurrenten på plads, mens verden så på.",HPB,single_word
+9427810,vild,Vild udvikling i familiedrama: Pogba-bror fængslet,HPB,single_word
+9264442,vild,AGF på vild spillerjagt efter katastrofe-sæson,HPB,single_word
+9264442,voldsomt,"Stig Inge Bjørnebye får voldsomt travlt med forhandlinger de næste 25 dage inden AGF-truppen samles igen, og klubben skal hindre, at forårets nedtur følger med ind i efteråret",HPB,single_word
+9257030,vræle,Tøserne kommer til at vræle på stribe.,HPB,single_word
+9257030,værste,"Helt ude i skoven Justin Bieber, Bøgescenerne, onsdag klokken 23.45 En af verdens største popstjerner er også en af verdens værste entertainere.",HPB,single_word

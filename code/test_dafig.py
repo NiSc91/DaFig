@@ -1,10 +1,9 @@
 from config import *
 from bio_encoder import process_corpus
-from train_dafig import *
+#from train_dafig import *
 from sklearn.metrics import precision_score, recall_score, f1_score, confusion_matrix
 import numpy as np
 
-# Variables
 # Variables
 handler = CollectionHandler(CORPORA_DIR)
 all_corpora = handler.get_collections()
@@ -27,7 +26,7 @@ base_paths = {name: handler.get_collection_path(os.path.join(CORPORA_DIR, name))
 ann_paths = {f"{name.upper()}_ANN1_PATH": get_ann_path(base_path, 'ann1') for name, base_path in base_paths.items()}
 ann_paths.update({f"{name.upper()}_ANN2_PATH": get_ann_path(base_path, 'ann2') for name, base_path in base_paths.items()})
 
-### Compare human annotators to each other ###
+### Compare human annotators to each other with BIO labels ###
 
 def calculate_bilateral_f1(ann1_labels, ann2_labels, id2label):
     """
@@ -92,11 +91,19 @@ def compare_annotations(ann1_path, ann2_path):
 
 def main():
     # Use the paths from your existing code
-    ann1_path = ann_paths['AGR_COMBINED_ANN1_PATH']
-    ann2_path = ann_paths['AGR_COMBINED_ANN2_PATH']
+    ann1_path = ann_paths['AGR3_ANN1_PATH']
+    ann2_path = ann_paths['AGR3_ANN2_PATH']
     
-    print("Comparing annotations between two annotators...")
+    print("Comparing annotations between two annotators on sample 3...")
     metrics, cm, id2label = compare_annotations(ann1_path, ann2_path)
+    
+    # Compare annotations on consensus corpus
+    ann1_path = ann_paths['CONSENSUS_ANN1_PATH']
+    ann2_path = ann_paths['CONSENSUS_ANN2_PATH']
+    
+    print("\nComparing annotations between two annotators on consensus corpus...")
+    metrics, cm, id2label = compare_annotations(ann1_path, ann2_path)
+
     
 if __name__ == "__main__":
     main()
