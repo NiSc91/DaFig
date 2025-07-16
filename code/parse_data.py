@@ -1,11 +1,12 @@
+import pdb
 import os
 import sys
 from config import *
 from pybrat.parser import BratParser, Entity, Event, Example, Relation, Span
-from matplotlib import pyplot as plt
 
 ### Create extended classes for parsing the DaFig data ###
 
+# Create classes to parse attributes
 class Attribute:
     def __init__(self, id, type, ref_id, value):
         self.id = id
@@ -18,16 +19,19 @@ class AttributeParser:
         self.input_dir = input_dir
 
     def parse_attributes(self, doc_id):
-        attributes = []
+        attributes = {}
         ann_file = os.path.join(self.input_dir, f"{doc_id}.ann")
         with open(ann_file, "r") as f:
             for line in f:
                 if line.startswith("A"):
                     attr_id, info = line.strip().split("\t")
                     attr_type, ref_id, attr_value = info.split()
-                    attributes.append(Attribute(attr_id, attr_type, ref_id, attr_value))
+                    if ref_id not in attributes:
+                        attributes[ref_id] = []
+                    attributes[ref_id].append(Attribute(attr_id, attr_type, ref_id, attr_value))
         return attributes
 
+# Create lexical units classes
 class LexicalUnit:
     def __init__(self, mention, type, spans, tag, ref_ids):
         self.mention = mention
@@ -35,6 +39,20 @@ class LexicalUnit:
         self.spans = spans
         self.tag = tag
         self.ref_ids = ref_ids
+        self.attributes = {}  # Dictionary to store attributes
+
+    def add_attribute(self, attr_type, attr_value):
+        if attr_type not in self.attributes:
+            self.attributes[attr_type] = []
+        self.attributes[attr_type].append(attr_value)
+
+    def has_attribute(self, attr_type):
+        return attr_type in self.attributes
+
+    def get_attribute_value(self, attr_type):
+        if attr_type in self.attributes:
+            return self.attributes[attr_type]
+        return None
 
 class MWEParser:
     def group_relations(self, relations, entities):
@@ -83,6 +101,10 @@ class MWEParser:
     def create_lexical_units(self, example, mwe_groups, chunk_groups):
         lexical_units = []
         
+        # Create a dictionary mapping entity IDs to attributes
+        entity_attributes = example.attributes
+        
+        # Process groups
         for i, group in enumerate(mwe_groups + chunk_groups):
             try:
                 spans = sorted([span for entity in group for span in entity.spans], key=lambda s: s.start)
@@ -101,9 +123,17 @@ class MWEParser:
                 else:
                     type = 'ContiguousMWE'
 
-                lexical_units.append(LexicalUnit(mention, type, spans, tag, ref_ids))
+                lu = LexicalUnit(mention, type, spans, tag, ref_ids)
+                
+                # Add attributes only once for the entire lexical unit
+                for attr_type in set(attr.type for ref_id in ref_ids if ref_id in entity_attributes for attr in entity_attributes[ref_id]):
+                    attr_values = [attr.value for ref_id in ref_ids if ref_id in entity_attributes for attr in entity_attributes[ref_id] if attr.type == attr_type]
+                    if attr_values:
+                        lu.add_attribute(attr_type, attr_values[0])  # Add only the first value
 
-            # Process CHUNKs
+                lexical_units.append(lu)
+
+            # Process CHUNKS
             elif group in chunk_groups:
                 # Merge spans if there are gaps
                 merged_spans = []
@@ -118,20 +148,36 @@ class MWEParser:
 
                 # Create a single span from the first to the last
                 full_span = Span(merged_spans[0].start, merged_spans[-1].end)
-        
+    
                 mention = example.text[full_span.start:full_span.end]
                 tag = group[0].type  # Assuming all entities in CHUNK have the same tag
                 ref_ids = [entity.id for entity in group]
-                lexical_units.append(LexicalUnit(mention, 'CHUNK', [full_span], tag, ref_ids))
+                lu = LexicalUnit(mention, 'CHUNK', [full_span], tag, ref_ids)
+                
+                # Add attributes only once for the entire lexical unit
+                for attr_type in set(attr.type for ref_id in ref_ids if ref_id in entity_attributes for attr in entity_attributes[ref_id]):
+                    attr_values = [attr.value for ref_id in ref_ids if ref_id in entity_attributes for attr in entity_attributes[ref_id] if attr.type == attr_type]
+                    if attr_values:
+                        lu.add_attribute(attr_type, attr_values[0])  # Add only the first value
+
+                lexical_units.append(lu)
 
         # Process single-word entities (not part of MWEs or CHUNKs)
         grouped_entity_ids = set(entity.id for groups in (mwe_groups, chunk_groups) for group in groups for entity in group)
         for entity in example.entities:
             if entity.id not in grouped_entity_ids:
-                lexical_units.append(LexicalUnit(entity.mention, 'single_word', entity.spans, entity.type, [entity.id]))
+                lu = LexicalUnit(entity.mention, 'single_word', entity.spans, entity.type, [entity.id])
+                
+                # Add attributes for single-word entities
+                if entity.id in entity_attributes:
+                    for attr in entity_attributes[entity.id]:
+                        lu.add_attribute(attr.type, attr.value)
+                
+                lexical_units.append(lu)
 
         return lexical_units
 
+# Create classes to parse corpus
 class ExtendedExample(Example):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -141,14 +187,6 @@ class ExtendedExample(Example):
     def process_mwe(self, mwe_parser):
         mwe_groups, chunk_groups = mwe_parser.group_relations(self.relations, self.entities)
         self.lexical_units = mwe_parser.create_lexical_units(self, mwe_groups, chunk_groups)
-
-    # Filter attributes such that only the first attribute of a lexical unit is included if it's an MWE or chunk
-    def filter_attributes(self):
-        self.attributes = [
-            attribute
-            for attribute in self.attributes
-            if attribute.ref_id in [lex_unit.ref_ids[0] for lex_unit in self.lexical_units]
-        ]
 
 class ExtendedBratParser(BratParser):
     def __init__(self, input_dir, *args, **kwargs):
@@ -169,5 +207,4 @@ class ExtendedBratParser(BratParser):
             )
             extended_example.attributes = self.attribute_parser.parse_attributes(example.id)
             extended_example.process_mwe(self.mwe_parser)
-            extended_example.filter_attributes()
             yield extended_example

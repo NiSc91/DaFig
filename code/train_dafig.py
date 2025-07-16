@@ -1,3 +1,4 @@
+import pdb
 from datetime import datetime
 import warnings
 warnings.filterwarnings("ignore", message="LoadLib.*failed")
@@ -41,21 +42,6 @@ import gc
 from torch.optim.lr_scheduler import OneCycleLR
 from torch.nn.utils import clip_grad_norm_
 
-def collate_fn(batch):
-    input_ids = [item['input_ids'] for item in batch]
-    attention_mask = [item['attention_mask'] for item in batch]
-    labels = [item['labels'] for item in batch]
-
-    input_ids = pad_sequence(input_ids, batch_first=True, padding_value=0)
-    attention_mask = pad_sequence(attention_mask, batch_first=True, padding_value=0)
-    labels = pad_sequence(labels, batch_first=True, padding_value=-100)
-
-    return {
-        'input_ids': input_ids,
-        'attention_mask': attention_mask,
-        'labels': labels
-    }
-
 # Variables
 handler = CollectionHandler(CORPORA_DIR)
 all_corpora = handler.get_collections()
@@ -77,6 +63,22 @@ get_ann_path = lambda base_path, ann_folder: os.path.join(base_path, ann_folder)
 base_paths = {name: handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in CORPUS_NAMES[1:]}
 ann_paths = {f"{name.upper()}_ANN1_PATH": get_ann_path(base_path, 'ann1') for name, base_path in base_paths.items()}
 ann_paths.update({f"{name.upper()}_ANN2_PATH": get_ann_path(base_path, 'ann2') for name, base_path in base_paths.items()})
+
+# Custom collateFN
+def collate_fn(batch):
+    input_ids = [item['input_ids'] for item in batch]
+    attention_mask = [item['attention_mask'] for item in batch]
+    labels = [item['labels'] for item in batch]
+
+    input_ids = pad_sequence(input_ids, batch_first=True, padding_value=0)
+    attention_mask = pad_sequence(attention_mask, batch_first=True, padding_value=0)
+    labels = pad_sequence(labels, batch_first=True, padding_value=-100)
+
+    return {
+        'input_ids': input_ids,
+        'attention_mask': attention_mask,
+        'labels': labels
+    }
 
 ### Prepare DFM and Gina models for token classification ###
 
@@ -865,7 +867,7 @@ def main(run_number=None):
 
     # Determine paths
     train_path = args.train_path if args.train_path else CORPUS_PATHS['MAIN_PATH']
-    test_paths = args.test_paths if args.test_paths else [CORPUS_PATHS['REANNO_PATH'], ann_paths['AGR_COMBINED_ANN1_PATH'], ann_paths['AGR_COMBINED_ANN2_PATH']]
+    test_paths = args.test_paths if args.test_paths else [CORPUS_PATHS['REANNO_PATH'], ann_paths['CONSENSUS_ANN1_PATH'], ann_paths['CONSENSUS_ANN2_PATH']]
 
     # Set up model and get tokenizer
     model, tokenizer, device = setup_model(config)
@@ -877,7 +879,7 @@ def main(run_number=None):
         test_paths=test_paths,
         tokenizer=tokenizer
     )
-
+    
     # Print final configuration
     print(f"Configuration: {config}")
 

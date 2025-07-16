@@ -1,20 +1,19 @@
 import pdb
+import logging
 import os
 import shutil
 from config import *
+import peek
 #from nltk import RegexpTokenizer
 import re
-import peek
 import pandas as pd
 import numpy as np
 import json
-from config import *
 from parse_data import ExtendedExample, ExtendedBratParser, LexicalUnit, Span, Entity, Relation, Attribute
 from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize
 from collections import Counter, defaultdict
 from itertools import chain, combinations
-from dataclasses import dataclass
 from matplotlib import pyplot as plt
 import seaborn as sns
 from pygamma_agreement import Continuum, CombinedCategoricalDissimilarity
@@ -28,16 +27,17 @@ handler = CollectionHandler(CORPORA_DIR)
 all_corpora = handler.get_collections()
 print("All annotated corpora:", all_corpora)
 
-# Create path for main corpus
-MAIN_PATH = handler.get_collection_path(os.path.join(CORPORA_DIR,'main'))
-# Create paths for the agreement corpora
-CORPUS_NAMES = ['main', 'agr1', 'agr2', 'agr3', 'agr_combined', 'consensus']
+# Create paths for the corpora
+CORPUS_NAMES = ['main', 'agr1', 'agr2', 'agr3', 'agr_combined', 'consensus', 'reanno']
 CORPUS_PATHS = {f"{name.upper()}_PATH": handler.get_collection_path(os.path.join(CORPORA_DIR, name)) for name in CORPUS_NAMES}
-OUTPUT_DIR = TEMP_DIR
+OUTPUT_DIR = os.path.join(RESULTS_DIR, 'analysis')
 
 # Check if the output directory exists, if not, create it
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
+
+# Create path for main corpus
+MAIN_PATH = CORPUS_PATHS['MAIN_PATH']
 
 # Create a lambda function to get ann paths
 get_ann_path = lambda base_path, ann_folder: os.path.join(base_path, ann_folder)
@@ -56,11 +56,6 @@ print("Random corpus document from the main collection:")
 print()
 print(doc.anns.items())
 
-# Create span class to handle spans
-@dataclass(frozen=True)
-class Span:
-    start: int
-    end: int
 
 ### Rudimentary analysis using brat_peek library ###
 
@@ -97,7 +92,7 @@ def analyze_corpus(input_dir, output_dir):
 brat = ExtendedBratParser(input_dir=MAIN_PATH, error="ignore")
 examples = list(brat.parse(MAIN_PATH))
 
-# Find misaligned spans, i.e. instances where an entity span/mention does not correspond to a token in the text
+### Find misaligned spans, i.e. instances where an entity span/mention does not correspond to a token in the text ###
 
 def find_misaligned_spans(examples):
     misaligned_spans = defaultdict(list)
@@ -181,177 +176,78 @@ def write_misaligned_spans(corpus_path, output_dir):
 #misaligned_consensus_agr2 = write_misaligned_spans(CONSENSUS_PATH, OUTPUT_DIR)
 
 ### Gather advanced stats ###
+from collections import Counter, defaultdict
+from itertools import combinations
 
-# Get lexical units info:
-lexical_units = [lu for example in examples for lu in example.lexical_units]
-lu_counts = len(lexical_units)
-# Get the number of tokens for all lexical units
-token_counts = sum(len(lu.mention.split()) for lu in lexical_units)
-
-# Get tag info
-lu_tag_counts = Counter(lu.tag for lu in lexical_units)
-
-# Get MWE and chunk info:
-mwe_chunk_counts = sum(len(lu.spans) > 1 for lu in lexical_units)
-lu_type_counts = Counter(lu.type for lu in lexical_units)
-
-# Get the types of lexical units, single words, MWEs (contiguous and non-contiguous), and chunks, across each of the tags (MTP, HPB, etc.)
-lu_type_tag_counts = Counter((lu.type, lu.tag) for lu in lexical_units)
-# Print out the counts for each tag
-for tag, counts in lu_type_tag_counts.items():
-    print(f"{tag}: {counts}")
-
-### Frequency information ###
-
-# Get the 10 most common lexical units tagged with MTP (use counter to get the most common elements)
-mtp_lus = [lu for lu in lexical_units if lu.tag == 'MTP']
-mtp_lu_counts = Counter(lu.mention for lu in mtp_lus)
-most_common_mtp_lus = mtp_lu_counts.most_common(10)
-
-### Output results ###
-
-print(f"Total lexical units: {lu_counts}")
-print(f"Tag counts: {lu_tag_counts}")
-print(f"Type counts: {lu_type_counts}")
-print(f"10 most common MTP lexical units: {most_common_mtp_lus}")
-
-## Count absolute amount of tokens in the corpus
-tokens = sum(len(example.text.split()) for example in examples)
-print(f"Total tokens in the corpus: {tokens}")
-
-### Create dictionaries to better understand the data ###
-
-examples = list(brat.parse(MAIN_PATH))
-
-# Create a dictionary with doc_id as key, and the text as value.
-all_texts = {
-    example.id: example.text
-    for example in examples}
-
-# Create an all_lexical_units dictionary with document_ID as key, and a list of lexical units as values.
-all_lus = {
-    example.id: [(lu.mention, lu.spans, lu.type, lu.tag) for lu in example.lexical_units]
-    for example in examples
-}
-
-# Create a new dictionary with document_ID as key, and a list of entities which have different tags but same or overlapping spans, as values.
-lu_overlaps = defaultdict(set)
-
-for doc_id, lus in all_lus.items():
-    # Use combinations to compare each pair of LUs only once
-    for (lu1, spans1, type1, tag1), (lu2, spans2, type2, tag2) in combinations(lus, 2):
-        if tag1 != tag2 and spans1 == spans2:
-            # Create tuples for each LU info, converting spans to a hashable type
-            lu_info1 = (lu1, tuple((s.start, s.end) for s in spans1), type1, tag1)
-            lu_info2 = (lu2, tuple((s.start, s.end) for s in spans2), 
-                        type2, tag2)
-            # Use a frozenset to ensure uniqueness and allow it to be added to a set
-            overlap = frozenset([lu_info1, lu_info2])
-            lu_overlaps[doc_id].add(overlap)
-
-# Convert sets back to lists for consistency with your original output
-lu_overlaps = {k: [tuple(o) for o in v] for k, v in lu_overlaps.items()}
-
-# Output the results to a json-file and save to OUTPUT_DIR as lu_overlaps.json
-with open(os.path.join(OUTPUT_DIR, 'lu_overlaps.json'), 'w', encoding='utf-8') as f:
-    json.dump(lu_overlaps, f, ensure_ascii=False, indent=2)
-
-### Extract sentences with figurative tag information
-
-def get_figurative_sentences(lus_dict, texts_dict, fig_tags):
-    """
-    Extract sentences containing figurative language and their associated tags using NLTK.
+def gather_corpus_stats(corpus_path):
+    # Initialize the ExtendedBratParser
+    brat = ExtendedBratParser(input_dir=corpus_path, error="ignore")
     
-    Args:
-        lus_dict (dict): Dictionary of lexical units with their spans and tags
-        texts_dict (dict): Dictionary of full texts
-        fig_tags (list): List of figurative tags to look for (e.g., ['MTP', 'HPB', 'BIR'])
+    # Parse the corpus
+    examples = list(brat.parse(corpus_path))
     
-    Returns:
-        pd.DataFrame: DataFrame with columns ['doc_id', 'sentence', 'tagged_word', 'tag']
-    """
-    results = []
+    # Initialize statistics
+    stats = {
+        'total_lexical_units': 0,
+        'token_counts': 0,
+        'lu_tag_counts': Counter(),
+        'mwe_chunk_counts': 0,
+        'lu_type_counts': Counter(),
+        'lu_type_tag_counts': Counter(),
+        'mtp_lu_counts': Counter(),
+        'hpb_lu_counts': Counter(),  # Added for hyperboles
+        'total_tokens': 0,
+        'overlapping_spans': defaultdict(set)
+    }
     
-    for doc_id, text in texts_dict.items():
-        if doc_id not in lus_dict:
-            continue
-            
-        # Split text into sentences using NLTK and newlines
-        sentences = [sent.strip() 
-                    for line in text.split('\n')
-                    for sent in sent_tokenize(line, language='danish')]
+    # Gather lexical units
+    lexical_units = [lu for example in examples for lu in example.lexical_units]
+    stats['total_lexical_units'] = len(lexical_units)
+    
+    # Process lexical units
+    for lu in lexical_units:
+        stats['token_counts'] += len(lu.mention.split())
+        stats['lu_tag_counts'][lu.tag] += 1
+        stats['mwe_chunk_counts'] += (len(lu.spans) > 1)
+        stats['lu_type_counts'][lu.type] += 1
+        stats['lu_type_tag_counts'][(lu.type, lu.tag)] += 1
         
-        # Calculate sentence spans
-        current_pos = 0
-        sent_spans = []
-        
-        for sent in sentences:
-            # Find the exact position of the sentence in the original text
-            sent_start = text.find(sent, current_pos)
-            sent_end = sent_start + len(sent)
-            sent_spans.append((sent_start, sent_end, sent))
-            current_pos = sent_end        
-            
-        # Process each lexical unit
-        for lu in lus_dict[doc_id]:
-            mention, spans, type, tag = lu
-            
-            # Skip if tag not in requested figurative tags
-            if tag not in fig_tags:
-                continue
-            
-            # Get the start position of the first span
-            lu_start = spans[0].start
-            
-            # Find which sentence contains this lexical unit
-            for sent_start, sent_end, sentence in sent_spans:
-                if sent_start <= lu_start < sent_end:
-                    results.append({
-                        'doc_id': doc_id,
-                        'tagged_word': mention.lower(),
-                        'sentence': sentence.strip(),
-                        'tag': tag,
-                        'type': type
-                    })
-                    break
+        if lu.tag == 'MTP':
+            stats['mtp_lu_counts'][lu.mention] += 1
+        elif lu.tag == 'HPB':  # Added for hyperboles
+            stats['hpb_lu_counts'][lu.mention] += 1
     
-    return pd.DataFrame(results)
+    # Count total tokens in the corpus
+    stats['total_tokens'] = sum(len(example.text.split()) for example in examples)
+    
+    # Create dictionaries for texts and lexical units
+    all_texts = {example.id: example.text for example in examples}
+    all_lus = {
+        example.id: [(lu.mention, lu.spans, lu.type, lu.tag) for lu in example.lexical_units]
+        for example in examples
+    }
+    
+    # Find overlapping spans
+    for doc_id, lus in all_lus.items():
+        for (lu1, spans1, type1, tag1), (lu2, spans2, type2, tag2) in combinations(lus, 2):
+            if tag1 != tag2 and spans1 == spans2:
+                lu_info1 = (lu1, tuple((s.start, s.end) for s in spans1), type1, tag1)
+                lu_info2 = (lu2, tuple((s.start, s.end) for s in spans2), type2, tag2)
+                overlap = frozenset([lu_info1, lu_info2])
+                stats['overlapping_spans'][doc_id].add(overlap)
+    
+    # Convert sets to lists for JSON serialization
+    stats['overlapping_spans'] = {k: list(v) for k, v in stats['overlapping_spans'].items()}
+    
+    return stats
 
-# Find metaphorical sentences (tagged MTP)
-mtp_df = get_figurative_sentences(all_lus, all_texts, ['MTP'])
-# Sort the metaphorical sentences by the tagged_word column
-mtp_df = mtp_df.sort_values('tagged_word')
-
-# Find hyperbolic sentences (tagged HPB)
-hpb_df = get_figurative_sentences(all_lus, all_texts, ['HPB'])
-# Sort the hyperbolic sentences by the tagged_word column
-hpb_df = hpb_df.sort_values('tagged_word')
-
-## Lemmatize metaphors using spaCy
-nlp = spacy.load("da_core_news_md")  # Load the Danish model
-
-# Process the metaphors in mtp_df
-mtp_df['lemma'] = mtp_df['tagged_word'].apply(lambda word: nlp(word)[0].lemma_)
-
-## Output the lemmatized metaphors to a csv file
-mtp_df.to_csv(os.path.join(OUTPUT_DIR,'mtp_sentences_lemmatized.csv'), encoding='utf-8', index=False)
-
-# Pull metaphor list from txt-file
-metaphor_list = []
-with open(os.path.join(DATA_DIR,'metaphor_lemma_list.txt'), 'r', encoding='utf-8') as f:
-    for line in f:
-        # Make sure that numbers and other non/alphanumeric characters are removed before adding it to the list
-        metaphor_list.append(re.sub(r'[^a-zA-Z0-9 ]+', '', line.strip()))
-
-## Create a new dataframe consisting of the subset of lemmas in mtp_df which also exist in the metaphor list
-lemmatized_mtp_df = mtp_df[mtp_df['lemma'].isin(metaphor_list)]
-
-## Save the results to a csv file
-lemmatized_mtp_df.to_csv(os.path.join(OUTPUT_DIR,'mtp_sentences_from_DDO.csv'), encoding='utf-8', index=False)
+# Example usage:
+# corpus_stats = gather_corpus_stats(MAIN_PATH)
+# print(corpus_stats)
 
 ### Visualize attribute information
 
-def categorize_attribute(attr_type):
+"""def categorize_attribute(attr_type):
     if attr_type in ['Conventionality', 'Directness']:
         return 'Metaphor'
     elif attr_type in ['Dimension', 'Degree']:
@@ -376,6 +272,7 @@ for category, counter in attribute_counts.items():
     print(f"{category} Attribute Counts:")
     print(counter)
     print()
+"""
 
 ### Analyses on agreement corpora ###
 
@@ -576,4 +473,175 @@ output_path = os.path.join(OUTPUT_DIR, 'gamma_agreement_grouped_bar.png')
 plt.savefig(output_path, dpi=300, bbox_inches='tight')
 
 # Save gamma_df to a CSV file
-gamma_df.to_csv(os.path.join(OUTPUT_DIR, 'gamma_agreement_scores.csv'), index=False)
+gamma_df.to_csv(os.path.join(OUTPUT_DIR, 'gamma_agreement_scores.csv'), index=False)### Extract sentences from data ###
+
+### Extract sentences containing figurative language ###
+
+def get_figurative_sentences(corpus_path, fig_tags):
+    """
+    Extract and lemmatize sentences containing figurative language from a given corpus.
+    Include attribute types and values based on the tag of the lexical unit.
+    
+    Args:
+        corpus_path (str): Path to the corpus
+        fig_tags (list): List of figurative tags to look for (e.g., ['MTP', 'HPB'])
+    
+    Returns:
+        pd.DataFrame: DataFrame with columns ['doc_id', 'sentence', 'tagged_word', 'tag', 'type', 'lemma', 'pos']
+                      and additional columns for attributes based on the tag
+    """
+    # Initialize logging
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
+
+    # Initialize the ExtendedBratParser
+    brat = ExtendedBratParser(input_dir=corpus_path, error="ignore")
+    
+    # Parse the corpus
+    examples = list(brat.parse(corpus_path))
+    
+    results = []
+    
+    # Load spaCy model
+    nlp = spacy.load("da_core_news_md")  # Load the Danish model
+    
+    for example in examples:
+        doc_id = example.id
+        text = example.text
+        
+        # Split text into sentences using NLTK and newlines
+        sentences = [sent.strip() 
+                    for line in text.split('\n')
+                    for sent in sent_tokenize(line, language='danish')]
+        
+        # Calculate sentence spans
+        current_pos = 0
+        sent_spans = []
+        
+        for sent in sentences:
+            # Find the exact position of the sentence in the original text
+            sent_start = text.find(sent, current_pos)
+            sent_end = sent_start + len(sent)
+            sent_spans.append((sent_start, sent_end, sent))
+            current_pos = sent_end        
+            
+        # Process each lexical unit
+        for lu in example.lexical_units:
+            # Skip if tag not in requested figurative tags
+            if lu.tag not in fig_tags:
+                continue
+            
+            # Get the start position of the first span
+            lu_start = lu.spans[0].start
+            
+            # Find which sentence contains this lexical unit
+            for sent_start, sent_end, sentence in sent_spans:
+                if sent_start <= lu_start < sent_end:
+                    # Process the tagged word with spaCy
+                    doc = nlp(lu.mention.lower())
+                    lemma = doc[0].lemma_
+                    pos = doc[0].pos_
+                    
+                    result = {
+                        'doc_id': doc_id,
+                        'tagged_word': lu.mention.lower(),
+                        'sentence': sentence.strip(),
+                        'tag': lu.tag,
+                        'type': lu.type,
+                        'lemma': lemma,
+                        'pos': pos
+                    }
+                    
+                    # Process attributes based on the tag
+                    if lu.tag == 'MTP':
+                        result['Conventionality'] = lu.attributes.get('Conventionality', [None])[0]
+                        result['Directness'] = lu.attributes.get('Directness', [None])[0]
+                    elif lu.tag == 'HPB':
+                        result['Dimension'] = lu.attributes.get('Dimension', [None])[0]
+                        result['Degree'] = lu.attributes.get('Degree', [None])[0]
+                    
+                    results.append(result)
+                    break
+    
+    # Create DataFrame
+    df = pd.DataFrame(results)
+    
+    return df 
+
+def process_corpus_data(corpus_info, fig_tags=['MTP', 'HPB']):
+    """
+    Process both single and multi-annotated corpora.
+    
+    Args:
+        corpus_info (dict): A dictionary containing corpus information.
+            For single-annotated: {'name': 'CORPUS_NAME', 'path': 'CORPUS_PATH', 'type': 'single'}
+            For multi-annotated: {'name': 'CORPUS_NAME', 'path': ('ANN1_PATH', 'ANN2_PATH'), 'type': 'multi'}
+        fig_tags (list): List of figurative tags to process.
+    """
+    if corpus_info['type'] == 'single':
+        for tag in fig_tags:
+            df = get_figurative_sentences(corpus_info['path'], [tag])
+            #df = df.sort_values('tagged_word')
+            output_filename = f'{tag.lower()}_sentences_lemmatized_{corpus_info["name"].lower()}.csv'
+            df.to_csv(os.path.join(OUTPUT_DIR, output_filename), encoding='utf-8', index=False)
+    elif corpus_info['type'] == 'multi':
+        ann1_path, ann2_path = corpus_info['path']
+        for tag in fig_tags:
+            # Process annotations from both annotators
+            ann1_df = get_figurative_sentences(ann1_path, [tag])
+            ann2_df = get_figurative_sentences(ann2_path, [tag])
+
+            # Create a unique identifier for each sentence-tagged_word pair
+            ann1_df['sent_word'] = ann1_df['sentence'] + '|' + ann1_df['tagged_word']
+            ann2_df['sent_word'] = ann2_df['sentence'] + '|' + ann2_df['tagged_word']
+
+            # Merge the dataframes
+            merged_df = pd.merge(ann1_df, ann2_df, 
+                                 on=['doc_id', 'sentence', 'sent_word'], 
+                                 how='inner', 
+                                 suffixes=('_ann1', '_ann2'))
+
+            # Keep only the rows where both annotators have annotated
+            merged_df = merged_df.dropna(subset=['lemma_ann1', 'lemma_ann2'])
+
+            # Combine annotations
+            for col in ['tagged_word', 'lemma', 'tag', 'type']:
+                merged_df[col] = merged_df[f'{col}_ann1']
+
+            # Process attributes
+            if tag == 'MTP':
+                attr_cols = ['Conventionality', 'Directness']
+            elif tag == 'HPB':
+                attr_cols = ['Dimension', 'Degree']
+            else:
+                attr_cols = []
+
+            for attr in attr_cols:
+                merged_df[f'{attr}_agreement'] = merged_df[f'{attr}_ann1'] == merged_df[f'{attr}_ann2']
+                merged_df[attr] = merged_df[f'{attr}_ann1']
+
+            # Select final columns
+            final_cols = ['doc_id', 'sentence', 'tagged_word', 'lemma', 'tag', 'type'] + attr_cols
+            if attr_cols:
+                final_cols += [f'{attr}_agreement' for attr in attr_cols]
+
+            df = merged_df[final_cols]
+
+            #df = df.sort_values(['sentence', 'tagged_word'])
+            output_filename = f'{tag.lower()}_sentences_lemmatized_{corpus_info["name"].lower()}.csv'
+            df.to_csv(os.path.join(OUTPUT_DIR, output_filename), encoding='utf-8', index=False)
+    
+    print(f"Processed {corpus_info['name']}")
+
+# List of corpora to process
+corpora_to_process = [
+    {'name': 'MAIN', 'path': CORPUS_PATHS['MAIN_PATH'], 'type': 'single'},
+    {'name': 'REANNO', 'path': CORPUS_PATHS['REANNO_PATH'], 'type': 'single'},
+    {'name': 'CONSENSUS', 'path': (ann_paths['CONSENSUS_ANN1_PATH'], ann_paths['CONSENSUS_ANN2_PATH']), 'type': 'multi'}
+]
+
+# Process all corpora
+for corpus in corpora_to_process:
+    process_corpus_data(corpus)
+
+print("Processed all datasets")
